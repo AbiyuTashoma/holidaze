@@ -6,7 +6,7 @@ Holidaze accommodation booking website Project
 
 ## Test status badge
 
-![Automated Unit Test]
+![Automated Unit Test](https://github.com/AbiyuTashoma/holidaze/actions/workflows/unit_test.yml/badge.svg)
 
 ## Deploy status badge
 
