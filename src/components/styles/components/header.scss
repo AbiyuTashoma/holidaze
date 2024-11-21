@@ -1,0 +1,12 @@
+.logo {
+  text-decoration: none;
+  font-family: "Gluten", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 60px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
