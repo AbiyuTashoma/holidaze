@@ -1,10 +1,11 @@
 import Logo from "./logo";
+import NavMenu from "./dropdown-menu";
 
 function Header() {
   return (
-    <div>
+    <div className="d-flex align-items-start justify-content-between">
       <Logo />
-      <div>This is header</div>
+      <NavMenu />
     </div>
   )
 }
