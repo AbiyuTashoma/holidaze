@@ -1,0 +1,19 @@
+.logo-name {
+  font-family: "Gluten",
+    serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 40px;
+  color: $brand-color;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.umbrella {
+  height: 30px;
+  fill: $brand-color;
+}
+
