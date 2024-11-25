@@ -3,7 +3,7 @@ import NavMenu from "./dropdown-menu";
 
 function Header() {
   return (
-    <div className="d-flex align-items-start justify-content-between">
+    <div className="d-flex justify-content-between align-items-center">
       <Logo />
       <NavMenu />
     </div>
@@ -11,3 +11,4 @@ function Header() {
 }
 
 export default Header;
+

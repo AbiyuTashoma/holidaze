@@ -1,25 +1,18 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Dropdown } from 'react-bootstrap';
 
 function NavMenu() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Nav className="me-auto">
-          <NavDropdown title="Dropdown menu" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-            <NavDropdown.Item href="/about">About</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Container>
-    </Navbar>
-  );
+    <Dropdown menuVariant="dark">
+      <Dropdown.Toggle id="dropdown-basic">Menu</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item href="/">Home</Dropdown.Item>
+        <Dropdown.Item href="/login">Login</Dropdown.Item>
+        <Dropdown.Item href="/register">Register</Dropdown.Item>
+        <Dropdown.Item href="/contact">Contact us</Dropdown.Item>
+        <Dropdown.Item href="/about">About us</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  )
 }
 
 export default NavMenu;
