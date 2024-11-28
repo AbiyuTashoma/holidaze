@@ -2,8 +2,9 @@ import GetApi from "../../../js/getApi";
 import { baseUrl } from "../../../js/constants";
 import useApi from "../../store/apiStore";
 import { shallow } from "zustand/shallow";
+import VenueList from "../venueList";
 
-function ProductsData() {
+function VenuesData() {
 
   const { venues, isLoading, isError } = useApi(
     (state) => ({
@@ -14,20 +15,19 @@ function ProductsData() {
     shallow
   );
 
-  console.log("products data");
+  console.log("venues data");
 
   GetApi(baseUrl);
-  console.log("products data 2");
 
-  // if (isLoading || !products) {
-  //   return (<div>Loading</div>);
-  // }
+  if (isLoading || !venues) {
+    return (<div>Loading</div>);
+  }
 
-  // if (isError) {
-  //   return (<div>Error</div>);
-  // }
+  if (isError) {
+    return (<div>Error</div>);
+  }
 
-  return (<div>Api Data</div>);
+  return VenueList(venues);
 }
 
-export default ProductsData;
+export default VenuesData;

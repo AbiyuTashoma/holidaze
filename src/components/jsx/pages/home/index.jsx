@@ -1,10 +1,9 @@
-import ProductsData from "../../resources/venuesData/venuesData";
+import ProductsData from "../../resources/venuesData";
 
 function Home() {
   return (
     <div>
       <ProductsData />
-      <div>Non stop</div>
     </div>
   )
 }
