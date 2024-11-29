@@ -6,14 +6,37 @@
   font-style: normal;
   font-size: 40px;
   color: $brand-red;
+  line-height: 0;
+  transition-property: color;
+  transition-duration: 0.5s;
 
   &:hover {
-    cursor: pointer;
+    color: $brand-darkred;
   }
 }
 
 .umbrella {
   height: 30px;
   fill: $brand-red;
+  margin-bottom: 5px;
+  transition-property: fill;
+  transition-duration: 0.5s;
+
+  &:hover {
+    fill: $brand-darkred;
+  }
 }
 
+.dropdown-item:hover {
+  background-color: $brand-gray-hover;
+}
+
+@media (max-width: 576px) {
+  .logo-name {
+    font-size: 30px;
+  }
+
+  .umbrella {
+    height: 25px;
+  }
+}
