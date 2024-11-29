@@ -1,5 +1,11 @@
+import ProductsData from "../../resources/venuesData";
+
 function Home() {
-  return <div>Holidaze under construction</div>
+  return (
+    <div>
+      <ProductsData />
+    </div>
+  )
 }
 
 export default Home;

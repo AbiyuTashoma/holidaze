@@ -1,5 +1,5 @@
 import Logo from "./logo";
-import NavMenu from "./dropdown-menu";
+import NavMenu from "./dropdownMenu";
 
 function Header() {
   return (

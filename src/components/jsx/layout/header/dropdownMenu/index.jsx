@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function NavMenu() {
   return (
-    <Dropdown menuVariant="dark">
+    <Dropdown>
       <Dropdown.Toggle id="dropdown-basic">Menu</Dropdown.Toggle>
       <Dropdown.Menu align="end">
         <Dropdown.Item className='p-0'><Link className='dropdown-item' to="/">Home</Link></Dropdown.Item>
