@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Logo() {
   return (
-    <div className="d-flex align-items-center gap-3">
+    <div className="d-flex align-items-center gap-2">
         <Link className="logo-name text-decoration-none" to="/">Holidaze</Link>
         <Link to="/">
           <svg className="umbrella" viewBox="0 0 22.505 21.37">
