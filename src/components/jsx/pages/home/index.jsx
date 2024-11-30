@@ -1,11 +1,13 @@
 import Search from "../../resources/search";
-import ProductsData from "../../resources/venuesData";
+import ToTop from "../../resources/toTop";
+import VenuesData from "../../resources/venuesData";
 
 function Home() {
   return (
     <div>
       <Search />
-      <ProductsData />
+      <VenuesData />
+      <ToTop />
     </div>
   )
 }
