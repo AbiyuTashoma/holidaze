@@ -8,7 +8,7 @@ function VenueList(venues) {
         {venues.map((venue) =>
           <Col key={venue.id} className="my-2">
             <Link to={'/' + venue.id}>
-              {venue['media'][0] ? <img src= {venue['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="No image available"/>}
+              {venue['media'][0] ? <img src= {venue['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
             </Link>
             <Row className="my-2">
               <Col>
