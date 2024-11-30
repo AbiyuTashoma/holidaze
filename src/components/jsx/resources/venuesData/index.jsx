@@ -1,6 +1,6 @@
 import GetApi from "../../../js/getApi";
 import { baseUrl } from "../../../js/constants";
-import useApi from "../../store/apiStore";
+import useApi from "../../store/api";
 import { shallow } from "zustand/shallow";
 import VenueList from "../venueList";
 
