@@ -1,6 +1,7 @@
 import { shallow } from "zustand/shallow";
 import { useEffect } from "react";
-import useApi from "../../jsx/store/apiStore";
+import useApi from "../../jsx/store/api";
+import useSearch from "../../jsx/store/search";
 
 function GetApi(link) {
   const { updateVenues, updateIsLoading, updateIsError } = useApi(
@@ -11,6 +12,13 @@ function GetApi(link) {
       updateVenues: state.updateVenues,
       updateIsLoading: state.updateIsLoading,
       updateIsError: state.updateIsError,
+    }),
+    shallow
+  );
+
+  const { updateSearchVenues } = useSearch(
+    (state) => ({
+      updateSearchVenues: state.updateSearchVenues,
     }),
     shallow
   );
@@ -27,6 +35,7 @@ function GetApi(link) {
         console.log(json["data"]);
 
         updateVenues(json["data"]);
+        updateSearchVenues(json["data"]);
       } catch (error) {
         updateIsError(true);
       } finally {
@@ -35,7 +44,7 @@ function GetApi(link) {
     }
 
     getData();
-  }, [updateVenues, updateIsLoading, updateIsError, link]);
+  }, [updateVenues, updateIsLoading, updateIsError, updateSearchVenues, link]);
 }
 
 export default GetApi;
