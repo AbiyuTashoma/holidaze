@@ -15,8 +15,6 @@ function VenuesData() {
     shallow
   );
 
-  console.log("venues data");
-
   GetApi(baseUrl);
 
   if (isLoading || !venues) {

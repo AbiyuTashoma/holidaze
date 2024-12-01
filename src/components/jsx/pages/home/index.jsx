@@ -1,3 +1,4 @@
+import LoadMore from "../../resources/loadMore";
 import Search from "../../resources/search";
 import ToTop from "../../resources/toTop";
 import VenuesData from "../../resources/venuesData";
@@ -7,6 +8,7 @@ function Home() {
     <div>
       <Search />
       <VenuesData />
+      <LoadMore />
       <ToTop />
     </div>
   )
