@@ -1,22 +1,25 @@
 import { Button } from "react-bootstrap";
-import useOffset from "../../store/offset";
+import usePage from "../../store/page";
 import { shallow } from "zustand/shallow";
 
-function LoadMore() {
+function EnableDisable(nxtPage) {
+  return Boolean(nxtPage) ? false : true;
+}
 
-  const { offset, setOffset, resetOffset } = useOffset(
-    (state) => ({
-      offset: state.offset,
-      setOffset: state.setOffset,
-      resetOffset: state.resetOffset,
-    }),
-    shallow
-  );
+function LoadMore() {
+    const { nextPage, prevPage, updateUrl } = usePage(
+      (state) => ({
+        nextPage: state.nextPage,
+        prevPage: state.prevPage,
+        updateUrl: state.updateUrl,
+      }),
+      shallow
+    );
   
   return (
-    <div className="d-flex justify-content-center my-2">
-      <Button className="btn-primary" onClick={ setOffset } aria-label="load more">Load more +</Button>
-      <Button className="btn-primary" onClick={ resetOffset } aria-label="load more">Reset</Button>
+    <div className="d-flex justify-content-between m-2">
+      <Button className="btn-secondary" onClick={() => updateUrl(prevPage)} disabled={EnableDisable(prevPage)} aria-label="previous page">Prev page</Button>
+      <Button className="btn-secondary" onClick={() => updateUrl(nextPage)} disabled={EnableDisable(nextPage)} aria-label="next page">Next page</Button>
     </div>
   );
 }
