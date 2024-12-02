@@ -3,6 +3,7 @@ import { baseUrl } from "../../../js/constants";
 import useApi from "../../store/api";
 import { shallow } from "zustand/shallow";
 import VenueList from "../venueList";
+import Loading from "../loading";
 
 function VenuesData() {
 
@@ -18,7 +19,7 @@ function VenuesData() {
   GetApi(baseUrl);
 
   if (isLoading || !venues) {
-    return (<div>Loading</div>);
+    return (<Loading />);
   }
 
   if (isError) {
