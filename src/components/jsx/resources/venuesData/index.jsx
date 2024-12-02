@@ -4,6 +4,7 @@ import useApi from "../../store/api";
 import { shallow } from "zustand/shallow";
 import VenueList from "../venueList";
 import Loading from "../loading";
+import Error from "../error";
 
 function VenuesData() {
 
@@ -19,11 +20,11 @@ function VenuesData() {
   GetApi(baseUrl);
 
   if (isLoading || !venues) {
-    return (<Loading />);
+    return <Loading />;
   }
 
   if (isError) {
-    return (<div>Error</div>);
+    return <Error />;
   }
 
   return VenueList(venues);
