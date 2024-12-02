@@ -5,8 +5,9 @@ import SearchLabel from "./label";
 
 
 function Search() {
-  const { updateVenues } = useApi(
+  const { venues, updateVenues } = useApi(
     (state) => ({
+      venues: state.venues,
       updateVenues: state.updateVenues,
     }),
     shallow

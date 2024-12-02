@@ -5,11 +5,12 @@ import useSearch from "../../jsx/store/search";
 import usePage from "../../jsx/store/page";
 
 function GetApi() {
-  const { updateVenues, updateIsLoading, updateIsError } = useApi(
+  const { updateVenues, updateIsLoading, updateIsError, extendVenues } = useApi(
     (state) => ({
       updateVenues: state.updateVenues,
       updateIsLoading: state.updateIsLoading,
       updateIsError: state.updateIsError,
+      extendVenues: state.extendVenues,
     }),
     shallow
   );
@@ -41,7 +42,8 @@ function GetApi() {
 
         console.log(json["data"]);
 
-        updateVenues(json["data"]);
+        // updateVenues(json["data"]);
+        extendVenues(json["data"]);
         updateSearchVenues(json["data"]);
 
         updateNextPage(json["meta"]["nextPage"]);

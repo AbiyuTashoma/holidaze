@@ -8,6 +8,7 @@ const useApi = create(persist((set) => ({
   updateVenues: (items) => set({venues: [...items]}),
   updateIsLoading: (bool) => set({isLoading: bool}),
   updateIsError: (bool) => set({isError: bool}),
+  extendVenues: (newItems) => set((state) => ({venues: state.venues.concat(newItems)}))
 }), {
   name: "apiData",
 }));
