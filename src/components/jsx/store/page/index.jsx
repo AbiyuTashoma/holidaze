@@ -12,7 +12,7 @@ const usePage = create(persist((set) => ({
   prevPage: null,
   updateNextPage: (nPage) => set({nextPage: nPage}),
   updatePrevPage: (pPage) => set({prevPage: pPage}),
-  updateUrl: (newPage) => set({url: baseUrl + "&page=" + newPage})
+  updateUrl: (newPage) => set({url: newPage})
 }), {
   name: "page",
 }));

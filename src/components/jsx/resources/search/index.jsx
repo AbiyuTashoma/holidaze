@@ -1,27 +1,18 @@
-import useApi from "../../store/api";
-import useSearch from "../../store/search";
 import { shallow } from "zustand/shallow";
 import SearchLabel from "./label";
-
+import { baseUrl, searchUrl } from "../../../js/constants";
+import usePage from "../../store/page";
 
 function Search() {
-  const { updateVenues } = useApi(
-    (state) => ({
-      updateVenues: state.updateVenues,
-    }),
-    shallow
-  );
-
-  const { searchVenues } = useSearch(
-    (state) => ({
-      searchVenues: state.searchVenues,
-    }),
-    shallow
-  );
+  const {  updateUrl } = usePage(
+      (state) => ({
+        updateUrl: state.updateUrl,
+      }),
+      shallow
+    );
 
   function handleOnChange (txt) {
-    const newVenues = searchVenues.filter((item) => item['name'].toLowerCase().includes(txt.toLowerCase()));
-    updateVenues(newVenues);
+    txt? updateUrl(searchUrl + txt) : updateUrl(baseUrl + "1");
   }
 
   return (
