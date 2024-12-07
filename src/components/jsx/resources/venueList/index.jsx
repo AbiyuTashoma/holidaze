@@ -1,5 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { currency, unit } from "../../../js/constants";
+import Facility from "../facility";
 
 function VenueList(venues) {
   return (
@@ -13,12 +15,13 @@ function VenueList(venues) {
             <Row className="my-2">
               <Col>
                 <div>{venue['name']}</div>
-                <div>{venue['price']}</div>
+                <div>{venue['price']} {currency}<span className="unit">{unit}</span></div>
               </Col>
               <Col className="view-button-container">
                 <Link to={'/' + venue.id} className="view-button">View</Link>
               </Col>
             </Row>
+            {Facility(venue['meta'])}
           </Col>
         )}
       </Row>
