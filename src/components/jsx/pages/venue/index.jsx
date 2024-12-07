@@ -1,5 +1,7 @@
+import AVenue from "../../resources/aVenue";
+
 function Venue() {
-  return <div>A venue here</div>
+  return <AVenue />
 }
 
 export default Venue;

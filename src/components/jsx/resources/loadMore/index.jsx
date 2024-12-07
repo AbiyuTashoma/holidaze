@@ -17,7 +17,7 @@ function LoadMore() {
     );
   
   return (
-    <div className="d-flex justify-content-between m-2">
+    <div className="d-flex justify-content-evenly m-2">
       <Button className="btn-secondary" onClick={() => updateUrl(prevPage)} disabled={EnableDisable(prevPage)} aria-label="previous page">Prev page</Button>
       <Button className="btn-secondary" onClick={() => updateUrl(nextPage)} disabled={EnableDisable(nextPage)} aria-label="next page">Next page</Button>
     </div>
