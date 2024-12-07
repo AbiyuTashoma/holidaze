@@ -1,4 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { currency, unit } from "../../../js/constants";
+import Facility from "../facility";
 
 function DisplayVenue(aVenue) {
   return (
@@ -9,7 +11,9 @@ function DisplayVenue(aVenue) {
         </Col>
         <Col>
           <div>{aVenue['name']}</div>
-          <div>{aVenue['price']}</div>
+          <div>{aVenue['price']} {currency}<span className="unit">{unit}</span></div>
+          <div>{aVenue['description']}</div>
+          {Facility(aVenue['meta'])}
         </Col>
       </Row>
     </Container>

@@ -3,7 +3,7 @@ import Loading from "../loading";
 import Error from "../error";
 import { useParams } from "react-router-dom";
 import { url } from "../../../js/constants";
-import DisplayVenue from "./displayVenue";
+import DisplayVenue from "../aVenueDisplay";
 
 function AVenue() {
   let { id } = useParams();
