@@ -34,7 +34,6 @@ function GetApi() {
         console.log(json["data"]);
 
         updateVenues(json["data"]);
-
         updateNextPage(json["meta"]["nextPage"]);
         updatePrevPage(json["meta"]["previousPage"]);
       } catch (error) {

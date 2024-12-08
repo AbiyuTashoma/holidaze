@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { baseUrl } from '../../../js/constants';
+import urlUpdater from '../../../js/urlUpdater';
 
 /**
  * creates page store
@@ -12,7 +13,7 @@ const usePage = create(persist((set) => ({
   prevPage: null,
   updateNextPage: (nPage) => set({nextPage: nPage}),
   updatePrevPage: (pPage) => set({prevPage: pPage}),
-  updateUrl: (newPage) => set({url: newPage})
+  updateUrl: (newUrl) => set({url: newUrl}),
 }), {
   name: "page",
 }));
