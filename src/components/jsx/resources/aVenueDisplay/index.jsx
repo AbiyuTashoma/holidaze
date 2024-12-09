@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { currency, unit } from "../../../js/constants";
 import Facility from "../facility";
 import StarRating from "../starRating";
+import Calendar from "./datePicker";
 
 function DisplayVenue(aVenue) {
   return (
@@ -16,6 +17,7 @@ function DisplayVenue(aVenue) {
           <div>{aVenue['price']} {currency}<span className="unit">{unit}</span></div>
           <div>{aVenue['description']}</div>
           {Facility(aVenue['meta'])}
+          <Calendar />
         </Col>
       </Row>
     </Container>

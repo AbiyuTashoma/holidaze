@@ -7,7 +7,7 @@ import DisplayVenue from "../aVenueDisplay";
 
 function AVenue() {
   let { id } = useParams();
-  const { data, isLoading, isError } = VenueApi(url + `/${id}`);
+  const { data, isLoading, isError } = VenueApi(url + `/${id}` + "?_bookings=true");
 
   if (isLoading || !data) {
     return <Loading />;
@@ -17,6 +17,7 @@ function AVenue() {
     return <Error />;
   }
 
+  console.log(data);
   return DisplayVenue(data);
 }
 
