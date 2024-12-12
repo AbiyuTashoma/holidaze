@@ -2,8 +2,12 @@ import { Col, Container, Row } from "react-bootstrap";
 import { currency, unit } from "../../../js/constants";
 import Facility from "../facility";
 import StarRating from "../starRating";
+import Calendar from "./datePicker";
+import getBooking from "../../../js/getBooking";
 
 function DisplayVenue(aVenue) {
+  const bkng = getBooking(aVenue['bookings']);
+
   return (
     <Container>
       <Row xs="1" md="2">        
@@ -16,6 +20,10 @@ function DisplayVenue(aVenue) {
           <div>{aVenue['price']} {currency}<span className="unit">{unit}</span></div>
           <div>{aVenue['description']}</div>
           {Facility(aVenue['meta'])}
+          <Calendar bArray={bkng}/>
+          {/* {Calendar(bkng)} */}
+          {/* {Calendar(getBooking(bookingArray))} */}
+          {/* {getBooking(aVenue['bookings']).map((item) => <div key={item['end']}>{item['start']}</div>)} */}
         </Col>
       </Row>
     </Container>
