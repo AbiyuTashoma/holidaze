@@ -1,5 +1,7 @@
+import AboutUs from "../../resources/aboutUs";
+
 function About() {
-  return <div>About us</div>
+  return <AboutUs />
 }
 
 export default About;
