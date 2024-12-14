@@ -4,3 +4,5 @@ export const baseUrl =
 export const searchUrl = url + "/search?q=";
 export const currency = "NOK";
 export const unit = "/day";
+export const defaultAvatar = "https://robohash.org/prof";
+export const registerUrl = url + "/auth/register";

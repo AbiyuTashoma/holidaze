@@ -1,5 +1,7 @@
+import RegisterForm from "../../resources/registerForm";
+
 function Register() {
-  return <div>Register here</div>
+  return <RegisterForm />
 }
 
 export default Register;
