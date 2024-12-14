@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from 'react-bootstrap';
 import { defaultAvatar, registerUrl } from '../../../js/constants';
+import { useState } from "react";
 
 const schema = yup
   .object({
@@ -10,7 +11,7 @@ const schema = yup
       .string()
       .matches(/^[a-zA-Z0-9_]*$/, {message: 'Only a-z A-Z 0-9 and _ characters are allowed'})
       .min(3, 'Name should be at least 3 characters.')
-      .required('Please enter your name'),
+      .required('Enter your name'),
     email: yup
       .string()
       .email()
@@ -35,22 +36,19 @@ const schema = yup
   .required();
 
 function RegisterForm () {
-    const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
 
-  function onSubmit(data, event) {
+  const [apiData, setApiData] = useState([null, null]);
+
+  function OnSubmit(data, event) {
     const registerData = {
       name: data.name,
       email: data.email,
       password: data.password,
       venueManager: data.venueManager==="true" ? true: false,
-      avatar: {url:data.avatar != "" ? data.avatar : defaultAvatar, alt:"avatar"},
+      avatar: {url:data.avatar !== "" ? data.avatar : defaultAvatar, alt:"avatar"},
     };
+
+    console.log(registerData);
 
     const registerOption = {
       method: "POST",
@@ -60,19 +58,43 @@ function RegisterForm () {
       },
     };
 
-    // const registerResponse = api(registerUrl, registerOption);
+    async function regApi() {
+      const response = await fetch(registerUrl, registerOption);
+      try {  
+        const json = await response.json();
+        return json;
+      } catch (error) {
+        throw new Error(response.statusText);
+      }
+    }
 
-    // console.log(registerResponse);
-    console.log(registerData);
-    console.log(data);
-    event.target.reset();
+    const resp = regApi();
+
+    if (resp["data"]) {
+      setApiData(["Registration successful", "text-success"]);
+      event.target.reset();
+      return;
+    }
+    else {
+      setApiData(["Unknown error occurred", "text-danger"]);
+      return;
+    }
   }
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form-size'>
+    <form onSubmit={handleSubmit(OnSubmit)} className='form-size'>
       <h1>Register</h1>
+      <div className={apiData[1]}>{apiData[0]}</div>
       <div>
-        <label htmlFor="name" className='form-label'>Full name</label>
+        <label htmlFor="name" className='form-label'>Name</label>
         <input id='name' name='name' className='form-control' {...register('name')} />
         <p className='text-danger'>{errors.name?.message}</p>
       </div>
@@ -92,11 +114,11 @@ function RegisterForm () {
         <p className='text-danger'>{errors.confirmPassword?.message}</p>
       </div>
       <div>
-        <label htmlFor="venueManager" className='form-label'>Select role</label>
+        <label htmlFor="venueManager" className='form-label'>Select a role</label>
         <select id='venueManager' name='venueManager' className='form-control' {...register('venueManager')}>
-          <option value="" default className='fst-italic'>Select role</option>
+          <option value="" default className='fst-italic'>Select a role</option>
           <option value={false}>User</option>
-          <option value={true}>Manager</option>
+          <option value={true}>Venue Manager</option>
         </select>
         <p className='text-danger'>{errors.venueManager?.message}</p>
       </div>

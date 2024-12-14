@@ -5,4 +5,4 @@ export const searchUrl = url + "/search?q=";
 export const currency = "NOK";
 export const unit = "/day";
 export const defaultAvatar = "https://robohash.org/prof";
-export const registerUrl = url + "/auth/register";
+export const registerUrl = "https://v2.api.noroff.dev/auth/register";

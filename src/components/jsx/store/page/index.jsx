@@ -1,7 +1,5 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { baseUrl } from '../../../js/constants';
-import urlUpdater from '../../../js/urlUpdater';
 
 /**
  * creates page store
