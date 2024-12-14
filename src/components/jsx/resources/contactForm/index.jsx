@@ -5,22 +5,22 @@ import { Button } from 'react-bootstrap';
 
 const schema = yup
   .object({
-    fullName: yup
+    name: yup
       .string()
-      .min(3, 'Full name should be at least 3 characters.')
-      .required('Please enter your full name'),
+      .min(3, 'Name should be at least 3 characters.')
+      .required('Enter your full name'),
     email: yup
       .string()
       .email()
       .matches(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/, {message: 'Enter a proper email address'})
-      .required('Please enter your email'),
+      .required('Enter your email'),
     subject: yup
       .string()
-      .min(3, 'Your subject should be at least 3 characters.')
-      .required('Please enter your subject'),
+      .min(3, 'Subject should be at least 3 characters.')
+      .required('Enter your subject'),
     message: yup
       .string()
-      .min(3, 'Your message should be at least 3 characters.')
+      .min(10, 'Message should be at least 10 characters.')
       .required('Please enter your message'),
   })
   .required();
@@ -43,9 +43,9 @@ function ContactForm () {
     <form onSubmit={handleSubmit(onSubmit)} className='form-size'>
       <h1>Contact us</h1>
       <div>
-        <label htmlFor="fullName" className='form-label'>Full name</label>
-        <input id='fullName' name='fullName' className='form-control' {...register('fullName')} />
-        <p className='text-danger'>{errors.fullName?.message}</p>
+        <label htmlFor="name" className='form-label'>Name</label>
+        <input id='name' name='name' className='form-control' {...register('name')} />
+        <p className='text-danger'>{errors.name?.message}</p>
       </div>
       <div>
         <label htmlFor="email" className='form-label'>Email</label>

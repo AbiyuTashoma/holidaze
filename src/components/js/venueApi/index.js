@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function VenueApi(link) {
-  const [data, setData] = useState(null);
+  const [apiData, setApiData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -14,7 +14,7 @@ function VenueApi(link) {
         const response = await fetch(link);
         const json = await response.json();
 
-        setData(json["data"]);
+        setApiData(json["data"]);
       } catch (error) {
         setIsError(true);
       } finally {
@@ -25,7 +25,7 @@ function VenueApi(link) {
     getVenueData();
   }, [link]);
 
-  return { data, isLoading, isError };
+  return { apiData, isLoading, isError };
 }
 
 export default VenueApi;
