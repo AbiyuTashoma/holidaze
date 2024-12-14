@@ -1,27 +1,32 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { Button } from 'react-bootstrap';
 
 const schema = yup
   .object({
     fullName: yup
       .string()
+      .matches(/^[a-zA-Z0-9_]*$/, {message: 'Only a-z A-Z 0-9 and _ characters are allowed'})
       .min(3, 'Full name should be at least 3 characters.')
-      .matches(/^[\w-.]/, {message: 'Only a-zA-Z0-9_ characters are allowed'})
       .required('Please enter your full name'),
     email: yup
       .string()
       .email()
       .matches(/^[\w-.]+@stud.noroff.no/, {message: 'Enter a proper email address'})
       .required('Please enter your email'),
-    subject: yup
+    password: yup
       .string()
-      .min(3, 'Your subject should be at least 3 characters.')
-      .required('Please enter your subject'),
-    message: yup
+      .min(8, 'Password should be at least 8 characters.')
+      .required('Please enter your password'),
+    confirmPassword: yup
       .string()
-      .min(3, 'Your message should be at least 3 characters.')
-      .required('Please enter your message'),
+      .min(8, 'Password should be at least 8 characters.')
+      .oneOf([yup.ref('password')], 'Passwords must match')
+      .required('Please enter your password'),
+    avatar: yup
+      .string()
+      .matches(/^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, {message: 'Enter a valid url', excludeEmptyString: true})
   })
   .required();
 
@@ -53,16 +58,21 @@ function RegisterForm () {
         <p className='text-danger'>{errors.email?.message}</p>
       </div>
       <div>
-        <label htmlFor="subject" className='form-label'>Subject</label>
-        <input id='subject' name='subject' className='form-control' {...register('subject')} />
-        <p className='text-danger'>{errors.subject?.message}</p>
+        <label htmlFor="password" className='form-label'>Password</label>
+        <input type='password' id='password' name='password' className='form-control' {...register('password')} />
+        <p className='text-danger'>{errors.password?.message}</p>
       </div>
       <div>
-        <label htmlFor="message" className='form-label'>Message</label>
-        <textarea id='message' name='message' className='form-control' {...register('message')}></textarea>
-        <p className='text-danger'>{errors.message?.message}</p>
+        <label htmlFor="confirmPassword" className='form-label'>Confirm password</label>
+        <input type='password' id='confirmPassword' name='confirmPassword' className='form-control' {...register('confirmPassword')} />
+        <p className='text-danger'>{errors.confirmPassword?.message}</p>
       </div>
-      <input type="submit" className='submit-button'/>
+      <div>
+        <label htmlFor="avatar" className='form-label fst-italic'>Avatar url (optional)</label>
+        <input id='avatar' name='avatar' className='form-control' {...register('avatar')} />
+        <p className='text-danger'>{errors.avatar?.message}</p>
+      </div>
+      <Button type='submit' className='btn-secondary'>Register</Button>
     </form>
   );
 }
