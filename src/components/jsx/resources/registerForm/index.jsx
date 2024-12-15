@@ -42,6 +42,10 @@ function RegisterForm () {
     }
   }
 
+  function clearMessage() {
+    setApiData([null, null]);
+  }
+
   const {
     register,
     handleSubmit,
@@ -51,7 +55,7 @@ function RegisterForm () {
   });
 
   return (
-    <form onSubmit={handleSubmit(OnSubmit)} className='form-size'>
+    <form onSubmit={handleSubmit(OnSubmit)} onChange={clearMessage} className='form-size'>
       <h1>Register</h1>
       <div className={type}>{message}</div>
       <div>
