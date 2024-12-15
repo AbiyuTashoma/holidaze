@@ -21,8 +21,12 @@ function ContactForm () {
     event.target.reset();
   }
 
+  function clearMessage() {
+    setApiData([null, null]);
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form-size'>
+    <form onSubmit={handleSubmit(onSubmit)} onChange={clearMessage} className='form-size'>
       <h1>Contact us</h1>
       <div className={type}>{message}</div>
       <div>
