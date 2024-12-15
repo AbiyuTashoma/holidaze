@@ -1,5 +1,7 @@
+import LoginForm from "../../resources/loginForm";
+
 function Login() {
-  return <div>Login here</div>
+  return <LoginForm />
 }
 
 export default Login;
