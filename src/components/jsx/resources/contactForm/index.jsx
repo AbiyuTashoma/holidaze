@@ -1,32 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Button } from 'react-bootstrap';
-
-const schema = yup
-  .object({
-    name: yup
-      .string()
-      .min(3, 'Name should be at least 3 characters.')
-      .required('Enter your full name'),
-    email: yup
-      .string()
-      .email()
-      .matches(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/, {message: 'Enter a proper email address'})
-      .required('Enter your email'),
-    subject: yup
-      .string()
-      .min(3, 'Subject should be at least 3 characters.')
-      .required('Enter your subject'),
-    message: yup
-      .string()
-      .min(10, 'Message should be at least 10 characters.')
-      .required('Please enter your message'),
-  })
-  .required();
+import schema from '../../../js/contactValidation';
+import { useState } from "react";
 
 function ContactForm () {
-    const {
+  const [apiData, setApiData] = useState([null, null]);
+  const [message, type] = apiData;
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -36,12 +17,14 @@ function ContactForm () {
 
   function onSubmit(data, event) {
     console.log(data);
+    setApiData(["Sending successful", "text-success"]);
     event.target.reset();
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='form-size'>
       <h1>Contact us</h1>
+      <div className={type}>{message}</div>
       <div>
         <label htmlFor="name" className='form-label'>Name</label>
         <input id='name' name='name' className='form-control' {...register('name')} />

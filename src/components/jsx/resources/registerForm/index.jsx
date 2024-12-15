@@ -1,43 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Button } from 'react-bootstrap';
-import { defaultAvatar, registerUrl } from '../../../js/constants';
+import { defaultAvatar } from '../../../js/constants';
 import { useState } from "react";
-
-const schema = yup
-  .object({
-    name: yup
-      .string()
-      .matches(/^[a-zA-Z0-9_]*$/, {message: 'Only a-z A-Z 0-9 and _ characters are allowed'})
-      .min(3, 'Name should be at least 3 characters.')
-      .required('Enter your name'),
-    email: yup
-      .string()
-      .email()
-      .matches(/^[\w-.]+@stud.noroff.no/, {message: 'Enter a proper email address'})
-      .required('Enter your email'),
-    password: yup
-      .string()
-      .min(8, 'Password should be at least 8 characters.')
-      .required('Enter a password'),
-    confirmPassword: yup
-      .string()
-      .min(8, 'Password should be at least 8 characters.')
-      .oneOf([yup.ref('password')], 'Passwords must match')
-      .required('Re-type your password'),
-    avatar: yup
-      .string()
-      .matches(/^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, {message: 'Enter a valid url', excludeEmptyString: true}),
-    venueManager: yup
-      .string()
-      .required('Select a role')
-  })
-  .required();
+import api from '../../../js/api';
+import schema from '../../../js/registerValidation';
 
 function RegisterForm () {
-
   const [apiData, setApiData] = useState([null, null]);
+  const [message, type] = apiData;
 
   function OnSubmit(data, event) {
     const registerData = {
@@ -58,17 +29,7 @@ function RegisterForm () {
       },
     };
 
-    async function regApi() {
-      const response = await fetch(registerUrl, registerOption);
-      try {  
-        const json = await response.json();
-        return json;
-      } catch (error) {
-        throw new Error(response.statusText);
-      }
-    }
-
-    const resp = regApi();
+    const resp = api(registerOption);
 
     if (resp["data"]) {
       setApiData(["Registration successful", "text-success"]);
@@ -92,7 +53,7 @@ function RegisterForm () {
   return (
     <form onSubmit={handleSubmit(OnSubmit)} className='form-size'>
       <h1>Register</h1>
-      <div className={apiData[1]}>{apiData[0]}</div>
+      <div className={type}>{message}</div>
       <div>
         <label htmlFor="name" className='form-label'>Name</label>
         <input id='name' name='name' className='form-control' {...register('name')} />
