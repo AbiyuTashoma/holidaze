@@ -12,7 +12,7 @@ const schema = yup
     email: yup
       .string()
       .email()
-      .matches(/^[\w-.]+@stud.noroff.no/, {
+      .matches(/^[\w-.]+@stud.noroff.no*$/, {
         message: "Enter a proper email address",
       })
       .required("Enter your email"),
