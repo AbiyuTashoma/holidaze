@@ -31,6 +31,15 @@
   background-color: $brand-gray-hover;
 }
 
+.user {
+  position: absolute;
+  right: 90px;
+  top: 0px;
+  border: solid thin chocolate;
+  border-radius: 50%;
+  padding: 7px;
+}
+
 @media (max-width: 576px) {
   .logo-name {
     font-size: 30px;

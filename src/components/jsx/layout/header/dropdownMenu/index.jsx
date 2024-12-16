@@ -1,9 +1,33 @@
 import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useUser from '../../../store/user';
+import { shallow } from 'zustand/shallow';
 
 function NavMenu() {
+  const { name, accessToken, avatar, venueManager, updateName, updateAccessToken, updateAvatar, updateVenueManager } = useUser(
+    (state) => ({
+      name: state.name,
+      accessToken: state.accessToken,
+      avatar: state.avatar,
+      venueManager: state.venueManager,
+      updateName: state.updateName,
+      updateAccessToken: state.updateAccessToken,
+      updateAvatar: state.updateAvatar,
+      updateVenueManager: state.updateVenueManager
+    }),
+    shallow
+  );
+
+  function logout() {
+    updateName(null);
+    updateAccessToken(null);
+    updateAvatar(null);
+    updateVenueManager(false);
+  }
+
   return (
-    <Dropdown>
+    <Dropdown className="position-relative">
+      <span className={name? 'user d-block' : 'd-none'}>{name}</span>
       <Dropdown.Toggle id="dropdown-basic">
         <svg width="40px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 18L20 18" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
@@ -13,8 +37,10 @@ function NavMenu() {
       </Dropdown.Toggle>
       <Dropdown.Menu align="end">
         <Dropdown.Item className='p-0'><Link className='dropdown-item' to="/">Home</Link></Dropdown.Item>
-        <Dropdown.Item className='p-0'><Link className='dropdown-item' to="/login">Login</Link></Dropdown.Item>
-        <Dropdown.Item className='p-0'><Link className='dropdown-item' to="/register">Register</Link></Dropdown.Item>
+        <Dropdown.Item className={name? 'd-none':'p-0 d-block'}><Link className='dropdown-item' to="/login">Login</Link></Dropdown.Item>
+        <Dropdown.Item className={name? 'p-0 d-block':'d-none'}><Link className='dropdown-item' to="/profile">Profile</Link></Dropdown.Item>
+        <Dropdown.Item className={name? 'p-0 d-block':'d-none'} onClick={logout}><Link className='dropdown-item' to="/">Logout</Link></Dropdown.Item>
+        <Dropdown.Item className={name? 'd-none':'p-0 d-block'}><Link className='dropdown-item' to="/register">Register</Link></Dropdown.Item>
         <Dropdown.Item className='p-0'><Link className='dropdown-item' to="/contact">Contact us</Link></Dropdown.Item>
         <Dropdown.Item className='p-0'><Link className='dropdown-item' to="/about">About us</Link></Dropdown.Item>
       </Dropdown.Menu>
