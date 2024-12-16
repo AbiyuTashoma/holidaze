@@ -10,7 +10,7 @@ function RegisterForm () {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;
 
-  function OnSubmit(data, event) {
+  async function OnSubmit(data, event) {
     const registerData = {
       name: data.name,
       email: data.email,
@@ -29,7 +29,7 @@ function RegisterForm () {
       },
     };
 
-    const resp = api(registerUrl, registerOption);
+    const resp = await api(registerUrl, registerOption);
 
     if (resp["data"]) {
       setApiData(["Registration successful", "text-success"]);

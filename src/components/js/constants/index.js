@@ -6,4 +6,4 @@ export const currency = "NOK";
 export const unit = "/day";
 export const defaultAvatar = "https://robohash.org/prof";
 export const registerUrl = "https://v2.api.noroff.dev/auth/register";
-export const loginUrl = "https://v2.api.noroff.dev/auth/login";
+export const loginUrl = "https://v2.api.noroff.dev/auth/login?_holidaze=true";

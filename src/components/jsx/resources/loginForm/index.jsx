@@ -5,12 +5,28 @@ import { useState } from "react";
 import api from '../../../js/api';
 import schema from '../../../js/loginValidation';
 import { loginUrl } from '../../../js/constants';
+import useUser from '../../store/user';
+import { shallow } from 'zustand/shallow';
 
 function LoginForm () {
+  const { name, accessToken, avatar, venueManager, updateName, updateAccessToken, updateAvatar, updateVenueManager } = useUser(
+    (state) => ({
+      name: state.name,
+      accessToken: state.accessToken,
+      avatar: state.avatar,
+      venueManager: state.venueManager,
+      updateName: state.updateName,
+      updateAccessToken: state.updateAccessToken,
+      updateAvatar: state.updateAvatar,
+      updateVenueManager: state.updateVenueManager
+    }),
+    shallow
+  );
+
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;
 
-  function OnSubmit(data, event) {
+  async function OnSubmit(data, event) {
     const loginData = {
       email: data.email,
       password: data.password,
@@ -26,9 +42,14 @@ function LoginForm () {
       },
     };
 
-    const resp = api(loginUrl, loginOption);
+    const resp = await api(loginUrl, loginOption);
 
+    console.log(resp);
     if (resp["data"]) {
+      updateName(resp["data"]["name"]);
+      updateAccessToken(resp["data"]["accessToken"]);
+      updateAvatar(resp["data"]["avatar"] ? resp["data"]["avatar"]["url"] : "");
+      updateVenueManager(resp["data"]["venueManager"]);
       setApiData(["Login successful", "text-success"]);
       event.target.reset();
       return;
