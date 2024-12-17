@@ -1,5 +1,7 @@
+import ProfileInfo from "../../resources/profileInfo";
+
 function Profile() {
-  return <div>Profile here</div>
+  return <ProfileInfo />
 }
 
 export default Profile;
