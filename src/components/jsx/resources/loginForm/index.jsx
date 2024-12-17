@@ -7,14 +7,11 @@ import schema from '../../../js/loginValidation';
 import { loginUrl } from '../../../js/constants';
 import useUser from '../../store/user';
 import { shallow } from 'zustand/shallow';
+import reRoute from '../../../js/reRoute/reRoute';
 
 function LoginForm () {
-  const { name, accessToken, avatar, venueManager, updateName, updateAccessToken, updateAvatar, updateVenueManager } = useUser(
+  const { updateName, updateAccessToken, updateAvatar, updateVenueManager } = useUser(
     (state) => ({
-      name: state.name,
-      accessToken: state.accessToken,
-      avatar: state.avatar,
-      venueManager: state.venueManager,
       updateName: state.updateName,
       updateAccessToken: state.updateAccessToken,
       updateAvatar: state.updateAvatar,
@@ -51,6 +48,8 @@ function LoginForm () {
       updateAvatar(resp["data"]["avatar"] ? resp["data"]["avatar"]["url"] : "");
       updateVenueManager(resp["data"]["venueManager"]);
       setApiData(["Login successful", "text-success"]);
+      reRoute("/");
+
       event.target.reset();
       return;
     }
