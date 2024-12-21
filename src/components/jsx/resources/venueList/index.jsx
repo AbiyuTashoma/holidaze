@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { currency, unit } from "../../../js/constants";
 import Facility from "../facility";
 import StarRating from "../starRating";
+import UpdateVenue from "../updateVenue";
 
 function VenueList(venues) {
   return (
@@ -14,6 +15,9 @@ function VenueList(venues) {
               {StarRating(venue['rating'])}
               {venue['media'][0] ? <img src= {venue['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
             </Link>
+            <UpdateVenue />
+            {/* {UpdateVenue("Norman")} */}
+
             <Row className="my-2">
               <Col>
                 <div>{venue['name']}</div>
