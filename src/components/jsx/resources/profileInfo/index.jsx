@@ -83,9 +83,9 @@ export default function ProfileInfo() {
 
   return (
     <div>
-      <div class="avatar-container position-relative mx-auto">
+      <div className="avatar-container position-relative mx-auto">
         <img src={avatar} className="avatar border rounded" alt="avatar"/>
-        <button onClick={handleShow} class="btn btn-outline-primary position-absolute top-100 start-100 translate-middle px-1 py-0">change</button>
+        <button onClick={handleShow} className="btn btn-outline-primary position-absolute top-100 start-100 translate-middle px-1 py-0">change</button>
       </div>        
       <p class="my-3 text-center">{name}</p>
       <Modal show={show} onHide={handleClose}>
@@ -97,15 +97,15 @@ export default function ProfileInfo() {
           <label htmlFor="avatar" className='form-label fst-italic'>Avatar url</label>
           <input id='avatar' name='avatar' className='form-control' placeholder={avatar} {...register('avatar')} onChange={clearMessage}/>
           <p className='text-danger'>{errors.avatar?.message}</p>
+          <div className='text-center'>
+            <Button variant="primary" type="submit" onClick={handleSubmit(OnSubmit)}>
+              Save Changes
+            </Button>
+            <Button className="ms-2" variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" type="submit" onClick={handleSubmit(OnSubmit)}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );

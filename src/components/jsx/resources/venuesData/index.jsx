@@ -4,6 +4,7 @@ import { shallow } from "zustand/shallow";
 import VenueList from "../venueList";
 import Loading from "../loading";
 import Error from "../error";
+import useUser from "../../store/user";
 
 function VenuesData() {
 
@@ -12,6 +13,14 @@ function VenuesData() {
       venues: state.venues,
       isLoading: state.isLoading,
       isError: state.isError,
+    }),
+    shallow
+  );
+
+    const { name, accessToken } = useUser(
+    (state) => ({
+      name: state.name,
+      accessToken: state.accessToken,
     }),
     shallow
   );
@@ -26,7 +35,7 @@ function VenuesData() {
     return <Error />;
   }
 
-  return VenueList(venues);
+  return VenueList(venues, name, accessToken);
 }
 
 export default VenuesData;
