@@ -5,11 +5,14 @@ import Facility from "../facility";
 import StarRating from "../starRating";
 import UpdateVenue from "../updateVenue";
 
-function VenueList(venues, name, accessToken) {
+function VenueList(venues, name, accessToken, owner = false) {
+  let lists = [];
+  owner ? (lists = venues.filter((item) => item['owner']['name'] === name)) : (lists = [...venues]);
+
   return (
     <Container>
       <Row xs="1" md="2" xl="3">        
-        {venues.map((venue) =>
+        {lists.map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
             <Link to={'/' + venue.id}>
               {StarRating(venue['rating'])}

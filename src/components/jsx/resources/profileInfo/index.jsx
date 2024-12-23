@@ -85,7 +85,7 @@ export default function ProfileInfo() {
     <div>
       <div className="avatar-container position-relative mx-auto">
         <img src={avatar} className="avatar border rounded" alt="avatar"/>
-        <button onClick={handleShow} className="btn btn-outline-primary position-absolute top-100 start-100 translate-middle px-1 py-0">change</button>
+        <button onClick={handleShow} className="btn btn-primary position-absolute top-100 start-100 translate-middle px-1 py-0">change</button>
       </div>        
       <p class="my-3 text-center">{name}</p>
       <Modal show={show} onHide={handleClose}>
