@@ -70,7 +70,7 @@ function UpdateVenue({venue, accessToken}) {
 
     if (resp["data"]) {
       setApiData(["Change successful", "text-success"]);
-      setTimeout(reRoute(window.location.pathname), 1500);
+      setTimeout(reRoute("/"), 1500);
       return;
     }
     else {
@@ -101,7 +101,8 @@ function UpdateVenue({venue, accessToken}) {
       },
     };
 
-    api(url + '/' + venue.id, deleteOption);
+    await fetch(url + '/' + venue.id, deleteOption);
+    setTimeout(reRoute("/"), 1500);
   }
 
   function clearMessage() {
