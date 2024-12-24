@@ -7,5 +7,5 @@ export const unit = "/day";
 export const defaultAvatar = "https://robohash.org/prof";
 export const registerUrl = "https://v2.api.noroff.dev/auth/register";
 export const loginUrl = "https://v2.api.noroff.dev/auth/login?_holidaze=true";
-export const updateUrl = "https://v2.api.noroff.dev/holidaze/profiles/";
+export const profilesUrl = "https://v2.api.noroff.dev/holidaze/profiles/";
 export const apiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";

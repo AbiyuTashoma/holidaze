@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function VenueApi(link) {
+function VenueApi(link, reqOption) {
   const [apiData, setApiData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -11,7 +11,9 @@ function VenueApi(link) {
         setIsLoading(true);
         setIsError(false);
 
-        const response = await fetch(link);
+        console.log(link);
+        console.log(reqOption);
+        const response = await fetch(link, reqOption);
         const json = await response.json();
 
         setApiData(json["data"]);

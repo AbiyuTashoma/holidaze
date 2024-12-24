@@ -5,7 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 import schema from "../../../js/updateValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { apiKeyUrl, updateUrl } from "../../../js/constants";
+import { apiKeyUrl, profilesUrl } from "../../../js/constants";
 import api from "../../../js/api";
 
 export default function ProfileInfo() {
@@ -55,7 +55,7 @@ export default function ProfileInfo() {
       },
     };
 
-    const resp = await api(updateUrl + name, updateOption);
+    const resp = await api(profilesUrl + name, updateOption);
 
     if (resp["data"]) {
       setApiData(["Change successful", "text-success"]);
@@ -87,7 +87,7 @@ export default function ProfileInfo() {
         <img src={avatar} className="avatar border rounded" alt="avatar"/>
         <button onClick={handleShow} className="btn btn-primary position-absolute top-100 start-100 translate-middle px-1 py-0">change</button>
       </div>        
-      <p class="my-3 text-center">{name}</p>
+      <p className="my-3 text-center">{name}</p>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Change avatar</Modal.Title>

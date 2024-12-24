@@ -5,6 +5,7 @@ import useUser from '../../store/user';
 import { shallow } from 'zustand/shallow';
 import useApi from '../../store/api';
 import VenueList from '../venueList';
+import MyVenues from '../myVenues';
 
 function UserTab() {
   const { venues } = useApi(
@@ -14,10 +15,11 @@ function UserTab() {
     shallow
   );
 
-    const { name, accessToken } = useUser(
+    const { name, accessToken, venueManager } = useUser(
     (state) => ({
       name: state.name,
       accessToken: state.accessToken,
+      venueManager: state.venueManager,
     }),
     shallow
   );
@@ -32,10 +34,11 @@ function UserTab() {
         Tab content for Bookings
       </Tab>
       <Tab eventKey="venues" title="My venues">
-        {VenueList (venues, name, accessToken, true)}
+        {venueManager ? VenueList (venues, name, accessToken, true) : <div>Upgrade to Venue manager</div>}
+        {/* <MyVenues /> */}
       </Tab>
       <Tab eventKey="create" title="Create venue">
-        <CreateVenue />
+        {venueManager ? <CreateVenue /> : <div>Upgrade to Venue manager</div>}
       </Tab>
     </Tabs>
   );
