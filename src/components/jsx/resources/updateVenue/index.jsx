@@ -79,6 +79,31 @@ function UpdateVenue({venue, accessToken}) {
     }
   }
 
+  async function handleDelete() {
+    const apiKeyOption = {
+      method: "POST",
+      body: JSON.stringify({}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const apiKey = await api(apiKeyUrl, apiKeyOption);
+
+    const deleteOption = {
+      method: "DELETE",
+      body: JSON.stringify({}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${accessToken}`,
+        "X-Noroff-API-Key": apiKey.data.key,
+      },
+    };
+
+    api(url + '/' + venue.id, deleteOption);
+  }
+
   function clearMessage() {
     setApiData([null, null]);
   }
@@ -94,7 +119,7 @@ function UpdateVenue({venue, accessToken}) {
   return (
     <div>
       <div className="update">
-        <Button onClick={handleShow}>update</Button>
+        <Button size="sm" onClick={handleShow}>edit</Button>
       </div>        
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -175,6 +200,9 @@ function UpdateVenue({venue, accessToken}) {
             <div className='text-center'>
               <Button variant="primary" type="submit" onClick={handleSubmit(OnSubmit)}>
                 Save Changes
+              </Button>
+              <Button className="ms-2" variant="primary" onClick={handleDelete}>
+                Delete venue
               </Button>
               <Button className="ms-2" variant="secondary" onClick={handleClose}>
                 Close
