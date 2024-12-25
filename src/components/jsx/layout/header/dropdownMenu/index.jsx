@@ -4,13 +4,14 @@ import useUser from '../../../store/user';
 import { shallow } from 'zustand/shallow';
 
 function NavMenu() {
-  const { name, updateName, updateAccessToken, updateAvatar, updateVenueManager } = useUser(
+  const { name, updateName, updateAccessToken, updateAvatar, updateVenueManager, updateKey } = useUser(
     (state) => ({
       name: state.name,
       updateName: state.updateName,
       updateAccessToken: state.updateAccessToken,
       updateAvatar: state.updateAvatar,
-      updateVenueManager: state.updateVenueManager
+      updateVenueManager: state.updateVenueManager,
+      updateKey: state.updateKey,
     }),
     shallow
   );
@@ -20,6 +21,7 @@ function NavMenu() {
     updateAccessToken(null);
     updateAvatar(null);
     updateVenueManager(false);
+    updateKey(null);
   }
 
   return (

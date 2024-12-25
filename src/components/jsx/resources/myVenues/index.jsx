@@ -1,33 +1,30 @@
 import VenueApi from "../../../js/venueApi";
 import Loading from "../loading";
 import Error from "../error";
-import { apiKeyUrl, profilesUrl } from "../../../js/constants";
+import { profilesUrl } from "../../../js/constants";
 import VenueList from "../venueList";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
-import api from "../../../js/api";
-import apiDataKey from "../../../js/apiDataKey";
 
 function MyVenues() {
-  const { name, accessToken } = useUser(
+  const { name, accessToken, apiKey } = useUser(
     (state) => ({
       name: state.name,
       accessToken: state.accessToken,
+      apiKey: state.apiKey
     }),
     shallow
   );
 
-  const updateOption = {
-    method: "GET",
-    body: JSON.stringify({}),
+  const getOption = {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       Authorization: `Bearer ${accessToken}`,
-      "X-Noroff-API-Key": apiDataKey(accessToken),
+      "X-Noroff-API-Key": apiKey.data.key,
     },
   };
 
-  const { apiData, isLoading, isError } = VenueApi(profilesUrl + name + "/venues", updateOption);
+  const { apiData, isLoading, isError } = VenueApi(profilesUrl + name + "/venues", getOption);
 
   if (isLoading || !apiData) {
     return <Loading />;
@@ -38,7 +35,7 @@ function MyVenues() {
   }
 
   console.log(apiData);
-  return <VenueList venues={apiData} name={name} accessToken={accessToken} />;
+  return VenueList(apiData, name, accessToken, apiKey, true);
 }
 
 export default MyVenues;
