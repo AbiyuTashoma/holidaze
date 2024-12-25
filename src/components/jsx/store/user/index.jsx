@@ -10,10 +10,12 @@ const useUser = create(persist((set) => ({
   accessToken: null,
   avatar:null,
   venueManager: false,
+  apiKey: null,
   updateName: (status) => set({name: status}),
   updateAccessToken: (token) => set({accessToken: token}),
   updateAvatar: (url) => set({avatar: url}),
   updateVenueManager: (bool) => set({venueManager: bool}),
+  updateKey: (newKey) => set({apiKey: newKey}),
 }), {
   name: "user",
 }));

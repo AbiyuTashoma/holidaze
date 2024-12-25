@@ -17,10 +17,11 @@ function VenuesData() {
     shallow
   );
 
-    const { name, accessToken } = useUser(
+    const { name, accessToken, apiKey } = useUser(
     (state) => ({
       name: state.name,
       accessToken: state.accessToken,
+      apiKey: state.apiKey,
     }),
     shallow
   );
@@ -35,7 +36,7 @@ function VenuesData() {
     return <Error />;
   }
 
-  return VenueList(venues, name, accessToken);
+  return VenueList(venues, name, accessToken, apiKey);
 }
 
 export default VenuesData;

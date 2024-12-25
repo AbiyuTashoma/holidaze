@@ -3,22 +3,12 @@ import Tabs from 'react-bootstrap/Tabs';
 import CreateVenue from '../createVenue';
 import useUser from '../../store/user';
 import { shallow } from 'zustand/shallow';
-import useApi from '../../store/api';
-import VenueList from '../venueList';
 import MyVenues from '../myVenues';
 
 function UserTab() {
-  const { venues } = useApi(
+  
+  const { venueManager } = useUser(
     (state) => ({
-      venues: state.venues,
-    }),
-    shallow
-  );
-
-    const { name, accessToken, venueManager } = useUser(
-    (state) => ({
-      name: state.name,
-      accessToken: state.accessToken,
       venueManager: state.venueManager,
     }),
     shallow
@@ -26,7 +16,7 @@ function UserTab() {
 
   return (
     <Tabs
-      defaultActiveKey="bookings"
+      defaultActiveKey={venueManager ? "venues" : "bookings"}
       id="user-tab"
       className="mb-3"
     >
@@ -34,8 +24,8 @@ function UserTab() {
         Tab content for Bookings
       </Tab>
       <Tab eventKey="venues" title="My venues">
-        {venueManager ? VenueList (venues, name, accessToken, true) : <div>Upgrade to Venue manager</div>}
-        {/* <MyVenues /> */}
+        {venueManager ?  <MyVenues /> : <div>Upgrade to Venue manager</div>}
+        
       </Tab>
       <Tab eventKey="create" title="Create venue">
         {venueManager ? <CreateVenue /> : <div>Upgrade to Venue manager</div>}

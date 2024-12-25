@@ -3,11 +3,11 @@ import { Button, Modal } from "react-bootstrap";
 import schema from "../../../js/createValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { apiKeyUrl, url } from "../../../js/constants";
+import { url } from "../../../js/constants";
 import api from "../../../js/api";
 import reRoute from "../../../js/reRoute/reRoute";
 
-function UpdateVenue({venue, accessToken}) {
+function EditVenue({venue, accessToken, apiKey}) {
 
   const [show, setShow] = useState(false);
   const [apiData, setApiData] = useState([null, null]);
@@ -45,17 +45,6 @@ function UpdateVenue({venue, accessToken}) {
       },
     };
 
-    const apiKeyOption = {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
-    const apiKey = await api(apiKeyUrl, apiKeyOption);
-
     const updateOption = {
       method: "PUT",
       body: JSON.stringify(venueData),
@@ -70,7 +59,7 @@ function UpdateVenue({venue, accessToken}) {
 
     if (resp["data"]) {
       setApiData(["Change successful", "text-success"]);
-      setTimeout(reRoute("/"), 1500);
+      setTimeout(reRoute(window.location.pathname), 1500);
       return;
     }
     else {
@@ -80,17 +69,6 @@ function UpdateVenue({venue, accessToken}) {
   }
 
   async function handleDelete() {
-    const apiKeyOption = {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
-    const apiKey = await api(apiKeyUrl, apiKeyOption);
-
     const deleteOption = {
       method: "DELETE",
       body: JSON.stringify({}),
@@ -102,7 +80,7 @@ function UpdateVenue({venue, accessToken}) {
     };
 
     await fetch(url + '/' + venue.id, deleteOption);
-    setTimeout(reRoute("/"), 1500);
+    setTimeout(reRoute(window.location.pathname), 1500);
   }
 
   function clearMessage() {
@@ -216,4 +194,4 @@ function UpdateVenue({venue, accessToken}) {
   );
 }
 
-export default UpdateVenue;
+export default EditVenue;

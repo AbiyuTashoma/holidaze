@@ -4,18 +4,19 @@ import { Button } from 'react-bootstrap';
 import { useState } from "react";
 import api from '../../../js/api';
 import schema from '../../../js/loginValidation';
-import { loginUrl } from '../../../js/constants';
+import { apiKeyUrl, loginUrl } from '../../../js/constants';
 import useUser from '../../store/user';
 import { shallow } from 'zustand/shallow';
 import reRoute from '../../../js/reRoute/reRoute';
 
 function LoginForm () {
-  const { updateName, updateAccessToken, updateAvatar, updateVenueManager } = useUser(
+  const { updateName, updateAccessToken, updateAvatar, updateVenueManager, updateKey } = useUser(
     (state) => ({
       updateName: state.updateName,
       updateAccessToken: state.updateAccessToken,
       updateAvatar: state.updateAvatar,
-      updateVenueManager: state.updateVenueManager
+      updateVenueManager: state.updateVenueManager,
+      updateKey: state.updateKey,
     }),
     shallow
   );
@@ -48,6 +49,14 @@ function LoginForm () {
       updateAvatar(resp["data"]["avatar"] ? resp["data"]["avatar"]["url"] : "");
       updateVenueManager(resp["data"]["venueManager"]);
       setApiData(["Login successful", "text-success"]);
+      updateKey(await api(apiKeyUrl, {
+        method: "POST",
+        body: JSON.stringify({}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${resp["data"]["accessToken"]}`,
+        },
+      }));
       reRoute("/");
 
       event.target.reset();

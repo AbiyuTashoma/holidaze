@@ -9,11 +9,12 @@ import { apiKeyUrl, profilesUrl } from "../../../js/constants";
 import api from "../../../js/api";
 
 export default function ProfileInfo() {
-  const { name, accessToken, avatar, updateAvatar } = useUser(
+  const { name, accessToken, avatar, apiKey, updateAvatar } = useUser(
     (state) => ({
       name: state.name,
       accessToken: state.accessToken,
       avatar: state.avatar,
+      apiKey: state.apiKey,
       updateAvatar: state.updateAvatar,
     }),
     shallow
@@ -33,17 +34,6 @@ export default function ProfileInfo() {
     const newAvatar = {
       avatar: {url:data.avatar, alt:"avatar"},
     };
-
-    const apiKeyOption = {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
-    const apiKey = await api(apiKeyUrl, apiKeyOption);
 
     const updateOption = {
       method: "PUT",
@@ -95,7 +85,7 @@ export default function ProfileInfo() {
         <Modal.Body>
           <div className={type}>{message}</div>
           <label htmlFor="avatar" className='form-label fst-italic'>Avatar url</label>
-          <input id='avatar' name='avatar' className='form-control' placeholder={avatar} {...register('avatar')} onChange={clearMessage}/>
+          <input id='avatar' name='avatar' className='form-control' defaultValue={avatar} {...register('avatar')} onChange={clearMessage}/>
           <p className='text-danger'>{errors.avatar?.message}</p>
           <div className='text-center'>
             <Button variant="primary" type="submit" onClick={handleSubmit(OnSubmit)}>
