@@ -73,7 +73,7 @@ export default function ProfileInfo() {
 
   return (
     <div>
-      <div className="avatar-container position-relative mx-auto">
+      <div className="avatar-container position-relative mx-auto mb-4">
         <img src={avatar} className="avatar border rounded" alt="avatar"/>
         <button onClick={handleShow} className="btn btn-primary position-absolute top-100 start-100 translate-middle px-1 py-0">change</button>
       </div>        

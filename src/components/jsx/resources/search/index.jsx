@@ -22,7 +22,7 @@ function Search() {
 
   function handleOnChange (txt) {
     updateSearchText(txt);
-    txt? updateUrl(searchUrl + txt + "&page=1") : updateUrl(baseUrl + "1");
+    txt? updateUrl(searchUrl + txt + "&_owner=true&page=1") : updateUrl(baseUrl + "1");
   }
 
   return (

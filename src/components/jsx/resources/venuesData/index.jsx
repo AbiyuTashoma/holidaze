@@ -17,7 +17,7 @@ function VenuesData() {
     shallow
   );
 
-    const { name, accessToken, apiKey } = useUser(
+  const { name, accessToken, apiKey } = useUser(
     (state) => ({
       name: state.name,
       accessToken: state.accessToken,
