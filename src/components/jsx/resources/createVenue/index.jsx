@@ -63,9 +63,9 @@ function CreateVenue() {
     const resp = await api(url, venueOption);
 
     if (resp["data"]) {
-      setApiData(["Venue successful created", "text-success"]);
+      setApiData(["Venue successfully created", "text-success"]);
       event.target.reset();
-      setTimeout(reRoute("/"), 1500);
+      setTimeout(reRoute(window.location.pathname), 1500);
       return;
     }
     else {

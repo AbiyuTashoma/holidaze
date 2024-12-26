@@ -58,7 +58,7 @@ function EditVenue({venue, accessToken, apiKey}) {
     const resp = await api(url + '/' + venue.id, updateOption);
 
     if (resp["data"]) {
-      setApiData(["Change successful", "text-success"]);
+      setApiData(["Changed successfully", "text-success"]);
       setTimeout(reRoute(window.location.pathname), 1500);
       return;
     }

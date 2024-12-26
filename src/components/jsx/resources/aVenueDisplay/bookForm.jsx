@@ -4,9 +4,13 @@ import schema from "../../../js/bookingValidation";
 import { Col, Row } from "react-bootstrap";
 import reRoute from '../../../js/reRoute/reRoute';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { bookingsUrl } from '../../../js/constants';
+import api from '../../../js/api';
 
 function BookForm({venue, accessToken, apiKey}) {
-  
+  const [apiData, setApiData] = useState([null, null]);
+  const [message, type] = apiData;
   const {
     register,
     handleSubmit,
@@ -15,11 +19,7 @@ function BookForm({venue, accessToken, apiKey}) {
     resolver: yupResolver(schema),
   });
 
-  function OnSubmit(data, event) {
-  //   !accessToken ? reRoute("/login") : book(data, event);
-  // }
-
-  // async function book(data, event) {
+  async function OnSubmit(data, event) {
     const bookData = {
       dateFrom: data.dateIn,
       dateTo: data.dateOut,
@@ -37,20 +37,18 @@ function BookForm({venue, accessToken, apiKey}) {
       },
     };
 
-    // const resp = await api(url, bookOption);
+    const resp = await api(bookingsUrl, bookOption);
 
-    console.log(bookData);
-    console.log(bookOption);
-    // if (resp["data"]) {
-    //   setApiData(["Venue successful created", "text-success"]);
-    //   event.target.reset();
-    //   setTimeout(reRoute("/"), 1500);
-    //   return;
-    // }
-    // else {
-    //   setApiData(["Unknown error occurred", "text-danger"]);
-    //   return;
-    // }    
+    if (resp["data"]) {
+      setApiData(["Venue successfully booked", "text-success"]);
+      event.target.reset();
+      setTimeout(reRoute(window.location.pathname), 1500);
+      return;
+    }
+    else {
+      setApiData(["Unknown error occurred", "text-danger"]);
+      return;
+    }    
   }
 
   return(
@@ -73,7 +71,7 @@ function BookForm({venue, accessToken, apiKey}) {
         </Col>
       </Row>
       {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book"/> : <Link to={'/login'} className="btn btn-primary">Book</Link> }
-      {/* <input type="submit" id="list-btn" className="btn btn-primary" value="Book"/> */}
+      <div className={type}>{message}</div>
     </form>
   );
 }
