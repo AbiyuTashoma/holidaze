@@ -15,10 +15,11 @@ function CreateVenue() {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;
 
-  const { accessToken, venueManager } = useUser(
+  const { accessToken, venueManager, apiKey } = useUser(
     (state) => ({
       accessToken: state.accessToken,
       venueManager: state.venueManager,
+      apiKey: state.apiKey,
     }),
     shallow
   );
@@ -48,17 +49,6 @@ function CreateVenue() {
         country: data.country,
       },
     };
-    
-    const apiKeyOption = {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
-    const apiKey = await api(apiKeyUrl, apiKeyOption);
 
     const venueOption = {
       method: "POST",
@@ -73,9 +63,9 @@ function CreateVenue() {
     const resp = await api(url, venueOption);
 
     if (resp["data"]) {
-      setApiData(["Venue successful created", "text-success"]);
+      setApiData(["Venue successfully created", "text-success"]);
       event.target.reset();
-      setTimeout(reRoute("/"), 1500);
+      setTimeout(reRoute(window.location.pathname), 1500);
       return;
     }
     else {

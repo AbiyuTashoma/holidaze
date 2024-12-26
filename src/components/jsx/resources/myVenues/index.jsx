@@ -24,7 +24,7 @@ function MyVenues() {
     },
   };
 
-  const { apiData, isLoading, isError } = VenueApi(profilesUrl + name + "/venues", getOption);
+  const { apiData, isLoading, isError } = VenueApi(profilesUrl + "/" + name + "/venues", getOption);
 
   if (isLoading || !apiData) {
     return <Loading />;
