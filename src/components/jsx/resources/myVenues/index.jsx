@@ -35,7 +35,7 @@ function MyVenues() {
   }
 
   console.log(apiData);
-  return VenueList(apiData, name, accessToken, apiKey, true);
+  return (apiData.length ? VenueList(apiData, name, accessToken, apiKey, true) : <div className='m-3'>You have no venues yet</div>);
 }
 
 export default MyVenues;
