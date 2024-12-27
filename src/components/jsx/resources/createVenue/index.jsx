@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { apiKeyUrl, url } from '../../../js/constants';
+import { url } from '../../../js/constants';
 import schema from '../../../js/createValidation';
 import api from '../../../js/api';
 import useUser from '../../store/user';

@@ -5,7 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 import schema from "../../../js/updateValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { apiKeyUrl, profilesUrl } from "../../../js/constants";
+import { profilesUrl } from "../../../js/constants";
 import api from "../../../js/api";
 
 export default function ProfileInfo() {

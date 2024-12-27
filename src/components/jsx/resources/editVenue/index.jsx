@@ -177,13 +177,13 @@ function EditVenue({venue, accessToken, apiKey}) {
               </div>
             </div>
             <div className='text-center'>
-              <Button variant="primary" type="submit" onClick={handleSubmit(OnSubmit)}>
+              <Button onClick={handleSubmit(OnSubmit)} className="mt-2" variant="primary" type="submit" size="sm">
                 Save Changes
               </Button>
-              <Button className="ms-2" variant="primary" onClick={handleDelete}>
+              <Button onClick={handleDelete} className="ms-2 mt-2" variant="secondary" size="sm">
                 Delete venue
               </Button>
-              <Button className="ms-2" variant="secondary" onClick={handleClose}>
+              <Button onClick={handleClose} className="ms-2 mt-2" variant="secondary" size="sm">
                 Close
               </Button>
             </div>

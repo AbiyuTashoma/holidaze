@@ -19,7 +19,7 @@ function AVenue() {
     shallow
   );
 
-  const { apiData, isLoading, isError } = VenueApi(url + `/${id}` + "?_bookings=true&_owner=true");
+  const { apiData, isLoading, isError } = VenueApi(url + "/" + id + "?_bookings=true&_owner=true");
 
   if (isLoading || !apiData) {
     return <Loading />;
