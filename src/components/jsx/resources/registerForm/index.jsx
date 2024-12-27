@@ -5,6 +5,7 @@ import { defaultAvatar, registerUrl } from '../../../js/constants';
 import { useState } from "react";
 import api from '../../../js/api';
 import schema from '../../../js/registerValidation';
+import reRoute from '../../../js/reRoute/reRoute';
 
 function RegisterForm () {
   const [apiData, setApiData] = useState([null, null]);
@@ -34,6 +35,7 @@ function RegisterForm () {
     if (resp["data"]) {
       setApiData(["Registration successful", "text-success"]);
       event.target.reset();
+      setTimeout(reRoute("/login"), 1500);
       return;
     }
     else {
