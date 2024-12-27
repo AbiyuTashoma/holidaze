@@ -1,5 +1,4 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import StarRating from "../starRating";
 import reRoute from "../../../js/reRoute/reRoute";
 import { bookingsUrl } from "../../../js/constants";

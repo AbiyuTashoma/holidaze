@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-      <footer className="text-center py-3">
+      <footer className="text-center py-3 mt-5">
         <div>&#169; Holidaze 2025</div>
         <ul className="footer-elements d-flex justify-content-between">
             <li><Link className="footer-link ms-1" to="/">Home</Link></li>
