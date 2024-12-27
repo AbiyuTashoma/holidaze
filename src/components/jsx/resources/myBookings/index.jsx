@@ -4,7 +4,7 @@ import Error from "../error";
 import { profilesUrl } from "../../../js/constants";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
-import DisplayBookings from "../displayBookings/displayBookings";
+import DisplayBookings from "../displayBookings";
 
 function MyBookings() {
   const { name, accessToken, apiKey } = useUser(
