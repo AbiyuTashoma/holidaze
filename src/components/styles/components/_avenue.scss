@@ -12,3 +12,20 @@
 .accordion-button {
   background-color: $brand-gray;
 }
+
+.react-datepicker__day--excluded {
+  color: #ff0606;
+  background-color: #ffecec;
+  border-radius: 0.3rem;
+}
+
+.react-datepicker__calendar-icon {
+  top: 3px;
+  left: 3px;
+}
+
+.react-datepicker__view-calendar-icon input {
+  padding: 6px 10px 5px 35px;
+  border-radius: 5px;
+  border: solid thin #dee2e6;
+}

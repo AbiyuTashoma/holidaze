@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { bookingsUrl } from '../../../js/constants';
 import api from '../../../js/api';
+import Calendar from './datePicker';
 
 function BookForm({venue, accessToken, apiKey}) {
   const [apiData, setApiData] = useState([null, null]);
@@ -53,11 +54,11 @@ function BookForm({venue, accessToken, apiKey}) {
 
   return(
     <form onSubmit={handleSubmit(OnSubmit)}>
-      <div>
+      <Row>
         <label htmlFor="guests" className='form-label'>Guests</label>
         <input type="number" id='guests' name='guests' className='form-control' max={venue["maxGuests"]} {...register('guests')}/>
         <p className='text-danger'>{errors.guests?.message}</p>
-      </div>
+      </Row>
       <Row className="mb-3">
         <Col>
           <label className="form-label" htmlFor="dateIn">Date In</label>
@@ -69,6 +70,9 @@ function BookForm({venue, accessToken, apiKey}) {
           <input type="date" className="form-control" id="dateOut" name="dateOut" {...register('dateOut')}/>
           <p className='text-danger'>{errors.dateOut?.message}</p>
         </Col>
+      </Row>
+      <Row>
+        <div><Calendar bookingsArray={venue['bookings']}/></div>
       </Row>
       {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book"/> : <Link to={'/login'} className="btn btn-primary">Book</Link> }
       <div className={type}>{message}</div>
