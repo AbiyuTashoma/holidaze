@@ -1,11 +1,13 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Accordion, Col, Container, Row } from "react-bootstrap";
 import { currency, unit } from "../../../js/constants";
 import Facility from "../facility";
 import StarRating from "../starRating";
 import BookForm from "./bookForm";
 import EditVenue from "../editVenue";
+import VenueBookings from "../venueBookings";
 
 function DisplayVenue(aVenue, name, accessToken, apiKey) {
+  const venueOwner = Boolean(aVenue['owner']['name'] === name);
 
   return (
     <Container>
@@ -13,7 +15,7 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
         <Col className="position-relative mb-2">
           {aVenue['media'][0] ? <img src= {aVenue['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
           {StarRating(aVenue['rating'])}
-          {(aVenue['owner']['name'] === name) ? <EditVenue venue={aVenue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}
+          {venueOwner ? <EditVenue venue={aVenue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}
         </Col>
         <Col>
           <div>{aVenue['name']}</div>
@@ -23,6 +25,16 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
           <div>{Facility(aVenue['meta'])}</div>
           <div><BookForm venue = {aVenue} accessToken = {accessToken} apiKey = {apiKey} /></div>
         </Col>
+      </Row>
+      <Row className={venueOwner ? "d-block" : "d-none"}>
+        <Accordion>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header bg="light">Bookings</Accordion.Header>
+            <Accordion.Body>
+              <VenueBookings  venue = {aVenue}/>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </Row>
     </Container>
   );
