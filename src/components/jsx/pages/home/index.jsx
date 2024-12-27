@@ -1,4 +1,4 @@
-import CreateVenue from "../../resources/createVenue";
+import CreateButton from "../../resources/createVenue/createButton";
 import LoadMore from "../../resources/loadMore";
 import Search from "../../resources/search";
 import ToTop from "../../resources/toTop";
@@ -7,7 +7,7 @@ import VenuesData from "../../resources/venuesData";
 function Home() {
   return (
     <div>
-      <CreateVenue />
+      <CreateButton />
       <Search />
       <VenuesData />
       <LoadMore />
