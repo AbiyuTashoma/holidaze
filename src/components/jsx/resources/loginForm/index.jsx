@@ -8,6 +8,7 @@ import { apiKeyUrl, loginUrl } from '../../../js/constants';
 import useUser from '../../store/user';
 import { shallow } from 'zustand/shallow';
 import reRoute from '../../../js/reRoute/reRoute';
+import { Link } from 'react-router-dom';
 
 function LoginForm () {
   const { updateName, updateAccessToken, updateAvatar, updateVenueManager, updateKey } = useUser(
@@ -95,6 +96,7 @@ function LoginForm () {
         <p className='text-danger'>{errors.password?.message}</p>
       </div>
       <Button type='submit'>Login</Button>
+      <Button href='/register' className="btn-secondary ms-4" size="sm">Register here</Button>
     </form>
   );
 }
