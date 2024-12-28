@@ -1,12 +1,4 @@
 import * as yup from "yup";
-import { setLocale } from "yup";
-
-setLocale({
-  number: {
-    min: "Deve ser maior que ${min}",
-    default: "cannot be empty",
-  },
-});
 
 const schema = yup
   .object({
