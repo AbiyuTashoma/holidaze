@@ -10,12 +10,19 @@ const schema = yup
       .string()
       .min(10, "description should be at least 10 characters.")
       .required("Enter venue description"),
-    price: yup.number().required("Enter your price").min(0).integer(),
+    price: yup
+      .number()
+      .required("Enter your price")
+      .min(0)
+      .integer()
+      .typeError("Enter venue price"),
     guest: yup
       .number()
-      .required("Enter maximum number of guests")
+      .required("Enter the maximum number of guests")
       .min(1)
-      .integer(),
+      .integer()
+      .typeError("Enter the maximum number of guests"),
+
     media: yup
       .string()
       .matches(
@@ -27,7 +34,8 @@ const schema = yup
       .required("Enter venue rating (0-5)")
       .min(0)
       .max(5)
-      .integer(),
+      .integer()
+      .typeError("Enter venue rating (0-5)"),
     wifi: yup.boolean(),
     parking: yup.boolean(),
     breakfast: yup.boolean(),
