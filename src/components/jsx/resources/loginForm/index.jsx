@@ -94,7 +94,7 @@ function LoginForm () {
         <input type='password' id='password' name='password' className='form-control' {...register('password')} />
         <p className='text-danger'>{errors.password?.message}</p>
       </div>
-      <Button type='submit' className='btn-secondary'>Login</Button>
+      <Button type='submit'>Login</Button>
     </form>
   );
 }
