@@ -1,13 +1,12 @@
 function getBooking(bookingArray) {
-  let arrayCopy = [...bookingArray];
-  let bKing = [];
+  const arrayCopy = [...bookingArray];
+  let booking = [];
 
   arrayCopy.map((item) =>
-    bKing.push({ start: item["dateFrom"], end: item["dateTo"] })
+    booking.push({ start: item["dateFrom"], end: item["dateTo"] })
   );
 
-  console.log(bKing);
-  return bKing;
+  return booking;
 }
 
 export default getBooking;

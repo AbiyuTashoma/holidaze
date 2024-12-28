@@ -1,5 +1,5 @@
-function enableDisable(nxtPage) {
-  return Boolean(nxtPage) ? false : true;
+function enableDisable(value) {
+  return Boolean(value) ? false : true;
 }
 
 export default enableDisable;
