@@ -95,6 +95,7 @@ function LoginForm () {
         <p className='text-danger'>{errors.password?.message}</p>
       </div>
       <Button type='submit'>Login</Button>
+      <Button href='/register' className="btn-secondary ms-4" size="sm">Register here</Button>
     </form>
   );
 }
