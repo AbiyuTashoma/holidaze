@@ -94,7 +94,7 @@ function RegisterForm () {
         <input id='avatar' name='avatar' className='form-control' {...register('avatar')} />
         <p className='text-danger'>{errors.avatar?.message}</p>
       </div>
-      <Button type='submit' className='btn-secondary'>Register</Button>
+      <Button type='submit'>Register</Button>
     </form>
   );
 }

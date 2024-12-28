@@ -49,7 +49,7 @@ function ContactForm () {
         <textarea id='message' name='message' className='form-control' {...register('message')}></textarea>
         <p className='text-danger'>{errors.message?.message}</p>
       </div>
-      <Button type='submit' className='btn-secondary'>Send</Button>
+      <Button type='submit'>Send</Button>
     </form>
   );
 }
