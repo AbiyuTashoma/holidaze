@@ -5,7 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 import schema from "../../../js/updateValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { profilesUrl } from "../../../js/constants";
+import { profilesUrl, timeout } from "../../../js/constants";
 import api from "../../../js/api";
 
 export default function ProfileInfo() {
@@ -50,7 +50,7 @@ export default function ProfileInfo() {
     if (resp["data"]) {
       setApiData(["Change successful", "text-success"]);
       updateAvatar(data.avatar);
-      setTimeout(handleClose, 1500);
+      setTimeout(handleClose, timeout);
       return;
     }
     else {

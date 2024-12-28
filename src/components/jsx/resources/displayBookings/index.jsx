@@ -1,7 +1,7 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import StarRating from "../starRating";
 import reRoute from "../../../js/reRoute/reRoute";
-import { bookingsUrl } from "../../../js/constants";
+import { bookingsUrl, timeout } from "../../../js/constants";
 
 function DisplayBookings (bookingsList, accessToken, apiKey) {
   async function handleDelete(id) {
@@ -17,7 +17,7 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
     };
 
     await fetch(bookingsUrl + '/' + id, deleteOption);
-    setTimeout(reRoute(window.location.pathname), 1500);
+    setTimeout(reRoute(window.location.pathname), timeout);
   }
   return (
     <Container className="mb-4">

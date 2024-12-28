@@ -5,7 +5,7 @@ import { Row } from "react-bootstrap";
 import reRoute from '../../../js/reRoute/reRoute';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { bookingsUrl } from '../../../js/constants';
+import { bookingsUrl, timeout } from '../../../js/constants';
 import api from '../../../js/api';
 import { addDays } from 'date-fns';
 import DatePicker from 'react-datepicker';
@@ -60,7 +60,7 @@ function BookForm({venue, accessToken, apiKey}) {
     if (resp["data"]) {
       setApiData(["Venue successfully booked", "text-success"]);
       event.target.reset();
-      setTimeout(reRoute(window.location.pathname), 5000);
+      setTimeout(reRoute(window.location.pathname), timeout);
       return;
     }
     else {
