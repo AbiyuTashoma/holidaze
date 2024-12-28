@@ -29,7 +29,7 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
       <Row className={venueOwner ? "d-block" : "d-none"}>
         <Accordion>
           <Accordion.Item eventKey="0">
-            <Accordion.Header bg="light">Bookings</Accordion.Header>
+            <Accordion.Header bg="light">Bookings list</Accordion.Header>
             <Accordion.Body>
               <VenueBookings  venue = {aVenue}/>
             </Accordion.Body>

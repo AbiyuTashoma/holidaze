@@ -36,7 +36,7 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
                 <div>Guests: {booking["guests"]}</div>
                 <div className="my-2">
                   <Button href={'/' + booking["venue"].id} className="btn btn-primary" size="sm">View venue</Button>
-                  <Button className="ms-2" variant="secondary" onClick={() => handleDelete(booking.id)} size="sm">Delete booking</Button>
+                  <Button className="ms-2" variant="secondary" onClick={() => handleDelete(booking.id)} size="sm">Cancel booking</Button>
                 </div>
               </div>
             </Col>
