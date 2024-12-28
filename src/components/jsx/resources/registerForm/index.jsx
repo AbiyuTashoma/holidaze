@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from 'react-bootstrap';
-import { defaultAvatar, registerUrl } from '../../../js/constants';
+import { defaultAvatar, registerUrl, timeout } from '../../../js/constants';
 import { useState } from "react";
 import api from '../../../js/api';
 import schema from '../../../js/registerValidation';
@@ -35,7 +35,7 @@ function RegisterForm () {
     if (resp["data"]) {
       setApiData(["Registration successful", "text-success"]);
       event.target.reset();
-      setTimeout(reRoute("/login"), 1500);
+      setTimeout(reRoute("/login"), timeout);
       return;
     }
     else {

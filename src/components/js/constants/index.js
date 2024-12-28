@@ -10,3 +10,4 @@ export const loginUrl = "https://v2.api.noroff.dev/auth/login?_holidaze=true";
 export const profilesUrl = "https://v2.api.noroff.dev/holidaze/profiles";
 export const bookingsUrl = "https://v2.api.noroff.dev/holidaze/bookings";
 export const apiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
+export const timeout = 2000;

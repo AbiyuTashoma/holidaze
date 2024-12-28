@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import schema from "../../../js/createValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { url } from "../../../js/constants";
+import { timeout, url } from "../../../js/constants";
 import api from "../../../js/api";
 import reRoute from "../../../js/reRoute/reRoute";
 
@@ -59,7 +59,7 @@ function EditVenue({venue, accessToken, apiKey}) {
 
     if (resp["data"]) {
       setApiData(["Changed successfully", "text-success"]);
-      setTimeout(reRoute(window.location.pathname), 1500);
+      setTimeout(reRoute(window.location.pathname), timeout);
       return;
     }
     else {
@@ -80,7 +80,7 @@ function EditVenue({venue, accessToken, apiKey}) {
     };
 
     await fetch(url + '/' + venue.id, deleteOption);
-    setTimeout(reRoute(window.location.pathname), 1500);
+    setTimeout(reRoute(window.location.pathname), timeout);
   }
 
   function clearMessage() {

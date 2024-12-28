@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { url } from '../../../js/constants';
+import { timeout, url } from '../../../js/constants';
 import schema from '../../../js/createValidation';
 import api from '../../../js/api';
 import useUser from '../../store/user';
@@ -61,7 +61,7 @@ function CreateVenue() {
     if (resp["data"]) {
       setApiData(["Venue successfully created", "text-success"]);
       event.target.reset();
-      setTimeout(reRoute(window.location.pathname), 1500);
+      setTimeout(reRoute(window.location.pathname), timeout);
       return;
     }
     else {
