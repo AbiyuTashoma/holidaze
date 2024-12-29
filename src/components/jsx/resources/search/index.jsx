@@ -2,23 +2,16 @@ import { shallow } from "zustand/shallow";
 import SearchLabel from "./label";
 import { baseUrl, searchUrl } from "../../../js/constants";
 import usePage from "../../store/page";
-import useApi from "../../store/api";
 
 function Search() {
-  const { updateUrl } = usePage(
+  const { searchText, updateUrl, updateSearchText } = usePage(
       (state) => ({
+        searchText: state.searchText,
         updateUrl: state.updateUrl,
+        updateSearchText: state.updateSearchText,
       }),
       shallow
     );
-
-  const { searchText, updateSearchText } = useApi(
-    (state) => ({
-      searchText: state.searchText,
-      updateSearchText: state.updateSearchText,
-    }),
-    shallow
-  );
 
   function handleOnChange (txt) {
     updateSearchText(txt);
