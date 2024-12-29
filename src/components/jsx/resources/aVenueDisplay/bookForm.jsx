@@ -11,23 +11,17 @@ import { addDays } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import getBooking from '../../../js/getBooking';
 import enableDisable from '../../../js/enableDisable';
+import validateDates from '../../../js/validateDates';
 
 function BookForm({venue, accessToken, apiKey}) {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;
-  const [dateStatus, setDateStatus] = useState(false);
+  const [dateStatus, setDateStatus] = useState([null, ""]);
+  const [invalid, feedback] = dateStatus;
   const [dateRange, setDateRange] = useState([new Date(), addDays(new Date(), 3)]);
   const [startDate, endDate] = dateRange;
 
   const excludeDates = getBooking(venue['bookings']);
-
-  function validateDates(sDate, eDate, exDates) {
-    console.log(new Date(sDate), new Date(eDate), exDates);
-    let invalidDate = false;
-    exDates.map((item) => (invalidDate ||= ((new Date(item['end']) < new Date(eDate)) && (new Date(item['start']) > new Date(sDate)))));
-    setDateStatus(invalidDate);
-    console.log(invalidDate);
-  }
 
   const {
     register,
@@ -80,12 +74,13 @@ function BookForm({venue, accessToken, apiKey}) {
         <div className="mt-2">
           <label className="me-3 form-label" htmlFor="dates">Select dates</label>
           <DatePicker
-            id="dates"
+            id="datePickerDates"
             showIcon
             toggleCalendarOnIconClick
             dateFormat='dd/MM/yyyy'
             selectsRange
-            onCalendarClose={() => validateDates(startDate, endDate, excludeDates)}
+            onCalendarClose={() => setDateStatus(validateDates(startDate, endDate, excludeDates))}
+            onBlur={() => setDateStatus(validateDates(startDate, endDate, excludeDates))}
             excludeDateIntervals={excludeDates}
             startDate={startDate}
             endDate={endDate}
@@ -97,11 +92,12 @@ function BookForm({venue, accessToken, apiKey}) {
             required
             showDisabledMonthNavigation
             fixedHeight
+            placeholderText="Select dates"
           />
         </div>
-        <div className={dateStatus ? "d-block text-danger" : "d-none"}>Dates are booked, choose other dates.</div>
+        <div className={invalid ? "d-block text-danger" : "d-none"}>{feedback}</div>
       </Row>
-      {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!dateStatus)}/> : <Link to={'/login'} className="btn btn-primary">Book</Link> }
+      {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)}/> : <Link to={'/login'} className="btn btn-primary">Book</Link> }
       <div className={type}>{message}</div>
     </form>
   );
