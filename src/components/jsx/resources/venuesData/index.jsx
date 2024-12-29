@@ -1,21 +1,12 @@
-import GetApi from "../../../js/getApi";
-import useApi from "../../store/api";
 import { shallow } from "zustand/shallow";
 import VenueList from "../venueList";
 import Loading from "../loading";
 import Error from "../error";
 import useUser from "../../store/user";
+import usePage from "../../store/page";
+import VenueApi from "../../../js/venueApi";
 
 function VenuesData() {
-
-  const { venues, isLoading, isError } = useApi(
-    (state) => ({
-      venues: state.venues,
-      isLoading: state.isLoading,
-      isError: state.isError,
-    }),
-    shallow
-  );
 
   const { name, accessToken, apiKey } = useUser(
     (state) => ({
@@ -26,9 +17,18 @@ function VenuesData() {
     shallow
   );
 
-  GetApi();
+  const { url, updateNextPage, updatePrevPage } = usePage(
+    (state) => ({
+      url: state.url,
+      updateNextPage: state.updateNextPage,
+      updatePrevPage: state.updatePrevPage,
+    }),
+    shallow
+  );
 
-  if (isLoading || !venues) {
+  const { apiData, isLoading, isError } = VenueApi(url);
+
+  if (isLoading || !apiData) {
     return <Loading />;
   }
 
@@ -36,7 +36,9 @@ function VenuesData() {
     return <Error />;
   }
 
-  return VenueList(venues, name, accessToken, apiKey);
+  updateNextPage(apiData["meta"]["nextPage"]);
+  updatePrevPage(apiData["meta"]["previousPage"]);
+  return VenueList(apiData["data"], name, accessToken, apiKey);
 }
 
 export default VenuesData;

@@ -29,8 +29,8 @@ function AVenue() {
     return <Error />;
   }
 
-  console.log(apiData);
-  return DisplayVenue(apiData, name, accessToken, apiKey);
+  console.log(apiData["data"]);
+  return DisplayVenue(apiData["data"], name, accessToken, apiKey);
 }
 
 export default AVenue;
