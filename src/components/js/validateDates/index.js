@@ -1,4 +1,5 @@
-/** Validates whether the selected dates are valid or not *
+/**
+ * Validates whether the selected dates are valid or not *
  * @param {Date} sDate start date
  * @param {Date} eDate end date
  * @param {Array} exDates array of occupied dates

@@ -4,6 +4,13 @@ import reRoute from "../../../js/reRoute/reRoute";
 import { bookingsUrl, timeout } from "../../../js/constants";
 import { Link } from "react-router-dom";
 
+/**
+ * Displays list of bookings registered by a profile
+ * @param {Array} bookingsList array of bookings
+ * @param {String} accessToken user access token
+ * @param {String} apiKey user api key
+ * @returns {HTMLElement} 
+ */
 function DisplayBookings (bookingsList, accessToken, apiKey) {
   async function handleDelete(id) {
     console.log("Delete:" + id);
@@ -26,8 +33,10 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
         {bookingsList.map((booking) => 
           <Col className="mb-3" key={booking.id}>
             <Col className="position-relative">
-              {booking["venue"]['media'][0] ? <img src= {booking["venue"]['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
-              {StarRating(booking["venue"]['rating'])}
+              <Link to={'/' + booking["venue"].id}>
+                {booking["venue"]['media'][0] ? <img src= {booking["venue"]['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
+                {StarRating(booking["venue"]['rating'])}
+              </Link>
             </Col>
             <Col>
               <div className="pt-2">
