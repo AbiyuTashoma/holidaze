@@ -16,7 +16,7 @@ function VenueApi(link, reqOption) {
         const response = await fetch(link, reqOption);
         const json = await response.json();
 
-        setApiData(json["data"]);
+        setApiData(json);
       } catch (error) {
         setIsError(true);
       } finally {
