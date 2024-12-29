@@ -2,6 +2,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import StarRating from "../starRating";
 import reRoute from "../../../js/reRoute/reRoute";
 import { bookingsUrl, timeout } from "../../../js/constants";
+import { Link } from "react-router-dom";
 
 function DisplayBookings (bookingsList, accessToken, apiKey) {
   async function handleDelete(id) {
@@ -35,7 +36,7 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
                 <div>Date out: {(new Date(booking["dateTo"])).toDateString()}</div>
                 <div>Guests: {booking["guests"]}</div>
                 <div className="my-2">
-                  <Button href={'/' + booking["venue"].id} className="btn btn-primary" size="sm">View venue</Button>
+                  <Link to={'/' + booking["venue"].id} className="btn btn-primary btn-sm">View venue</Link>
                   <Button className="ms-2" variant="secondary" onClick={() => handleDelete(booking.id)} size="sm">Cancel booking</Button>
                 </div>
               </div>
