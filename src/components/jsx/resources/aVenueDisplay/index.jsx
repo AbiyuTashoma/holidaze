@@ -5,6 +5,7 @@ import StarRating from "../starRating";
 import BookForm from "./bookForm";
 import EditVenue from "../editVenue";
 import VenueBookings from "../venueBookings";
+import ImageCarousel from "../imageCarousel";
 
 function DisplayVenue(aVenue, name, accessToken, apiKey) {
   const venueOwner = Boolean(aVenue['owner']['name'] === name);
@@ -13,7 +14,7 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
     <Container>
       <Row xs="1" md="2" className="my-4">        
         <Col className="position-relative mb-2">
-          {aVenue['media'][0] ? <img src= {aVenue['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
+          {ImageCarousel(aVenue['media'])}          
           {StarRating(aVenue['rating'])}
           {venueOwner ? <EditVenue venue={aVenue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}
         </Col>

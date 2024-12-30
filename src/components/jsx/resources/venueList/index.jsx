@@ -4,6 +4,7 @@ import { currency, unit } from "../../../js/constants";
 import Facility from "../facility";
 import StarRating from "../starRating";
 import EditVenue from "../editVenue";
+import ImageCarousel from "../imageCarousel";
 
 function VenueList(venues, name, accessToken, apiKey, profile = false) {
 
@@ -13,8 +14,8 @@ function VenueList(venues, name, accessToken, apiKey, profile = false) {
         {venues.map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
             <Link to={'/' + venue.id}>
+              {ImageCarousel(venue['media'])}
               {StarRating(venue['rating'])}
-              {venue['media'][0] ? <img src= {venue['media'][0]['url']} className="list-image" alt=""/> : <img src= "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>}
             </Link>
             {(profile || (venue['owner']['name'] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
