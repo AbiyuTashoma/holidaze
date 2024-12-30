@@ -12,6 +12,7 @@ import DatePicker from 'react-datepicker';
 import getBooking from '../../../js/getBooking';
 import enableDisable from '../../../js/enableDisable';
 import validateDates from '../../../js/validateDates';
+import Price from '../price';
 
 function BookForm({venue, accessToken, apiKey}) {
   const [apiData, setApiData] = useState([null, null]);
@@ -94,6 +95,9 @@ function BookForm({venue, accessToken, apiKey}) {
             fixedHeight
             placeholderText="Select dates"
           />
+        </div>
+        <div>
+          {Price(startDate, endDate, invalid, venue['price'])}
         </div>
         <div className={invalid ? "d-block text-danger" : "d-none"}>{feedback}</div>
       </Row>
