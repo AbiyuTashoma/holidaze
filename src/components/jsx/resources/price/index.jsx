@@ -13,11 +13,11 @@ function Price(startDate, endDate, invalid, price) {
   const days = differenceInCalendarDays(endDate, startDate);
 
   return Boolean(startDate) && Boolean(endDate) && !invalid ? (
-    <span className="my-2">
+    <div className="my-2">
       {days * price} {currency} for {days} days
-    </span>
+    </div>
   ) : (
-    <span></span>
+    <div></div>
   );
 }
 
