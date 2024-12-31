@@ -19,10 +19,10 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
           {venueOwner ? <EditVenue venue={aVenue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}
         </Col>
         <Col>
-          <div className="fw-semibold my-2">{aVenue['name']}</div>
-          <div>{aVenue['price']} {currency}<span className="unit">{unit}</span></div>
+          <div className="fw-semibold fs-5 my-2">{aVenue['name']}</div>
+          <div data-testid="venuePrice">{aVenue['price']} {currency}<span className="unit">{unit}</span></div>
           <div className="my-2">{aVenue['description']}</div>
-          <div>Max guests: {aVenue["maxGuests"]}</div>
+          <div data-testid="maxGuests">Max guests: {aVenue["maxGuests"]}</div>
           <div>{Facility(aVenue['meta'])}</div>
           <div className="my-4"><BookForm venue = {aVenue} accessToken = {accessToken} apiKey = {apiKey} /></div>
         </Col>

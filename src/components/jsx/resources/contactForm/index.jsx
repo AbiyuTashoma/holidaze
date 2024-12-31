@@ -16,7 +16,6 @@ function ContactForm () {
   });
 
   function onSubmit(data, event) {
-    console.log(data);
     setApiData(["Sending successful", "text-success"]);
     event.target.reset();
   }
