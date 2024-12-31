@@ -29,7 +29,7 @@ function BookForm({venue, accessToken, apiKey}) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema(venue["maxGuests"])),
   });
 
   async function OnSubmit(data, event) {
@@ -70,7 +70,7 @@ function BookForm({venue, accessToken, apiKey}) {
       <div className='d-flex gap-3 align-items-top'>
         <label htmlFor="guests" className='form-label mt-1'>Guests</label>
         <div>
-          <input type="number" id='guests' name='guests' className='form-control guests' max={venue["maxGuests"]} {...register('guests')}/>
+          <input type="number" id='guests' name='guests' className='form-control guests' {...register('guests')}/>
           <p className='text-danger'>{errors.guests?.message}</p>
         </div>
       </div>
