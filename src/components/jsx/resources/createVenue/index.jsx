@@ -7,6 +7,8 @@ import api from '../../../js/api';
 import useUser from '../../store/user';
 import { shallow } from 'zustand/shallow';
 import reRoute from '../../../js/reRoute/reRoute';
+import createMedia from '../../../js/createMedia';
+import createArray from '../../../js/createArray';
 
 function CreateVenue() {
   const [apiData, setApiData] = useState([null, null]);
@@ -21,15 +23,11 @@ function CreateVenue() {
   );
 
   async function OnSubmit(data, event) {
+    const mediaArray = createArray(data.media);
     const venueData = {
       name: data.name,
       description: data.description,
-      media: [
-        {
-          url: data.media,
-          alt: "venue",
-        },
-      ],
+      media: createMedia(mediaArray, data.name),
       price: data.price,
       maxGuests: data.guest,
       rating: data.rating,
@@ -96,7 +94,7 @@ function CreateVenue() {
         <p className='text-danger'>{errors.description?.message}</p>
       </div>
       <div>
-        <label htmlFor="media" className='form-label'>Image url</label>
+        <label htmlFor="media" className='form-label'>Image url <span className='fst-italic'>(separated by comma)</span></label>
         <input id='media' name='media' className='form-control' {...register('media')} />
         <p className='text-danger'>{errors.media?.message}</p>
       </div>
