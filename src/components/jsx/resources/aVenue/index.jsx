@@ -29,7 +29,6 @@ function AVenue() {
     return <Error />;
   }
 
-  console.log(apiData["data"]);
   return DisplayVenue(apiData["data"], name, accessToken, apiKey);
 }
 

@@ -34,7 +34,6 @@ function MyBookings() {
     return <Error />;
   }
 
-  console.log(apiData["data"]);
   return (apiData["data"].length ? DisplayBookings(apiData["data"], accessToken, apiKey) : <div className='m-3'>You have no bookings yet</div>);
 }
 

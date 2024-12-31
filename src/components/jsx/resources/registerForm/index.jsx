@@ -20,8 +20,6 @@ function RegisterForm () {
       avatar: {url:data.avatar !== "" ? data.avatar : defaultAvatar, alt:"avatar"},
     };
 
-    console.log(registerData);
-
     const registerOption = {
       method: "POST",
       body: JSON.stringify(registerData),

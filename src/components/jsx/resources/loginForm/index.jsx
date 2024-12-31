@@ -31,8 +31,6 @@ function LoginForm () {
       password: data.password,
     };
 
-    console.log(loginData);
-
     const loginOption = {
       method: "POST",
       body: JSON.stringify(loginData),
@@ -43,7 +41,6 @@ function LoginForm () {
 
     const resp = await api(loginUrl, loginOption);
 
-    console.log(resp);
     if (resp["data"]) {
       updateName(resp["data"]["name"]);
       updateAccessToken(resp["data"]["accessToken"]);

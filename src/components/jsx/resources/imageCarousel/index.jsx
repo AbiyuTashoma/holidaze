@@ -9,7 +9,7 @@ function ImageCarousel(media) {
   return media.length ? (
     <Carousel slide={false}>
       {media.map((item) => 
-      <Carousel.Item>
+      <Carousel.Item key={item['url']}>
         <img src= {item['url']} className="list-image" alt={item['alt']}/>
       </Carousel.Item>
       )}

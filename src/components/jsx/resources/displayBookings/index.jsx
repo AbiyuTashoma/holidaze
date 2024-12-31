@@ -14,7 +14,6 @@ import ImageCarousel from "../imageCarousel";
  */
 function DisplayBookings (bookingsList, accessToken, apiKey) {
   async function handleDelete(id) {
-    console.log("Delete:" + id);
     const deleteOption = {
       method: "DELETE",
       body: JSON.stringify({}),
