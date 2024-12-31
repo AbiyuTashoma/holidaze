@@ -10,7 +10,7 @@ function VenueList(venues, name, accessToken, apiKey, profile = false) {
 
   return (
     <Container>
-      <Row xs="1" md="2" xl="3">        
+      <Row xs="1" md="2" xl="3" xxl="4">        
         {venues.map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
             <Link to={'/' + venue.id}>
@@ -20,7 +20,7 @@ function VenueList(venues, name, accessToken, apiKey, profile = false) {
             {(profile || (venue['owner']['name'] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
               <Col>
-                <div>{venue['name']}</div>
+                <div className="fw-semibold">{venue['name']}</div>
                 <div>{venue['price']} {currency}<span className="unit">{unit}</span></div>
               </Col>
               <Col className="view-button-container">

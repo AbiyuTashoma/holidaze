@@ -19,7 +19,7 @@ function Search() {
   }
 
   return (
-    <form className="input-group search-form" onSubmit={(event) => event.preventDefault()}>
+    <form className="input-group search-form mb-2 mb-md-3 mb-lg-4" onSubmit={(event) => event.preventDefault()}>
       <SearchLabel />
       <input type="search" onChange={(event) => handleOnChange(event.target.value)} className="form-control" id="search" value={searchText} placeholder="search here"/>
     </form>

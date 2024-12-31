@@ -46,6 +46,11 @@ const schema = yup
   })
   .required();
 
+/**
+ * Validates list of urls created from a string input
+ * @param {String} value url value input
+ * @returns {Boolean}
+ */
 function validUrl(value) {
   const urlMatch =
     /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;

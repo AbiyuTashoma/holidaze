@@ -66,10 +66,13 @@ function BookForm({venue, accessToken, apiKey}) {
 
   return(
     <form onSubmit={handleSubmit(OnSubmit)}>
-      <div>
-        <label htmlFor="guests" className='form-label'>Guests</label>
-        <input type="number" id='guests' name='guests' className='form-control' max={venue["maxGuests"]} {...register('guests')}/>
-        <p className='text-danger'>{errors.guests?.message}</p>
+      <div className="fw-semibold my-2">Check availability</div>
+      <div className='d-flex gap-3 align-items-top'>
+        <label htmlFor="guests" className='form-label mt-1'>Guests</label>
+        <div>
+          <input type="number" id='guests' name='guests' className='form-control guests' max={venue["maxGuests"]} {...register('guests')}/>
+          <p className='text-danger'>{errors.guests?.message}</p>
+        </div>
       </div>
       <Row className='mb-3'>
         <div className="mt-2">

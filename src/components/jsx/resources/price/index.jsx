@@ -14,7 +14,7 @@ function Price(startDate, endDate, invalid, price) {
 
   return Boolean(startDate) && Boolean(endDate) && !invalid ? (
     <div className="my-2">
-      {days * price} {currency} for {days} days
+      {days * price} {currency} for {days} days <span className="available">&#10003;</span>
     </div>
   ) : (
     <div></div>
