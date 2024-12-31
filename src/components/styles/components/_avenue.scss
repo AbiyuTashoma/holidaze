@@ -9,6 +9,10 @@
   font-size: small;
 }
 
+.guests {
+  max-width: fit-content;
+}
+
 .accordion-button {
   background-color: $brand-gray;
 }
@@ -28,4 +32,13 @@
   padding: 6px 10px 5px 45px;
   border-radius: 5px;
   border: solid thin #dee2e6;
+}
+
+.available {
+  font-size: small;
+  font-weight: bold;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
 }
