@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import createArray from "../createArray";
 
 const schema = yup
   .object({
@@ -25,9 +26,8 @@ const schema = yup
 
     media: yup
       .string()
-      .matches(
-        /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/,
-        { message: "Enter a valid url", excludeEmptyString: true }
+      .test("media", "Enter valid url separated by comma (,)", (value) =>
+        validUrl(value)
       ),
     rating: yup
       .number()
@@ -45,5 +45,18 @@ const schema = yup
     country: yup.string().max(50),
   })
   .required();
+
+function validUrl(value) {
+  const urlMatch =
+    /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
+  const urlArray = createArray(value);
+  let valid = true;
+
+  if (value) {
+    urlArray.map((url) => (valid &&= urlMatch.test(url)));
+  }
+
+  return valid;
+}
 
 export default schema;

@@ -6,6 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { timeout, url } from "../../../js/constants";
 import api from "../../../js/api";
 import reRoute from "../../../js/reRoute/reRoute";
+import createMedia from "../../../js/createMedia";
+import createArray from "../../../js/createArray";
+import createString from "../../../js/createString";
 
 function EditVenue({venue, accessToken, apiKey}) {
 
@@ -20,15 +23,11 @@ function EditVenue({venue, accessToken, apiKey}) {
   }
 
   async function OnSubmit(data) {
+    const mediaArray = createArray(data.media);
     const venueData = {
       name: data.name,
       description: data.description,
-      media: [
-        {
-          url: data.media,
-          alt: "venue",
-        },
-      ],
+      media: createMedia(mediaArray, data.name),
       price: data.price,
       maxGuests: data.guest,
       rating: data.rating,
@@ -102,7 +101,7 @@ function EditVenue({venue, accessToken, apiKey}) {
       </div>        
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Change avatar</Modal.Title>
+          <Modal.Title>Update venue</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(OnSubmit)} onChange={clearMessage} className='form-size my-2'>
@@ -118,8 +117,8 @@ function EditVenue({venue, accessToken, apiKey}) {
               <p className='text-danger'>{errors.description?.message}</p>
             </div>
             <div>
-              <label htmlFor="media" className='form-label'>Image url</label>
-              <input id='media' name='media' className='form-control' defaultValue={venue['media'][0] ? venue['media'][0]['url'] : ""} {...register('media')} />
+              <label htmlFor="media" className='form-label'>Image url <span className='fst-italic'>(separated by comma)</span></label>
+              <input id='media' name='media' className='form-control' defaultValue={createString(venue['media'])} {...register('media')} />
               <p className='text-danger'>{errors.media?.message}</p>
             </div>
             <div>
