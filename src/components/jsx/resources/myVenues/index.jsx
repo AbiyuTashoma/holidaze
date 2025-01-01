@@ -2,7 +2,7 @@ import VenueApi from "../../../js/venueApi";
 import Loading from "../loading";
 import Error from "../error";
 import { profilesUrl } from "../../../js/constants";
-import VenueList from "../venueList";
+import VenuesList from "../venuesList";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
 
@@ -34,7 +34,7 @@ function MyVenues() {
     return <Error />;
   }
 
-  return (apiData["data"].length ? VenueList(apiData["data"], name, accessToken, apiKey, true) : <div className='m-3'>You have no venues yet</div>);
+  return (apiData["data"].length ? VenuesList(apiData["data"], name, accessToken, apiKey, true) : <div className='m-3'>You have no venues yet</div>);
 }
 
 export default MyVenues;

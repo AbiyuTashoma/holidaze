@@ -1,5 +1,5 @@
 import { shallow } from "zustand/shallow";
-import VenueList from "../venueList";
+import VenuesList from "../venuesList";
 import Loading from "../loading";
 import Error from "../error";
 import useUser from "../../store/user";
@@ -38,7 +38,7 @@ function VenuesData() {
 
   updateNextPage(apiData["meta"]["nextPage"]);
   updatePrevPage(apiData["meta"]["previousPage"]);
-  return VenueList(apiData["data"], name, accessToken, apiKey);
+  return VenuesList(apiData["data"], name, accessToken, apiKey);
 }
 
 export default VenuesData;
