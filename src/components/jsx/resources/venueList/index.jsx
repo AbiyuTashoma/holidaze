@@ -13,10 +13,10 @@ function VenueList(venues, name, accessToken, apiKey, profile = false) {
       <Row xs="1" md="2" xl="3" xxl="4">        
         {venues.map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
-            <Link to={'/' + venue.id}>
-              {ImageCarousel(venue['media'])}
+            {/* <Link to={'/' + venue.id}> */}
+              {ImageCarousel(venue['media'], venue.id, true)}
               {StarRating(venue['rating'])}
-            </Link>
+            {/* </Link> */}
             {(profile || (venue['owner']['name'] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
               <Col>
