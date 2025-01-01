@@ -1,5 +1,5 @@
 export const customer = null;
-export const userName = "user";
+export const registeredName = "user";
 export const managerName = "Norman";
 export const accessToken = "eyJhbGciOi";
 export const apiKey = {
