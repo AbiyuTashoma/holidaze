@@ -27,15 +27,17 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
           <div className="my-4"><BookForm venue = {aVenue} accessToken = {accessToken} apiKey = {apiKey} /></div>
         </Col>
       </Row>
-      <Row className={venueOwner ? "d-block" : "d-none"}>
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header bg="light">Bookings list</Accordion.Header>
-            <Accordion.Body>
-              <VenueBookings  venue = {aVenue}/>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+      <Row>
+        {venueOwner ? 
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header bg="light">Bookings list</Accordion.Header>
+              <Accordion.Body>
+                <VenueBookings  venue = {aVenue}/>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion> 
+        : <></>}
       </Row>
     </Container>
   );
