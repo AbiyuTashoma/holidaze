@@ -11,3 +11,5 @@ export const profilesUrl = "https://v2.api.noroff.dev/holidaze/profiles";
 export const bookingsUrl = "https://v2.api.noroff.dev/holidaze/bookings";
 export const apiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
 export const timeout = 2000;
+export const noImageUrl =
+  "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg";

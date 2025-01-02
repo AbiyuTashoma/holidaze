@@ -1,5 +1,6 @@
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { noImageUrl } from "../../../js/constants";
 
 /**
  * Creates a carousel of images
@@ -13,7 +14,7 @@ function ImageCarousel(media, id = "", imageLink = false) {
       <Carousel.Item key={item['url'] + index}>
         {
           imageLink ?
-            <Link to={'/' + id}>
+            <Link to={'/' + id} data-testid="imageLink">
               <img src= {item['url']} className="list-image" alt={item['alt']}/>
             </Link>:     
             <img src= {item['url']} className="list-image" alt={item['alt']}/>
@@ -27,9 +28,9 @@ function ImageCarousel(media, id = "", imageLink = false) {
     {
     imageLink ? 
       <Link to={'/' + id}>
-        <img src="https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>
+        <img src={noImageUrl} className="list-image" alt="Not available"/>
       </Link>:   
-      <img src="https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg" className="list-image" alt="Not available"/>
+      <img src={noImageUrl} className="list-image" alt="Not available"/>
     }
     </>
   );

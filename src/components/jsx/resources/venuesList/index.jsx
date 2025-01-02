@@ -18,11 +18,11 @@ function VenuesList(venues, name, accessToken, apiKey, profile = false) {
             {(profile || (venue['owner']['name'] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
               <Col>
-                <div className="fw-semibold">{venue['name']}</div>
-                <div>{venue['price']} {currency}<span className="unit">{unit}</span></div>
+                <div className="fw-semibold" data-testid="venueName">{venue['name']}</div>
+                <div data-testid="venuePrice">{venue['price']} {currency}<span className="unit">{unit}</span></div>
               </Col>
               <Col className="view-button-container">
-                <Link to={'/' + venue.id} className="view-button">View</Link>
+                <Link to={'/' + venue.id} className="view-button" data-testid="viewButton">View</Link>
               </Col>
             </Row>
             {Facility(venue['meta'])}
