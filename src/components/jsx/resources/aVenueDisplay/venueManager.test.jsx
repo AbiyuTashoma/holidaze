@@ -17,7 +17,7 @@ describe('DisplayVenue()', () => {
         );
 
         const image = screen.getAllByRole('img');
-        const editButton = screen.getByTestId('editBtn');
+        const editButton = screen.getByTestId('editButton');
         const venueName = screen.getByText('Vineyard');
         const price = screen.getByTestId('venuePrice');
         const description = screen.getByText('Historic vineyard');
@@ -26,7 +26,7 @@ describe('DisplayVenue()', () => {
         const breakfast = screen.getByText('Breakfast');
         const pets = screen.getByText('No Pets');
         const maxGuests = screen.getByTestId('maxGuests');
-        const bookButton = screen.getByTestId('bookBtn');
+        const bookButton = screen.getByTestId('bookButton');
         const bookings = screen.getAllByTestId('bookings');
 
         image.map((img, index) => 

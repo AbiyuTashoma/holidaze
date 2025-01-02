@@ -97,7 +97,7 @@ function EditVenue({venue, accessToken, apiKey}) {
   return (
     <div>
       <div className="update">
-        <Button size="sm" onClick={handleShow} data-testid="editBtn">edit</Button>
+        <Button size="sm" onClick={handleShow} data-testid="editButton">edit</Button>
       </div>        
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

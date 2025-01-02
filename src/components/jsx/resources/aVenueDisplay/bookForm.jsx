@@ -104,7 +104,7 @@ function BookForm({venue, accessToken, apiKey}) {
         </div>
         <div className={invalid ? "d-block text-danger" : "d-none"}>{feedback}</div>
       </Row>
-      {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)} data-testid={'bookBtn'}/> : <Link to={'/login'} className="btn btn-primary" data-testid={'bookAnchor'}>Book</Link> }
+      {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)} data-testid={'bookButton'}/> : <Link to={'/login'} className="btn btn-primary" data-testid={'bookAnchor'}>Book</Link> }
       <div className={type}>{message}</div>
     </form>
   );

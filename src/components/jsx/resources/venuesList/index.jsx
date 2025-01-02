@@ -6,25 +6,23 @@ import StarRating from "../starRating";
 import EditVenue from "../editVenue";
 import ImageCarousel from "../imageCarousel";
 
-function VenueList(venues, name, accessToken, apiKey, profile = false) {
+function VenuesList(venues, name, accessToken, apiKey, profile = false) {
 
   return (
     <Container>
       <Row xs="1" md="2" xl="3" xxl="4">        
         {venues.map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
-            {/* <Link to={'/' + venue.id}> */}
-              {ImageCarousel(venue['media'], venue.id, true)}
-              {StarRating(venue['rating'])}
-            {/* </Link> */}
+            {ImageCarousel(venue['media'], venue.id, true)}
+            {StarRating(venue['rating'])}
             {(profile || (venue['owner']['name'] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
               <Col>
-                <div className="fw-semibold">{venue['name']}</div>
-                <div>{venue['price']} {currency}<span className="unit">{unit}</span></div>
+                <div className="fw-semibold" data-testid="venueName">{venue['name']}</div>
+                <div data-testid="venuePrice">{venue['price']} {currency}<span className="unit">{unit}</span></div>
               </Col>
               <Col className="view-button-container">
-                <Link to={'/' + venue.id} className="view-button">View</Link>
+                <Link to={'/' + venue.id} className="view-button" data-testid="viewButton">View</Link>
               </Col>
             </Row>
             {Facility(venue['meta'])}
@@ -35,4 +33,4 @@ function VenueList(venues, name, accessToken, apiKey, profile = false) {
   );
 }
 
-export default VenueList;
+export default VenuesList;
