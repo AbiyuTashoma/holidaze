@@ -55,7 +55,7 @@ function BookForm({venue, accessToken, apiKey}) {
     if (resp["data"]) {
       setApiData(["Venue successfully booked", "text-success"]);
       event.target.reset();
-      setTimeout(reRoute(window.location.pathname), timeout);
+      setTimeout(reRoute("/success"), timeout);
       return;
     }
     else {
