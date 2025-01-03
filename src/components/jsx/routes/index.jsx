@@ -8,6 +8,7 @@ import Register from "../pages/register";
 import Login from "../pages/login";
 import Profile from "../pages/profile";
 import RouteNotFound from "../pages/routeNotFound";
+import Success from "../pages/success";
 
 function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ function AppRoutes() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/success" element={<Success />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>
