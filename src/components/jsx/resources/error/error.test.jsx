@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import Error from ".";
 
-describe('Error ()', () => {
+describe('Error()', () => {
     test('it returns error', () => {
         render(<Error />);
 
