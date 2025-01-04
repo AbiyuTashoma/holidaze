@@ -9,18 +9,18 @@ const schema = yup
       .required("Enter your full name"),
     description: yup
       .string()
-      .min(10, "description should be at least 10 characters.")
+      .min(10, "Description should be at least 10 characters.")
       .required("Enter venue description"),
     price: yup
       .number()
-      .required("Enter your price")
-      .min(0)
+      .required("Enter valid venue price")
+      .min(0, "Enter valid venue price")
       .integer()
-      .typeError("Enter venue price"),
+      .typeError("Enter valid venue price"),
     guest: yup
       .number()
       .required("Enter the maximum number of guests")
-      .min(1)
+      .min(1, "Enter the maximum number of guests")
       .integer()
       .typeError("Enter the maximum number of guests"),
 
@@ -32,8 +32,8 @@ const schema = yup
     rating: yup
       .number()
       .required("Enter venue rating (0-5)")
-      .min(0)
-      .max(5)
+      .min(0, "Enter venue rating (0-5)")
+      .max(5, "Enter venue rating (0-5)")
       .integer()
       .typeError("Enter venue rating (0-5)"),
     wifi: yup.boolean(),
