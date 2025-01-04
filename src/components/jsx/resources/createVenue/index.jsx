@@ -116,19 +116,19 @@ function CreateVenue() {
       <div className='my-3'>
         <div className='mb-3'>Services</div>
         <label htmlFor="breakfast" className='ms-3'>
-          <input type='checkbox' className='form-check-input' name='breakfast' id='breakfast' {...register('breakfast')}/>
+          <input type='checkbox' className='form-check-input' name='breakfast' id='breakfast' data-testid='breakfast' {...register('breakfast')}/>
           <span className='ms-1'>Breakfast</span>
         </label>
         <label htmlFor="wifi" className='ms-2'>
-          <input type='checkbox' className='form-check-input' name='wifi' id='wifi' {...register('wifi')}/>
+          <input type='checkbox' className='form-check-input' name='wifi' id='wifi' data-testid='wifi' {...register('wifi')}/>
           <span className='ms-1'>Wifi</span>
         </label>
         <label htmlFor="parking" className='ms-2'>
-          <input type='checkbox' className='form-check-input' name='parking' id='parking' {...register('parking')}/>
+          <input type='checkbox' className='form-check-input' name='parking' id='parking' data-testid='parking' {...register('parking')}/>
           <span className='ms-1'>Parking</span>
         </label>
         <label htmlFor="pets" className='ms-2'>
-          <input type='checkbox' className='form-check-input' name='pets' id='pets' {...register('pets')}/>
+          <input type='checkbox' className='form-check-input' name='pets' id='pets' data-testid='pets' {...register('pets')}/>
           <span className='ms-1'>Pets</span>
         </label>
       </div>
@@ -153,7 +153,7 @@ function CreateVenue() {
         </div>
       </div>
       <div className='text-center'>
-        <input type="submit" id="list-btn" className="btn btn-primary" value="Create venue" />
+        <input type="submit" id="list-btn" className="btn btn-primary" value="Create venue" data-testid='createButton'/>
       </div>
     </form>
   );
