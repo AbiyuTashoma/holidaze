@@ -1,10 +1,19 @@
 import { screen, render, fireEvent, act } from "@testing-library/react";
-import CreateVenue from ".";
+import EditVenue from ".";
+import { aVenueResponse } from "../../../mockData/aVenueResponse";
+import { accessToken, apiKey } from "../../../mockData/userData";
+import createString from "../../../js/createString";
 
-describe("CreateVenue()", () => {
-    test("it displays create form and validates on submit", async () => {
+describe("EditVenue()", () => {
+    test("it displays update venue form and validates on submit", async () => {
       await act( async () => {
-        render(<CreateVenue />);
+        render(<EditVenue venue={aVenueResponse} accessToken={accessToken} apiKey={apiKey} />);
+      });
+
+      const editButton = screen.getByTestId("editButton");
+
+      await act(async () => {
+        fireEvent.click(editButton);
       });
 
       const name = screen.getByLabelText("Venue name");
@@ -13,11 +22,7 @@ describe("CreateVenue()", () => {
       const price = screen.getByLabelText("Price");
       const guests = screen.getByLabelText("Maximum number of guests");
       const rating = screen.getByLabelText("Rating");
-      const breakfast = screen.getByTestId("breakfast");
-      const wifi = screen.getByTestId("wifi");
-      const parking = screen.getByTestId("parking");
-      const pets = screen.getByTestId("pets");
-      const createButton = screen.getByTestId("createButton");
+      const saveButton = screen.getByTestId("saveButton");
 
       const nameError = screen.getByTestId("nameError");
       const descriptionError = screen.getByTestId("descriptionError");
@@ -26,17 +31,13 @@ describe("CreateVenue()", () => {
       const guestsError = screen.getByTestId("guestsError");
       const ratingError = screen.getByTestId("ratingError");
 
-      expect(name).toBeInTheDocument;
-      expect(description).toBeInTheDocument;
-      expect(media).toBeInTheDocument;
-      expect(price).toBeInTheDocument;
-      expect(guests).toBeInTheDocument;
-      expect(rating).toBeInTheDocument;
-      expect(breakfast).toBeInTheDocument;
-      expect(wifi).toBeInTheDocument;
-      expect(parking).toBeInTheDocument;
-      expect(pets).toBeInTheDocument;
-      expect(createButton).toHaveAttribute("type", "submit");
+      expect(name).toHaveDisplayValue(aVenueResponse["name"]);
+      expect(description).toHaveDisplayValue(aVenueResponse["description"]);
+      expect(media).toHaveDisplayValue(createString(aVenueResponse["media"]));
+      expect(price).toHaveDisplayValue(aVenueResponse["price"]);
+      expect(guests).toHaveDisplayValue(aVenueResponse["maxGuests"]);
+      expect(rating).toHaveDisplayValue(aVenueResponse["rating"]);
+      expect(saveButton).toBeInTheDocument;
 
       await act(async () => {
         fireEvent.change(name, {target: {value: "na"}});
@@ -48,7 +49,7 @@ describe("CreateVenue()", () => {
       });      
 
       await act(async () => {
-        fireEvent.click(createButton);
+        fireEvent.click(saveButton);
       });
 
       expect(nameError).toHaveTextContent("Name should be at least 3 characters.");

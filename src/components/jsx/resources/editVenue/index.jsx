@@ -109,32 +109,32 @@ function EditVenue({venue, accessToken, apiKey}) {
             <div>
               <label htmlFor="name" className="form-label mt-2">Venue name</label>
               <input id="name" name="name" className="form-control" defaultValue={venue["name"]} {...register("name")} />
-              <p className="text-danger">{errors.name?.message}</p>
+              <p className="text-danger" data-testid="nameError">{errors.name?.message}</p>
             </div>
             <div>
               <label htmlFor="description" className="form-label">Description</label>
               <textarea id="description" name="description" className="form-control" defaultValue={venue["description"]} {...register("description")}></textarea>
-              <p className="text-danger">{errors.description?.message}</p>
+              <p className="text-danger" data-testid="descriptionError">{errors.description?.message}</p>
             </div>
             <div>
               <label htmlFor="media" className="form-label">Image url <span className="fst-italic">(separated by comma)</span></label>
               <input id="media" name="media" className="form-control" defaultValue={createString(venue["media"])} {...register("media")} />
-              <p className="text-danger">{errors.media?.message}</p>
+              <p className="text-danger" data-testid="mediaError">{errors.media?.message}</p>
             </div>
             <div>
               <label htmlFor="price" className="form-label">Price</label>
               <input id="price" name="price" className="form-control" defaultValue={venue["price"]} {...register("price")} />
-              <p className="text-danger">{errors.price?.message}</p>
+              <p className="text-danger" data-testid="priceError">{errors.price?.message}</p>
             </div>
             <div>
               <label htmlFor="guest" className="form-label">Maximum number of guests</label>
               <input id="guest" name="guest" className="form-control" defaultValue={venue["maxGuests"]} {...register("guest")} />
-              <p className="text-danger">{errors.guest?.message}</p>
+              <p className="text-danger" data-testid="guestsError">{errors.guest?.message}</p>
             </div>
             <div>
               <label htmlFor="rating" className="form-label">Rating</label>
               <input id="rating" name="rating" className="form-control" defaultValue={venue["rating"]} {...register("rating")} />
-              <p className="text-danger">{errors.rating?.message}</p>
+              <p className="text-danger" data-testid="ratingError">{errors.rating?.message}</p>
             </div>
             <div className="my-3">
               <div className="mb-3">Services</div>
@@ -176,7 +176,7 @@ function EditVenue({venue, accessToken, apiKey}) {
               </div>
             </div>
             <div className="text-center">
-              <Button onClick={handleSubmit(OnSubmit)} className="mt-2" variant="primary" type="submit" size="sm">
+              <Button onClick={handleSubmit(OnSubmit)} className="mt-2" variant="primary" type="submit" size="sm" data-testid="saveButton">
                 Save Changes
               </Button>
               <Button onClick={handleDelete} className="ms-2 mt-2" variant="secondary" size="sm">
