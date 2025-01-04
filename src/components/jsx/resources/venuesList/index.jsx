@@ -13,19 +13,19 @@ function VenuesList(venues, name, accessToken, apiKey, profile = false) {
       <Row xs="1" md="2" xl="3" xxl="4">        
         {venues.map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
-            {ImageCarousel(venue['media'], venue.id, true)}
-            {StarRating(venue['rating'])}
-            {(profile || (venue['owner']['name'] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
+            {ImageCarousel(venue["media"], venue.id, true)}
+            {StarRating(venue["rating"])}
+            {(profile || (venue["owner"]["name"] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
               <Col>
-                <div className="fw-semibold" data-testid="venueName">{venue['name']}</div>
-                <div data-testid="venuePrice">{venue['price']} {currency}<span className="unit">{unit}</span></div>
+                <div className="fw-semibold" data-testid="venueName">{venue["name"]}</div>
+                <div data-testid="venuePrice">{venue["price"]} {currency}<span className="unit">{unit}</span></div>
               </Col>
               <Col className="view-button-container">
-                <Link to={'/' + venue.id} className="view-button" data-testid="viewButton">View</Link>
+                <Link to={"/" + venue.id} className="view-button" data-testid="viewButton">View</Link>
               </Col>
             </Row>
-            {Facility(venue['meta'])}
+            {Facility(venue["meta"])}
           </Col>
         )}
       </Row>

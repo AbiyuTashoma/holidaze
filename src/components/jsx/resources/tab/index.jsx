@@ -1,10 +1,10 @@
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import CreateVenue from '../createVenue';
-import useUser from '../../store/user';
-import { shallow } from 'zustand/shallow';
-import MyVenues from '../myVenues';
-import MyBookings from '../myBookings';
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import CreateVenue from "../createVenue";
+import useUser from "../../store/user";
+import { shallow } from "zustand/shallow";
+import MyVenues from "../myVenues";
+import MyBookings from "../myBookings";
 
 function UserTab() {
   
@@ -26,10 +26,10 @@ function UserTab() {
         <MyBookings />
       </Tab>
       <Tab eventKey="venues" title="My venues">
-        {venueManager ?  <MyVenues /> : <div className='m-3'>Register as Venue manager to create venues.</div>}
+        {venueManager ?  <MyVenues /> : <div className="m-3">Register as Venue manager to create venues.</div>}
       </Tab>
       <Tab eventKey="create" title="Create venue">
-        {venueManager ? <CreateVenue /> : <div className='m-3'>Register as Venue manager to create venues.</div>}
+        {venueManager ? <CreateVenue /> : <div className="m-3">Register as Venue manager to create venues.</div>}
       </Tab>
     </Tabs>
   );

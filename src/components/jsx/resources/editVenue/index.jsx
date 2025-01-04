@@ -54,7 +54,7 @@ function EditVenue({venue, accessToken, apiKey}) {
       },
     };
 
-    const resp = await api(url + '/' + venue.id, updateOption);
+    const resp = await api(url + "/" + venue.id, updateOption);
 
     if (resp["data"]) {
       setApiData(["Changed successfully", "text-success"]);
@@ -78,7 +78,7 @@ function EditVenue({venue, accessToken, apiKey}) {
       },
     };
 
-    await fetch(url + '/' + venue.id, deleteOption);
+    await fetch(url + "/" + venue.id, deleteOption);
     setTimeout(reRoute(window.location.pathname), timeout);
   }
 
@@ -104,78 +104,78 @@ function EditVenue({venue, accessToken, apiKey}) {
           <Modal.Title>Update venue</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(OnSubmit)} onChange={clearMessage} className='form-size my-2'>
+          <form onSubmit={handleSubmit(OnSubmit)} onChange={clearMessage} className="form-size my-2">
             <div className={type}>{message}</div>
             <div>
-              <label htmlFor="name" className='form-label mt-2'>Venue name</label>
-              <input id='name' name='name' className='form-control' defaultValue={venue['name']} {...register('name')} />
-              <p className='text-danger'>{errors.name?.message}</p>
+              <label htmlFor="name" className="form-label mt-2">Venue name</label>
+              <input id="name" name="name" className="form-control" defaultValue={venue["name"]} {...register("name")} />
+              <p className="text-danger">{errors.name?.message}</p>
             </div>
             <div>
-              <label htmlFor="description" className='form-label'>Description</label>
-              <textarea id='description' name='description' className='form-control' defaultValue={venue['description']} {...register('description')}></textarea>
-              <p className='text-danger'>{errors.description?.message}</p>
+              <label htmlFor="description" className="form-label">Description</label>
+              <textarea id="description" name="description" className="form-control" defaultValue={venue["description"]} {...register("description")}></textarea>
+              <p className="text-danger">{errors.description?.message}</p>
             </div>
             <div>
-              <label htmlFor="media" className='form-label'>Image url <span className='fst-italic'>(separated by comma)</span></label>
-              <input id='media' name='media' className='form-control' defaultValue={createString(venue['media'])} {...register('media')} />
-              <p className='text-danger'>{errors.media?.message}</p>
+              <label htmlFor="media" className="form-label">Image url <span className="fst-italic">(separated by comma)</span></label>
+              <input id="media" name="media" className="form-control" defaultValue={createString(venue["media"])} {...register("media")} />
+              <p className="text-danger">{errors.media?.message}</p>
             </div>
             <div>
-              <label htmlFor="price" className='form-label'>Price</label>
-              <input id='price' name='price' className='form-control' defaultValue={venue['price']} {...register('price')} />
-              <p className='text-danger'>{errors.price?.message}</p>
+              <label htmlFor="price" className="form-label">Price</label>
+              <input id="price" name="price" className="form-control" defaultValue={venue["price"]} {...register("price")} />
+              <p className="text-danger">{errors.price?.message}</p>
             </div>
             <div>
-              <label htmlFor="guest" className='form-label'>Maximum number of guests</label>
-              <input id='guest' name='guest' className='form-control' defaultValue={venue['maxGuests']} {...register('guest')} />
-              <p className='text-danger'>{errors.guest?.message}</p>
+              <label htmlFor="guest" className="form-label">Maximum number of guests</label>
+              <input id="guest" name="guest" className="form-control" defaultValue={venue["maxGuests"]} {...register("guest")} />
+              <p className="text-danger">{errors.guest?.message}</p>
             </div>
             <div>
-              <label htmlFor="rating" className='form-label'>Rating</label>
-              <input id='rating' name='rating' className='form-control' defaultValue={venue['rating']} {...register('rating')} />
-              <p className='text-danger'>{errors.rating?.message}</p>
+              <label htmlFor="rating" className="form-label">Rating</label>
+              <input id="rating" name="rating" className="form-control" defaultValue={venue["rating"]} {...register("rating")} />
+              <p className="text-danger">{errors.rating?.message}</p>
             </div>
-            <div className='my-3'>
-              <div className='mb-3'>Services</div>
-              <label htmlFor="breakfast" className='ms-3'>
-                <input type='checkbox' className='form-check-input' name='breakfast' id='breakfast' defaultChecked={venue['meta']['breakfast']} {...register('breakfast')}/>
-                <span className='ms-1'>Breakfast</span>
+            <div className="my-3">
+              <div className="mb-3">Services</div>
+              <label htmlFor="breakfast" className="ms-3">
+                <input type="checkbox" className="form-check-input" name="breakfast" id="breakfast" defaultChecked={venue["meta"]["breakfast"]} {...register("breakfast")}/>
+                <span className="ms-1">Breakfast</span>
               </label>
-              <label htmlFor="wifi" className='ms-2'>
-                <input type='checkbox' className='form-check-input' name='wifi' id='wifi' defaultChecked={venue['meta']['wifi']} {...register('wifi')}/>
-                <span className='ms-1'>Wifi</span>
+              <label htmlFor="wifi" className="ms-2">
+                <input type="checkbox" className="form-check-input" name="wifi" id="wifi" defaultChecked={venue["meta"]["wifi"]} {...register("wifi")}/>
+                <span className="ms-1">Wifi</span>
               </label>
-              <label htmlFor="parking" className='ms-2'>
-                <input type='checkbox' className='form-check-input' name='parking' id='parking' defaultChecked={venue['meta']['parking']} {...register('parking')}/>
-                <span className='ms-1'>Parking</span>
+              <label htmlFor="parking" className="ms-2">
+                <input type="checkbox" className="form-check-input" name="parking" id="parking" defaultChecked={venue["meta"]["parking"]} {...register("parking")}/>
+                <span className="ms-1">Parking</span>
               </label>
-              <label htmlFor="pets" className='ms-2'>
-                <input type='checkbox' className='form-check-input' name='pets' id='pets' defaultChecked={venue['meta']['pets']} {...register('pets')}/>
-                <span className='ms-1'>Pets</span>
+              <label htmlFor="pets" className="ms-2">
+                <input type="checkbox" className="form-check-input" name="pets" id="pets" defaultChecked={venue["meta"]["pets"]} {...register("pets")}/>
+                <span className="ms-1">Pets</span>
               </label>
             </div>
-            <div className='my-3'>
-              <div className='mb-3'>Location</div>
-              <div className='ms-2'>
+            <div className="my-3">
+              <div className="mb-3">Location</div>
+              <div className="ms-2">
                 <div className="input-group">
                   <span className="input-group-text" id="address">Address</span>
-                  <input type="text" className="form-control" placeholder="Address" aria-label="address" aria-describedby="address" defaultValue={venue['location']['address']} {...register('address')}/>
+                  <input type="text" className="form-control" placeholder="Address" aria-label="address" aria-describedby="address" defaultValue={venue["location"]["address"]} {...register("address")}/>
                 </div>
-                <p className='text-danger'>{errors.address?.message}</p>
+                <p className="text-danger">{errors.address?.message}</p>
                 <div className="input-group">
                   <span className="input-group-text" id="city">City</span>
-                  <input type="text" className="form-control" placeholder="City" aria-label="city" aria-describedby="city" defaultValue={venue['location']['city']} {...register('city')}/>
+                  <input type="text" className="form-control" placeholder="City" aria-label="city" aria-describedby="city" defaultValue={venue["location"]["city"]} {...register("city")}/>
                 </div>
-                <p className='text-danger'>{errors.city?.message}</p>
+                <p className="text-danger">{errors.city?.message}</p>
                 <div className="input-group">
                   <span className="input-group-text" id="country">Country</span>
-                  <input type="text" className="form-control" placeholder="country" aria-label="country" aria-describedby="country" defaultValue={venue['location']['country']} {...register('country')}/>
+                  <input type="text" className="form-control" placeholder="country" aria-label="country" aria-describedby="country" defaultValue={venue["location"]["country"]} {...register("country")}/>
                 </div>
-                <p className='text-danger'>{errors.country?.message}</p>
+                <p className="text-danger">{errors.country?.message}</p>
               </div>
             </div>
-            <div className='text-center'>
+            <div className="text-center">
               <Button onClick={handleSubmit(OnSubmit)} className="mt-2" variant="primary" type="submit" size="sm">
                 Save Changes
               </Button>
