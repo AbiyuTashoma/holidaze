@@ -1,21 +1,25 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, act, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import DisplayVenue from ".";
 import { aVenueResponse } from "../../../mockData/aVenueResponse";
 import { accessToken, apiKey, managerName } from "../../../mockData/userData";
 
 describe("DisplayVenue()", () => {
-    test("it displays a venue", () => {
-        render(
-            <MemoryRouter initialEntries={["/id"]}>
-                <Routes>
-                    <Route 
-                        path="/id" 
-                        element={DisplayVenue(aVenueResponse, managerName, accessToken, apiKey)} />
-                </Routes>
-            </MemoryRouter>
-        );
+    test("it displays a venue", async () => {
+        await act(async() => {
+            render(
+                <MemoryRouter initialEntries={["/id"]}>
+                    <Routes>
+                        <Route 
+                            path="/id" 
+                            element={DisplayVenue(aVenueResponse, managerName, accessToken, apiKey)} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        });
 
+        const unAvailableDate = "16/01/2025 - 18/01/2025";
+        const availableDate = "03/02/2025 - 05/02/2025";
         const image = screen.getAllByRole("img");
         const editButton = screen.getByTestId("editButton");
         const venueName = screen.getByText("Vineyard");
@@ -28,6 +32,10 @@ describe("DisplayVenue()", () => {
         const maxGuests = screen.getByTestId("maxGuests");
         const bookButton = screen.getByTestId("bookButton");
         const bookings = screen.getAllByTestId("bookings");
+        const guests = screen.getByLabelText("Guests");
+        const date = screen.getByLabelText("Select dates");
+        const dateError = screen.getByTestId("dateError");
+        const guestsError = screen.getByTestId("guestsError");
 
         image.map((img, index) => 
             expect(img).toHaveAttribute("src", aVenueResponse["media"][index]["url"])
@@ -49,5 +57,20 @@ describe("DisplayVenue()", () => {
             expect(book).toHaveTextContent((new Date(aVenueResponse["bookings"][index]["dateTo"])).toDateString());
             expect(book).toHaveTextContent(aVenueResponse["bookings"][index]["guests"]);
         });
+
+        await act(async() => {
+            fireEvent.change(date, {target: {value: unAvailableDate}});
+            fireEvent.blur(date);
+        });
+
+        expect(dateError).toHaveTextContent("Dates are booked, choose other dates.");
+
+        await act(async() => {
+            fireEvent.change(guests, {target: {value: `${aVenueResponse["maxGuests"] + 10}`}});
+            fireEvent.change(date, {target: {value: availableDate}});
+            fireEvent.click(bookButton);                   
+        });
+        expect(dateError).toHaveClass("d-none");
+        expect(guestsError).toHaveTextContent("Maximum number of guests is");
     });
 })

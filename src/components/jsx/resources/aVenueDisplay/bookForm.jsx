@@ -71,12 +71,12 @@ function BookForm({venue, accessToken, apiKey}) {
         <label htmlFor="guests" className="form-label mt-1">Guests</label>
         <div>
           <input type="number" id="guests" name="guests" className="form-control guests" {...register("guests")}/>
-          <p className="text-danger">{errors.guests?.message}</p>
+          <p className="text-danger" data-testid="guestsError">{errors.guests?.message}</p>
         </div>
       </div>
       <Row className="mb-3">
         <div className="mt-2">
-          <label className="me-3 form-label" htmlFor="dates">Select dates</label>
+          <label className="me-3 form-label" htmlFor="datePickerDates">Select dates</label>
           <DatePicker
             id="datePickerDates"
             showIcon
@@ -102,7 +102,7 @@ function BookForm({venue, accessToken, apiKey}) {
         <div>
           {Price(startDate, endDate, invalid, venue["price"])}
         </div>
-        <div className={invalid ? "d-block text-danger" : "d-none"}>{feedback}</div>
+        <div className={invalid ? "d-block text-danger" : "d-none"} data-testid="dateError">{feedback}</div>
       </Row>
       {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)} data-testid={"bookButton"}/> : <Link to={"/login"} className="btn btn-primary" data-testid={"bookAnchor"}>Book</Link> }
       <div className={type}>{message}</div>
