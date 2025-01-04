@@ -24,7 +24,7 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
       },
     };
 
-    await fetch(bookingsUrl + '/' + id, deleteOption);
+    await fetch(bookingsUrl + "/" + id, deleteOption);
     setTimeout(reRoute(window.location.pathname), timeout);
   }
   return (
@@ -33,9 +33,9 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
         {bookingsList.map((booking) => 
           <Col className="mb-3" key={booking.id}>
             <Col className="position-relative">
-              <Link to={'/' + booking["venue"].id}>
-                {ImageCarousel(booking["venue"]['media'])}          
-                {StarRating(booking["venue"]['rating'])}
+              <Link to={"/" + booking["venue"].id}>
+                {ImageCarousel(booking["venue"]["media"])}          
+                {StarRating(booking["venue"]["rating"])}
               </Link>
             </Col>
             <Col>
@@ -45,7 +45,7 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
                 <div>Date out: {(new Date(booking["dateTo"])).toDateString()}</div>
                 <div>Guests: {booking["guests"]}</div>
                 <div className="my-2">
-                  <Link to={'/' + booking["venue"].id} className="btn btn-primary btn-sm">View venue</Link>
+                  <Link to={"/" + booking["venue"].id} className="btn btn-primary btn-sm">View venue</Link>
                   <Button className="ms-2" variant="secondary" onClick={() => handleDelete(booking.id)} size="sm">Cancel booking</Button>
                 </div>
               </div>

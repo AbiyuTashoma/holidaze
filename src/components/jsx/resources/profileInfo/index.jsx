@@ -84,10 +84,10 @@ export default function ProfileInfo() {
         </Modal.Header>
         <Modal.Body>
           <div className={type}>{message}</div>
-          <label htmlFor="avatar" className='form-label fst-italic'>Avatar url</label>
-          <input id='avatar' name='avatar' className='form-control' defaultValue={avatar} {...register('avatar')} onChange={clearMessage}/>
-          <p className='text-danger'>{errors.avatar?.message}</p>
-          <div className='text-center'>
+          <label htmlFor="avatar" className="form-label fst-italic">Avatar url</label>
+          <input id="avatar" name="avatar" className="form-control" defaultValue={avatar} {...register("avatar")} onChange={clearMessage}/>
+          <p className="text-danger">{errors.avatar?.message}</p>
+          <div className="text-center">
             <Button variant="primary" type="submit" onClick={handleSubmit(OnSubmit)}>
               Save Changes
             </Button>

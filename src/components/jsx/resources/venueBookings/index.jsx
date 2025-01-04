@@ -3,9 +3,9 @@ import { Col, Container, Row } from "react-bootstrap";
 function VenueBookings ({venue}) {  
   return (
     <Container className="mb-4">
-      {venue['bookings'].length ? 
+      {venue["bookings"].length ? 
       <Row xs="1" sm="2" md="3" lg="4">
-        {venue['bookings'].map((booking) => 
+        {venue["bookings"].map((booking) => 
           <Col className="mb-3" key={booking.id}>
               <div className="pt-2" data-testid="bookings">
                 <div>Name: {booking["customer"]["name"]}</div>
@@ -16,7 +16,7 @@ function VenueBookings ({venue}) {
           </Col>
         )}
       </Row>
-      : <div className='my-3'>There are no bookings yet.</div>}
+      : <div className="my-3">There are no bookings yet.</div>}
     </Container>
   );
 }

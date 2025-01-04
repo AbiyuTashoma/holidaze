@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { baseUrl } from '../../../js/constants';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { baseUrl } from "../../../js/constants";
 
 /**
  * creates page store
