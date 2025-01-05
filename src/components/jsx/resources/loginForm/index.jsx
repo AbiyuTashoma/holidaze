@@ -85,15 +85,15 @@ function LoginForm () {
       <div>
         <label htmlFor="email" className="form-label">Email</label>
         <input id="email" name="email" className="form-control" {...register("email")} />
-        <p className="text-danger">{errors.email?.message}</p>
+        <p className="text-danger" data-testid="emailError">{errors.email?.message}</p>
       </div>
       <div>
         <label htmlFor="password" className="form-label">Password</label>
         <input type="password" id="password" name="password" className="form-control" {...register("password")} />
-        <p className="text-danger">{errors.password?.message}</p>
+        <p className="text-danger" data-testid="passwordError">{errors.password?.message}</p>
       </div>
-      <Button type="submit">Login</Button>
-      <Link to={"/register"} className="btn btn-secondary btn-sm ms-4">Register here</Link>
+      <Button type="submit" data-testid="loginButton">Login</Button>
+      <Link to={"/register"} className="btn btn-secondary btn-sm ms-4" data-testid="registerLink">Register here</Link>
     </form>
   );
 }

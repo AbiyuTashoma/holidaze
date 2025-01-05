@@ -6,13 +6,13 @@ const schema = yup
       .string()
       .email()
       .matches(/^[\w-.]+@stud.noroff.no*$/, {
-        message: "Enter a proper email address",
+        message: "Enter a proper email address.",
       })
-      .required("Enter your email"),
+      .required("Enter your email."),
     password: yup
       .string()
       .min(8, "Password should be at least 8 characters.")
-      .required("Enter a password"),
+      .required("Enter a password."),
   })
   .required();
 
