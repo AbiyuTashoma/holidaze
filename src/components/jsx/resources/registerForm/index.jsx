@@ -59,7 +59,7 @@ function RegisterForm () {
       <h1>Register</h1>
       <div className={type}>{message}</div>
       <div>
-        <label htmlFor="name" className="form-label">Name</label>
+        <label htmlFor="name" className="form-label">Username</label>
         <input id="name" name="name" className="form-control" {...register("name")} />
         <p className="text-danger">{errors.name?.message}</p>
       </div>
