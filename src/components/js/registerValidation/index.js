@@ -7,8 +7,8 @@ const schema = yup
       .matches(/^[a-zA-Z0-9_]*$/, {
         message: "Only a-z A-Z 0-9 and _ characters are allowed",
       })
-      .min(3, "Name should be at least 3 characters.")
-      .required("Enter your name"),
+      .min(3, "Username should be at least 3 characters.")
+      .required("Enter your a username"),
     email: yup
       .string()
       .email()
