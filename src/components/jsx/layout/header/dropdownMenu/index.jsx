@@ -16,9 +16,9 @@ function NavMenu() {
   }
 
   return (
-    <Dropdown className="position-relative">
+    <Dropdown className="position-relative me-2 me-md-3 me-xxl-5">
       <span className={name? "user d-block" : "d-none"}>{name? name.slice(0,2).toUpperCase(): null}</span>
-      <Dropdown.Toggle id="dropdown-basic">
+      <Dropdown.Toggle id="dropdown-basic" className="btn-sm">
         <svg width="40px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 18L20 18" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round"/>
           <path d="M4 12L20 12" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round"/>
