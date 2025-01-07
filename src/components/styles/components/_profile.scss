@@ -9,3 +9,8 @@
 .nav-tabs .nav-link {
   padding: 3px 5px;
 }
+
+.nav-tabs .nav-link.active {
+  background-color: #FFD7D7;
+  border-color: transparent;
+}
