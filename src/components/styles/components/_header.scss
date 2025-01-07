@@ -34,11 +34,12 @@
 
 .user {
   position: absolute;
-  right: 78px;
-  top: 5px;
+  right: 68px;
+  top: 4px;
   border: solid thin $brand-red;
   border-radius: 5px 0 0 5px;
   padding: 2px 4px;
+  font-size: smaller;
 }
 
 @media (max-width: 576px) {
