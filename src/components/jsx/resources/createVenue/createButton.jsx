@@ -17,10 +17,12 @@ function CreateButton() {
 
   return (
     <div>
-      <div className="d-flex justify-content-end mx-2 mt-3">
-        <Button className={venueManager? "d-block":"d-none"} onClick={() => setOpen(!open)} aria-controls="collapse" aria-expanded={open}>
-          Create venue
-        </Button>
+      <div className="d-flex justify-content-end my-3 me-2 me-md-3 me-xxl-5">
+        { venueManager ? 
+          <Button className={venueManager? "d-block btn-sm":"d-none"} onClick={() => setOpen(!open)} aria-controls="collapse" aria-expanded={open}>
+            Create venue
+          </Button>:<></>
+        }
       </div>
       <Collapse in={open}>
         <div id="collapse">
