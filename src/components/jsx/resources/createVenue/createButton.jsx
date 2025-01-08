@@ -17,7 +17,7 @@ function CreateButton() {
 
   return (
     <div>
-      <div className="d-flex justify-content-end my-3 me-2 me-md-3 me-xxl-5">
+      <div className="d-flex justify-content-end mt-3 me-2 me-md-3 me-xxl-5">
         { venueManager ? 
           <Button className={venueManager? "d-block btn-sm":"d-none"} onClick={() => setOpen(!open)} aria-controls="collapse" aria-expanded={open}>
             Create venue
