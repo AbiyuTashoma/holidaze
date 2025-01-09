@@ -1,3 +1,5 @@
+import { differenceInCalendarDays } from "date-fns";
+
 /**
  * Validates whether the selected dates are valid or not *
  * @param {Date} sDate start date
@@ -6,7 +8,9 @@
  * @returns {[Boolean, String]} [validity of start and end date, error message]
  */
 function validateDates(sDate, eDate, exDates) {
-  if (!Boolean(sDate) || !Boolean(eDate)) {
+  const days = differenceInCalendarDays(eDate, sDate);
+
+  if (!Boolean(sDate) || !Boolean(eDate) || days < 1) {
     return [true, "Select valid dates"];
   } else {
     let invalidDate = false;
