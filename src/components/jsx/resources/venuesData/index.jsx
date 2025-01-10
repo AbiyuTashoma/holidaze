@@ -36,7 +36,6 @@ function VenuesData() {
     return <Error />;
   }
 
-  console.log(apiData);
   updateNextPage(apiData["meta"]["nextPage"]);
   updatePrevPage(apiData["meta"]["previousPage"]);
   return VenuesList(apiData["data"], name, accessToken, apiKey);
