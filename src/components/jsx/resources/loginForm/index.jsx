@@ -41,7 +41,6 @@ function LoginForm () {
 
     const resp = await api(loginUrl, loginOption);
 
-    console.log(resp);
     if (resp["data"]) {
       updateName(resp["data"]["name"]);
       updateAccessToken(resp["data"]["accessToken"]);
@@ -95,8 +94,9 @@ function LoginForm () {
         <input type="password" id="password" name="password" className="form-control" {...register("password")} />
         <p className="text-danger" data-testid="passwordError">{errors.password?.message}</p>
       </div>
-      <Button type="submit" data-testid="loginButton">Login</Button>
-      <Link to={"/register"} className="btn btn-secondary btn-sm ms-4" data-testid="registerLink">Register here</Link>
+      <Button type="submit" className="me-3" data-testid="loginButton">Login</Button>
+      <span>Are you a new user?</span>
+      <Link to={"/register"} className="ms-1" data-testid="registerLink">Register here</Link>
     </form>
   );
 }
