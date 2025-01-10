@@ -41,6 +41,7 @@ function LoginForm () {
 
     const resp = await api(loginUrl, loginOption);
 
+    console.log(resp);
     if (resp["data"]) {
       updateName(resp["data"]["name"]);
       updateAccessToken(resp["data"]["accessToken"]);
@@ -61,7 +62,9 @@ function LoginForm () {
       return;
     }
     else {
-      setApiData(["Unknown error occurred", "text-danger"]);
+      resp["errors"][0]["message"] ? 
+        setApiData([resp["errors"][0]["message"], "text-danger"]) :
+        setApiData(["Unknown error occurred", "text-danger"]);
       return;
     }
   }

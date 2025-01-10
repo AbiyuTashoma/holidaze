@@ -37,7 +37,9 @@ function RegisterForm () {
       return;
     }
     else {
-      setApiData(["Unknown error occurred", "text-danger"]);
+      resp["errors"][0]["message"] ? 
+        setApiData([resp["errors"][0]["message"], "text-danger"]) :
+        setApiData(["Unknown error occurred", "text-danger"]);
       return;
     }
   }
