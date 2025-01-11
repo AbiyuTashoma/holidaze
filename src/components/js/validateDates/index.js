@@ -21,7 +21,9 @@ function validateDates(sDate, eDate, exDates) {
           new Date(item["start"]) > new Date(sDate))
     );
 
-    return [invalidDate, "Dates are booked, choose other dates."];
+    return invalidDate
+      ? [invalidDate, "Dates are booked, choose other dates."]
+      : [false, ""];
   }
 }
 

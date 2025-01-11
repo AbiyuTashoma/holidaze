@@ -18,7 +18,7 @@ describe("DisplayVenue()", () => {
             );
         });
 
-        const unAvailableDate = "16/01/2025 - 18/01/2025";
+        const unAvailableDate = "16/01/2025 - 31/01/2025";
         const availableDate = "03/02/2025 - 05/02/2025";
         const image = screen.getAllByRole("img");
         const editButton = screen.getByTestId("editButton");
@@ -32,8 +32,9 @@ describe("DisplayVenue()", () => {
         const maxGuests = screen.getByTestId("maxGuests");
         const bookButton = screen.getByTestId("bookButton");
         const bookings = screen.getAllByTestId("bookings");
-        const guests = screen.getByLabelText("Guests");
+        const guests = screen.getByLabelText("Number of guests");
         const date = screen.getByLabelText("Select dates");
+        const priceSummary = screen.getByTestId("priceSummary");
         const dateError = screen.getByTestId("dateError");
         const guestsError = screen.getByTestId("guestsError");
 
@@ -49,6 +50,7 @@ describe("DisplayVenue()", () => {
         expect(breakfast).toBeInTheDocument;
         expect(pets).toBeInTheDocument;
         expect(maxGuests).toHaveTextContent(aVenueResponse["maxGuests"]);
+        expect(guests).toHaveDisplayValue(aVenueResponse["maxGuests"]);
         expect(bookButton).toHaveAttribute("type", "submit");
         expect(bookings).toHaveLength(aVenueResponse["bookings"].length);
         bookings.map((book, index) => {
@@ -59,18 +61,26 @@ describe("DisplayVenue()", () => {
         });
 
         await act(async() => {
+            fireEvent.change(guests, {target: {value: `${aVenueResponse["maxGuests"] + 10}`}});
+            fireEvent.click(guests);
             fireEvent.change(date, {target: {value: unAvailableDate}});
             fireEvent.blur(date);
         });
-
         expect(dateError).toHaveTextContent("Dates are booked, choose other dates.");
+        expect(guestsError).toHaveTextContent("Maximum number of guests is " + aVenueResponse["maxGuests"]);
+        expect(priceSummary).toHaveTextContent("");
+        expect(bookButton).toHaveAttribute("disabled");
 
         await act(async() => {
-            fireEvent.change(guests, {target: {value: `${aVenueResponse["maxGuests"] + 10}`}});
+            fireEvent.change(guests, {target: {value: `${aVenueResponse["maxGuests"]}`}});
+            fireEvent.click(guests);
             fireEvent.change(date, {target: {value: availableDate}});
-            fireEvent.click(bookButton);                   
+            fireEvent.blur(date);
         });
-        expect(dateError).toHaveClass("d-none");
-        expect(guestsError).toHaveTextContent("Maximum number of guests is");
+        expect(dateError).toHaveTextContent("");
+        expect(guestsError).toHaveTextContent("");
+        expect(priceSummary).toHaveTextContent("5980 NOK for 2 days ✓");
+        expect(bookButton).not.toHaveAttribute("disabled");
+
     });
 })
