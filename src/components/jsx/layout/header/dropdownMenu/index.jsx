@@ -28,8 +28,8 @@ function NavMenu() {
       <Dropdown.Menu align="end">
         <Dropdown.Item href="/">Home</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/login">Login</Dropdown.Item>
-        <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">Profile</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/register">Register</Dropdown.Item>
+        <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">My profile</Dropdown.Item>
         <Dropdown.Item href="/contact">Contact us</Dropdown.Item>
         <Dropdown.Item href="/about">About us</Dropdown.Item>
         <Dropdown.Item className={name? "d-block":"d-none"} onClick={logout} href="/">Logout</Dropdown.Item>

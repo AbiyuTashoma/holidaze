@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../../../js/bookingValidation";
-import { Row } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import reRoute from "../../../js/reRoute/reRoute";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { bookingsUrl, timeout } from "../../../js/constants";
 import api from "../../../js/api";
@@ -25,6 +24,7 @@ function BookForm({venue, accessToken, apiKey}) {
   const excludeDates = getBooking(venue["bookings"]);
 
   const {
+    trigger,
     register,
     handleSubmit,
     formState: { errors },
@@ -70,12 +70,19 @@ function BookForm({venue, accessToken, apiKey}) {
     <form onSubmit={handleSubmit(OnSubmit)}>
       <div className="fw-semibold my-2">Check availability</div>
       <div className="d-flex gap-3 align-items-top">
-        <label htmlFor="guests" className="form-label mt-1">Guests</label>
+        <label htmlFor="guests" className="form-label mt-1">Number of guests</label>
         <div>
-          <input type="number" id="guests" name="guests" className="form-control guests" {...register("guests")}/>
-          <p className="text-danger" data-testid="guestsError">{errors.guests?.message}</p>
+          <input 
+            type="number" 
+            className="form-control guests" 
+            id="guests" name="guests"
+            defaultValue={venue["maxGuests"]}
+            onKeyUp={() => trigger("guests")} 
+            onClick={() => trigger("guests")}
+            {...register("guests")}/>
         </div>
       </div>
+      <p className="text-danger" data-testid="guestsError">{errors.guests?.message}</p>
       <Row className="mb-3">
         <div className="mt-2">
           <label className="me-3 form-label" htmlFor="datePickerDates">Select dates</label>
@@ -101,12 +108,15 @@ function BookForm({venue, accessToken, apiKey}) {
             placeholderText="Select dates"
           />
         </div>
-        <div>
-          {Price(startDate, endDate, invalid, venue["price"])}
+        <div  className="text-danger" data-testid="dateError">{feedback}</div>
+        <div data-testid="priceSummary">
+          {Price(startDate, endDate, invalid || Boolean(errors.guests), venue["price"])}
         </div>
-        <div className={invalid ? "d-block text-danger" : "d-none"} data-testid="dateError">{feedback}</div>
       </Row>
-      {accessToken ? <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)} data-testid={"bookButton"}/> : <Link to={"/login"} className="btn btn-primary" data-testid={"bookAnchor"}>Book</Link> }
+      {accessToken ? 
+        <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)} data-testid={"bookButton"}/> :
+        <Button href="/login" disabled={enableDisable(!invalid && !Boolean(errors.guests))} data-testid={"bookAnchor"}>Book</Button>
+      }
       <div className={type}>{message}</div>
     </form>
   );
