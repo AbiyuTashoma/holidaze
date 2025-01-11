@@ -4,6 +4,7 @@ import reRoute from "../../../js/reRoute/reRoute";
 import { bookingsUrl, timeout } from "../../../js/constants";
 import { Link } from "react-router-dom";
 import ImageCarousel from "../imageCarousel";
+import enableDisable from "../../../js/enableDisable";
 
 /**
  * Displays list of bookings registered by a profile
@@ -44,7 +45,11 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
                 <div data-testid="guests">Guests: {booking["guests"]}</div>
                 <div className="my-2">
                   <Link to={"/" + booking["venue"].id} className="btn btn-primary btn-sm" data-testid="viewButton">View venue</Link>
-                  <Button className="ms-2" variant="secondary" onClick={() => handleDelete(booking.id)} size="sm" data-testid="cancelButton">Cancel booking</Button>
+                  <Button 
+                    className="ms-2" variant="secondary"  size="sm" 
+                    onClick={() => handleDelete(booking.id)} 
+                    disabled={enableDisable(new Date(booking["dateFrom"]) > new Date())}
+                    data-testid="cancelButton">Cancel booking</Button>
                 </div>
               </div>
             </Col>
