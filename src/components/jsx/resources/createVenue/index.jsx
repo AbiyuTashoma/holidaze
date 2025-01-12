@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { timeout, url } from "../../../js/constants";
 import schema from "../../../js/createValidation";
-import api from "../../../js/api";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
 import reRoute from "../../../js/reRoute/reRoute";
 import createMedia from "../../../js/createMedia";
 import createArray from "../../../js/createArray";
+import basicApi from "../../../js/basicApi";
 
 function CreateVenue() {
   const [apiData, setApiData] = useState([null, null]);
@@ -54,7 +54,7 @@ function CreateVenue() {
       },
     };
 
-    const resp = await api(url, venueOption);
+    const resp = await basicApi(url, venueOption);
 
     if (resp["data"]) {
       setApiData(["Venue successfully created", "text-success"]);

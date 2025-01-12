@@ -6,7 +6,7 @@ import schema from "../../../js/updateValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { profilesUrl, timeout } from "../../../js/constants";
-import api from "../../../js/api";
+import basicApi from "../../../js/basicApi";
 
 function ProfileInfo() {
   const { name, accessToken, avatar, apiKey, updateAvatar } = useUser(
@@ -45,7 +45,7 @@ function ProfileInfo() {
       },
     };
 
-    const resp = await api(profilesUrl + name, updateOption);
+    const resp = await basicApi(profilesUrl + name, updateOption);
 
     if (resp["data"]) {
       setApiData(["Change successful", "text-success"]);
