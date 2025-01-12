@@ -1,5 +1,8 @@
 import * as yup from "yup";
 
+/**
+ * Login form validation schema
+ */
 const schema = yup
   .object({
     email: yup

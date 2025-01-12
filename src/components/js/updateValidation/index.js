@@ -1,5 +1,8 @@
 import * as yup from "yup";
 
+/**
+ * Update avatar form validation schema
+ */
 const schema = yup
   .object({
     avatar: yup

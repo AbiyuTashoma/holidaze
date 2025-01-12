@@ -1,5 +1,10 @@
 import * as yup from "yup";
 
+/**
+ * Number of guests validation schema
+ * @param {*} guests maximum number of guests
+ * @returns validation schema
+ */
 function schema(guests) {
   const schemaGuest = yup
     .object({

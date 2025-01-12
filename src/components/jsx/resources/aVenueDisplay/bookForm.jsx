@@ -16,7 +16,7 @@ import Price from "../price";
 function BookForm({venue, accessToken, apiKey}) {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;
-  const [dateStatus, setDateStatus] = useState([null, ""]);
+  const [dateStatus, setDateStatus] = useState([true, ""]);
   const [invalid, feedback] = dateStatus;
   const [dateRange, setDateRange] = useState([new Date(), addDays(new Date(), 3)]);
   const [startDate, endDate] = dateRange;
@@ -110,12 +110,12 @@ function BookForm({venue, accessToken, apiKey}) {
         </div>
         <div  className="text-danger" data-testid="dateError">{feedback}</div>
         <div data-testid="priceSummary">
-          {Price(startDate, endDate, invalid || Boolean(errors.guests), venue["price"])}
+          {Price(startDate, endDate, Boolean(invalid || errors.guests), venue["price"])}
         </div>
       </Row>
       {accessToken ? 
-        <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!invalid)} data-testid={"bookButton"}/> :
-        <Button href="/login" disabled={enableDisable(!invalid && !Boolean(errors.guests))} data-testid={"bookAnchor"}>Book</Button>
+        <input type="submit" id="list-btn" className="btn btn-primary" value="Book" disabled={enableDisable(!Boolean(invalid || errors.guests))} data-testid={"bookButton"}/> :
+        <Button href="/login" disabled={enableDisable(!Boolean(invalid || errors.guests))} data-testid={"bookAnchor"}>Book</Button>
       }
       <div className={type}>{message}</div>
     </form>
