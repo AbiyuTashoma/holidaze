@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { profilesUrl, timeout } from "../../../js/constants";
 import api from "../../../js/api";
 
-export default function ProfileInfo() {
+function ProfileInfo() {
   const { name, accessToken, avatar, apiKey, updateAvatar } = useUser(
     (state) => ({
       name: state.name,
@@ -100,3 +100,5 @@ export default function ProfileInfo() {
     </div>
   );
 }
+
+export default ProfileInfo;
