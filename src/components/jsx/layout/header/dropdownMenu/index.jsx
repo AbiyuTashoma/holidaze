@@ -1,6 +1,7 @@
 import { Dropdown } from "react-bootstrap";
 import useUser from "../../../store/user";
 import { shallow } from "zustand/shallow";
+import reRoute from "../../../../js/reRoute/reRoute";
 
 function NavMenu() {
   const { name, resetUser } = useUser(
@@ -12,6 +13,7 @@ function NavMenu() {
   );
 
   function logout() {
+    reRoute("/");
     resetUser();
   }
 
@@ -32,7 +34,7 @@ function NavMenu() {
         <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">My profile</Dropdown.Item>
         <Dropdown.Item href="/contact">Contact us</Dropdown.Item>
         <Dropdown.Item href="/about">About us</Dropdown.Item>
-        <Dropdown.Item className={name? "d-block":"d-none"} onClick={logout} href="/">Logout</Dropdown.Item>
+        <Dropdown.Item className={name? "d-block":"d-none"} onClick={logout}>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )
