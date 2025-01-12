@@ -1,7 +1,7 @@
 import { Dropdown } from "react-bootstrap";
-import useUser from "../../../store/user";
 import { shallow } from "zustand/shallow";
-import reRoute from "../../../../js/reRoute/reRoute";
+import useUser from "../../../store/user";
+import usePage from "../../../store/page";
 
 function NavMenu() {
   const { name, resetUser } = useUser(
@@ -12,10 +12,12 @@ function NavMenu() {
     shallow
   );
 
-  function logout() {
-    reRoute("/");
-    resetUser();
-  }
+  const { resetPages } = usePage(
+    (state) => ({
+      resetPages: state.resetPages,
+    }),
+    shallow
+  );
 
   return (
     <Dropdown className="position-relative me-2 me-md-3 me-xxl-5">
@@ -28,13 +30,13 @@ function NavMenu() {
         </svg>
       </Dropdown.Toggle>
       <Dropdown.Menu align="end">
-        <Dropdown.Item href="/">Home</Dropdown.Item>
+        <Dropdown.Item href="/" onClick={resetPages}>Home</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/login">Login</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/register">Register</Dropdown.Item>
         <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">My profile</Dropdown.Item>
         <Dropdown.Item href="/contact">Contact us</Dropdown.Item>
         <Dropdown.Item href="/about">About us</Dropdown.Item>
-        <Dropdown.Item className={name? "d-block":"d-none"} onClick={logout}>Logout</Dropdown.Item>
+        <Dropdown.Item className={name? "d-block":"d-none"} href="/" onClick={resetUser}>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )

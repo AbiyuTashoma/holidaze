@@ -17,11 +17,12 @@ function VenuesData() {
     shallow
   );
 
-  const { url, updateNextPage, updatePrevPage } = usePage(
+  const { url, updateNextPage, updatePrevPage, updateTotalPages } = usePage(
     (state) => ({
       url: state.url,
       updateNextPage: state.updateNextPage,
       updatePrevPage: state.updatePrevPage,
+      updateTotalPages: state.updateTotalPages,
     }),
     shallow
   );
@@ -38,6 +39,7 @@ function VenuesData() {
 
   updateNextPage(apiData["meta"]["nextPage"]);
   updatePrevPage(apiData["meta"]["previousPage"]);
+  updateTotalPages(apiData["meta"]["pageCount"]);
   return VenuesList(apiData["data"], name, accessToken, apiKey);
 }
 

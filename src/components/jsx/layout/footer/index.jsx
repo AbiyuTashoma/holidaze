@@ -1,7 +1,8 @@
 import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
+import useUser from "../../store/user";
+import usePage from "../../store/page";
 
 function Footer() {
   const { name } = useUser(
@@ -11,11 +12,18 @@ function Footer() {
     shallow
   );
 
+  const { resetPages } = usePage(
+    (state) => ({
+      resetPages: state.resetPages,
+    }),
+    shallow
+  );
+
   return (
     <footer className="text-center py-3 mt-5">
       <div>&#169; Holidaze 2025</div>
       <ul className="footer-elements d-flex justify-content-between">
-          <li><Link className="footer-link ms-1" to="/">Home</Link></li>
+          <li><Link className="footer-link ms-1" to="/" onClick={resetPages}>Home</Link></li>
           <li className={name ? "d-none" : "footer-link d-block"}><Link className="footer-link" to="/login">Login</Link></li>
           <li className={name ? "d-none" : "footer-link d-block"}><Link className="footer-link" to="/register">Register</Link></li>
           <li><Link className="footer-link" to="/contact">Contact us</Link></li>
