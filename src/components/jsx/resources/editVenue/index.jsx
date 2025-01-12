@@ -4,11 +4,11 @@ import schema from "../../../js/createValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { timeout, url } from "../../../js/constants";
-import api from "../../../js/api";
 import reRoute from "../../../js/reRoute/reRoute";
 import createMedia from "../../../js/createMedia";
 import createArray from "../../../js/createArray";
 import createString from "../../../js/createString";
+import basicApi from "../../../js/basicApi";
 
 function EditVenue({venue, accessToken, apiKey}) {
 
@@ -54,7 +54,7 @@ function EditVenue({venue, accessToken, apiKey}) {
       },
     };
 
-    const resp = await api(url + "/" + venue.id, updateOption);
+    const resp = await basicApi(url + "/" + venue.id, updateOption);
 
     if (resp["data"]) {
       setApiData(["Changed successfully", "text-success"]);

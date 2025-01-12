@@ -3,9 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "react-bootstrap";
 import { defaultAvatar, registerUrl, timeout } from "../../../js/constants";
 import { useState } from "react";
-import api from "../../../js/api";
 import schema from "../../../js/registerValidation";
 import reRoute from "../../../js/reRoute/reRoute";
+import basicApi from "../../../js/basicApi";
 
 function RegisterForm () {
   const [apiData, setApiData] = useState([null, null]);
@@ -28,7 +28,7 @@ function RegisterForm () {
       },
     };
 
-    const resp = await api(registerUrl, registerOption);
+    const resp = await basicApi(registerUrl, registerOption);
 
     if (resp["data"]) {
       setApiData(["Registration successful", "text-success"]);

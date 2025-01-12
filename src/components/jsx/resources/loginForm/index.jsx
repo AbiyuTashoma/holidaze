@@ -2,13 +2,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
-import api from "../../../js/api";
 import schema from "../../../js/loginValidation";
 import { apiKeyUrl, loginUrl } from "../../../js/constants";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
 import reRoute from "../../../js/reRoute/reRoute";
 import { Link } from "react-router-dom";
+import basicApi from "../../../js/basicApi";
 
 function LoginForm () {
   const { updateName, updateAccessToken, updateAvatar, updateVenueManager, updateKey } = useUser(
@@ -39,7 +39,7 @@ function LoginForm () {
       },
     };
 
-    const resp = await api(loginUrl, loginOption);
+    const resp = await basicApi(loginUrl, loginOption);
 
     if (resp["data"]) {
       updateName(resp["data"]["name"]);
@@ -47,7 +47,7 @@ function LoginForm () {
       updateAvatar(resp["data"]["avatar"] ? resp["data"]["avatar"]["url"] : "");
       updateVenueManager(resp["data"]["venueManager"]);
       setApiData(["Login successful", "text-success"]);
-      updateKey(await api(apiKeyUrl, {
+      updateKey(await basicApi(apiKeyUrl, {
         method: "POST",
         body: JSON.stringify({}),
         headers: {

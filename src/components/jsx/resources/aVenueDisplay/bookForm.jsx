@@ -5,13 +5,13 @@ import { Button, Row } from "react-bootstrap";
 import reRoute from "../../../js/reRoute/reRoute";
 import { useState } from "react";
 import { bookingsUrl, timeout } from "../../../js/constants";
-import api from "../../../js/api";
 import { addDays } from "date-fns";
 import DatePicker from "react-datepicker";
 import getBooking from "../../../js/getBooking";
 import enableDisable from "../../../js/enableDisable";
 import validateDates from "../../../js/validateDates";
 import Price from "../price";
+import basicApi from "../../../js/basicApi";
 
 function BookForm({venue, accessToken, apiKey}) {
   const [apiData, setApiData] = useState([null, null]);
@@ -50,7 +50,7 @@ function BookForm({venue, accessToken, apiKey}) {
       },
     };
 
-    const resp = await api(bookingsUrl, bookOption);
+    const resp = await basicApi(bookingsUrl, bookOption);
 
     if (resp["data"]) {
       setApiData(["Venue successfully booked", "text-success"]);
