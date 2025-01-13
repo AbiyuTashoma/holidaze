@@ -1,6 +1,9 @@
 import * as yup from "yup";
-import createArray from "../createArray";
+import validateUrl from "../validateUrls";
 
+/**
+ * Create venue form validation schema
+ */
 const schema = yup
   .object({
     name: yup
@@ -27,7 +30,7 @@ const schema = yup
     media: yup
       .string()
       .test("media", "Enter valid url separated by comma (,)", (value) =>
-        validUrl(value)
+        validateUrl(value)
       ),
     rating: yup
       .number()
@@ -45,23 +48,5 @@ const schema = yup
     country: yup.string().max(50),
   })
   .required();
-
-/**
- * Validates list of urls created from a string input
- * @param {String} value url value input
- * @returns {Boolean}
- */
-function validUrl(value) {
-  const urlMatch =
-    /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
-  const urlArray = createArray(value);
-  let valid = true;
-
-  if (value) {
-    urlArray.map((url) => (valid &&= urlMatch.test(url)));
-  }
-
-  return valid;
-}
 
 export default schema;
