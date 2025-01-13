@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 
+/**
+ * Makes an api request
+ * @param {URL} link url of the api request
+ * @param {Object} reqOption request options
+ * @returns {Object} response data and status
+ */
 function VenueApi(link, reqOption) {
   const [apiData, setApiData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
