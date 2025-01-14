@@ -1,8 +1,8 @@
 import { screen, render } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import VenuesList from ".";
-import { accessToken, apiKey, managerName } from "../../../mockData/userData";
-import { venuesResponse } from "../../../mockData/venuesResponse";
+import { accessToken, apiKey, managerName } from "../../../resources/mockData/userData";
+import { venuesResponse } from "../../../resources/mockData/venuesResponse";
 import { noImageUrl } from "../../../js/constants";
 
 describe("VenuesList()", () => {

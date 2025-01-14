@@ -10,6 +10,10 @@ import createMedia from "../../../js/createMedia";
 import createArray from "../../../js/createArray";
 import basicApi from "../../../js/basicApi";
 
+/**
+ * Creates create venue form
+ * @returns {HTMLElement} create venue form
+ */
 function CreateVenue() {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;
@@ -63,7 +67,9 @@ function CreateVenue() {
       return;
     }
     else {
-      setApiData(["Unknown error occurred", "text-danger"]);
+      resp["errors"][0]["message"] ? 
+        setApiData([resp["errors"][0]["message"], "text-danger"]) :
+        setApiData(["Unknown error occurred", "text-danger"]);
       return;
     }
   }

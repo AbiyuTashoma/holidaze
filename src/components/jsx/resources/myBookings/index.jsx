@@ -6,6 +6,10 @@ import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
 import DisplayBookings from "../displayBookings";
 
+/**
+ * Fetches a users' booking data
+ * @returns {HTMLElement} a users' booking
+ */
 function MyBookings() {
   const { name, accessToken, apiKey } = useUser(
     (state) => ({

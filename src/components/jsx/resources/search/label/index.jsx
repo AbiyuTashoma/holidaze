@@ -1,3 +1,7 @@
+/**
+ * Creates a search form label
+ * @returns {HTMLElement} a search form label
+ */
 function SearchLabel() {
   return (
     <label className="input-group-text" htmlFor="search">

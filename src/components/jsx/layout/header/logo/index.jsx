@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Creates Holidaze company logo
+ * @returns {HTMLElement} Holidaze company logo
+ */
 function Logo() {
   return (
     <div className="d-flex align-items-center gap-2 ms-2 ms-md-3 ms-xxl-5">

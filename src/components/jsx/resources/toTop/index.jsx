@@ -1,5 +1,9 @@
 import { Button } from "react-bootstrap";
 
+/**
+ * Creates a back to top button
+ * @returns {HTMLElement} back to top button
+ */
 function ToTop() {
   return (
     <div className="d-flex justify-content-center my-2">

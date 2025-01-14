@@ -10,6 +10,11 @@ import createArray from "../../../js/createArray";
 import createString from "../../../js/createString";
 import basicApi from "../../../js/basicApi";
 
+/**
+ * Creates an edit venue form
+ * @param {Object {venue}, String {accessToken}, Object {apiKey}} param0 
+ * @returns {HTMLElement} an edit venue form
+ */
 function EditVenue({venue, accessToken, apiKey}) {
 
   const [show, setShow] = useState(false);
@@ -62,7 +67,9 @@ function EditVenue({venue, accessToken, apiKey}) {
       return;
     }
     else {
-      setApiData(["Unknown error occurred", "text-danger"]);
+      resp["errors"][0]["message"] ? 
+        setApiData([resp["errors"][0]["message"], "text-danger"]) :
+        setApiData(["Unknown error occurred", "text-danger"]);
       return;
     }
   }

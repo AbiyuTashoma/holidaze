@@ -7,6 +7,14 @@ import EditVenue from "../editVenue";
 import VenueBookings from "../venueBookings";
 import ImageCarousel from "../imageCarousel";
 
+/**
+ * Creates a venue display elements
+ * @param {Object} aVenue a venue to display
+ * @param {String} name username of the logged in customer
+ * @param {String} accessToken access token of the user
+ * @param {Object} apiKey authentication key of the user
+ * @returns {HTMLElement} a venue display elements
+ */
 function DisplayVenue(aVenue, name, accessToken, apiKey) {
   const venueOwner = Boolean(aVenue["owner"]["name"] === name);
 

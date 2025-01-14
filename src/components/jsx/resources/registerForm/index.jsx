@@ -7,6 +7,10 @@ import schema from "../../../js/registerValidation";
 import reRoute from "../../../js/reRoute/reRoute";
 import basicApi from "../../../js/basicApi";
 
+/**
+ * Creates a register form
+ * @returns {HTMLElement} a register form
+ */
 function RegisterForm () {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;

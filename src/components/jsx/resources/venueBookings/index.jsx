@@ -1,5 +1,10 @@
 import { Col, Container, Row } from "react-bootstrap";
 
+/**
+ * Displays list of bookings registered on a venue
+ * @param {Object} param0.venue a venue object
+ * @returns {HTMLElement} bookings list of a venue
+ */
 function VenueBookings ({venue}) {  
   return (
     <Container className="mb-4">

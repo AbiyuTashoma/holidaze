@@ -4,6 +4,10 @@ import { shallow } from "zustand/shallow";
 import urlUpdater from "../../../js/urlUpdater";
 import enableDisable from "../../../js/enableDisable";
 
+/**
+ * Creates previous next navigation elements
+ * @returns {HTMLElement} previous next navigation
+ */
 function PrevNextPage() {
     const { url, nextPage, prevPage, updateUrl } = usePage(
       (state) => ({

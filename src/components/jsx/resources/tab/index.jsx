@@ -6,8 +6,11 @@ import { shallow } from "zustand/shallow";
 import MyVenues from "../myVenues";
 import MyBookings from "../myBookings";
 
+/**
+ * Creates a tab of bookings, venues and create venue elements
+ * @returns {HTMLElement} tab element
+ */
 function UserTab() {
-  
   const { venueManager } = useUser(
     (state) => ({
       venueManager: state.venueManager,

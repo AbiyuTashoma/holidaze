@@ -1,3 +1,8 @@
+/**
+ * Displays a venue's services
+ * @param {Object} facility a venue services meta-data
+ * @returns {HTMLElement} a venue's services
+ */
 function Facility(facility) {
   return (
     <div className="my-2"> 

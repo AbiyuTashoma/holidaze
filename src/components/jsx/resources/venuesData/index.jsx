@@ -6,8 +6,11 @@ import useUser from "../../store/user";
 import usePage from "../../store/page";
 import VenueApi from "../../../js/venueApi";
 
+/**
+ * Fetches a venues data, update page state and display list of venues
+ * @returns {HTMLElement} a list of venues
+ */
 function VenuesData() {
-
   const { name, accessToken, apiKey } = useUser(
     (state) => ({
       name: state.name,

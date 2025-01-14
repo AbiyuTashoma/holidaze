@@ -5,6 +5,10 @@ import { shallow } from "zustand/shallow";
 import CreateVenue from ".";
 import useUser from "../../store/user";
 
+/**
+ * Creates create venue button
+ * @returns {HTMLElement} create venue button
+ */
 function CreateButton() {
   const [open, setOpen] = useState(false);
 

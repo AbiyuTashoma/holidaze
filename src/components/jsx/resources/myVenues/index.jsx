@@ -6,6 +6,10 @@ import VenuesList from "../venuesList";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
 
+/**
+ * Fetches venues created by a user
+ * @returns {HTMLElement} venues created by a user
+ */
 function MyVenues() {
   const { name, accessToken, apiKey } = useUser(
     (state) => ({

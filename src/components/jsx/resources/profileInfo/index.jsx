@@ -8,6 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { profilesUrl, timeout } from "../../../js/constants";
 import basicApi from "../../../js/basicApi";
 
+/**
+ * Creates a users' profile information summary
+ * @returns {HTMLElement} users' profile information
+ */
 function ProfileInfo() {
   const { name, accessToken, avatar, venueManager, apiKey, updateVenueManager, updateAvatar } = useUser(
     (state) => ({

@@ -1,8 +1,8 @@
 import { screen, render, act, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import DisplayVenue from ".";
-import { aVenueResponse } from "../../../mockData/aVenueResponse";
-import { accessToken, apiKey, managerName } from "../../../mockData/userData";
+import { aVenueResponse } from "../../../resources/mockData/aVenueResponse";
+import { accessToken, apiKey, managerName } from "../../../resources/mockData/userData";
 
 describe("DisplayVenue()", () => {
     test("it displays a venue", async () => {

@@ -1,3 +1,8 @@
+/**
+ * Creates a venue rating in star format
+ * @param {Number} rating venue rating value
+ * @returns {HTMLElement} a venue rating in a star format
+ */
 function StarRating (rating) {
     switch(rating) {
         case 0:

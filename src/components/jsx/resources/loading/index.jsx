@@ -1,5 +1,9 @@
 import { Spinner } from "react-bootstrap";
 
+/**
+ * Creates loading spinner
+ * @returns {HTMLElement} loading spinner
+ */
 function Loading () {
     return (
         <div className="text-center my-5">
