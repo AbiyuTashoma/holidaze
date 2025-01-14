@@ -10,6 +10,10 @@ import reRoute from "../../../js/reRoute/reRoute";
 import { Link } from "react-router-dom";
 import basicApi from "../../../js/basicApi";
 
+/**
+ * Creates a login form
+ * @returns {HTMLElement} a login form
+ */
 function LoginForm () {
   const { updateName, updateAccessToken, updateAvatar, updateVenueManager, updateKey } = useUser(
     (state) => ({

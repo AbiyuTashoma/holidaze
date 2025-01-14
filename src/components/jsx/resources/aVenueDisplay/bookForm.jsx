@@ -13,6 +13,11 @@ import validateDates from "../../../js/validateDates";
 import Price from "../price";
 import basicApi from "../../../js/basicApi";
 
+/**
+ * Creates a venue booking form
+ * @param {Object {venue}, String {accessToken}, Object {apiKey}} param0 
+ * @returns {HTMLElement} a venue booking form
+ */
 function BookForm({venue, accessToken, apiKey}) {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;

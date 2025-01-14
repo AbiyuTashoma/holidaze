@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Creates a booking success confirmation elements
+ * @returns {HTMLElement} booking success elements
+ */
 function SuccessInfo() {
 
     return (

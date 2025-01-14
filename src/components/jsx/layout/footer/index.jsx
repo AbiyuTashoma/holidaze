@@ -31,10 +31,10 @@ function Footer() {
       </ul>
       <div className="d-flex justify-content-center">
         <p className="m-0">Follow us on:</p>
-        <Image src={require("../../../resources/socialMedia/facebook.png")} className="social-media mx-1" alt="facebook"/>
-        <Image src={require("../../../resources/socialMedia/tik-tok.png")} className="social-media mx-1" alt="tik-tok" fluid/>
-        <Image src={require("../../../resources/socialMedia/snapchat.png")} className="social-media mx-1" alt="snapchat"/>
-        <Image src={require("../../../resources/socialMedia/instagram.png")} className="social-media mx-1" alt="instagram"/>
+        <Image src={require("../../../resources/media/facebook.png")} className="social-media mx-1" alt="facebook"/>
+        <Image src={require("../../../resources/media/tik-tok.png")} className="social-media mx-1" alt="tik-tok" fluid/>
+        <Image src={require("../../../resources/media/snapchat.png")} className="social-media mx-1" alt="snapchat"/>
+        <Image src={require("../../../resources/media/instagram.png")} className="social-media mx-1" alt="instagram"/>
       </div>
     </footer>
   );

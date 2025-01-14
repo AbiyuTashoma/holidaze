@@ -3,6 +3,10 @@ import { shallow } from "zustand/shallow";
 import useUser from "../../../store/user";
 import usePage from "../../../store/page";
 
+/**
+ * Creates the dropdown menu
+ * @returns {HTMLElement} dropdown menu element
+ */
 function NavMenu() {
   const { name, resetUser } = useUser(
     (state) => ({

@@ -3,6 +3,10 @@ import SearchLabel from "./label";
 import { baseUrl, searchUrl } from "../../../js/constants";
 import usePage from "../../store/page";
 
+/**
+ * Creates a search form
+ * @returns {HTMLElement} a search form
+ */
 function Search() {
   const { searchText, updateUrl, updateSearchText } = usePage(
       (state) => ({

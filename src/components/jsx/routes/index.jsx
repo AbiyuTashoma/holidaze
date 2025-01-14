@@ -10,6 +10,10 @@ import Profile from "../pages/profile";
 import RouteNotFound from "../pages/routeNotFound";
 import Success from "../pages/success";
 
+/**
+ * Creates app routes
+ * @returns {HTMLElement} app routes
+ */
 function AppRoutes() {
   return (
     <div>

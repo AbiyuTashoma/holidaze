@@ -1,8 +1,8 @@
 import { screen, render } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import DisplayBookings from ".";
-import { bookingsResponse } from "../../../mockData/bookingsResponse";
-import { accessToken, apiKey } from "../../../mockData/userData";
+import { bookingsResponse } from "../../../resources/mockData/bookingsResponse";
+import { accessToken, apiKey } from "../../../resources/mockData/userData";
 
 describe("DisplayBookings()", () => {
   test("it displays profile bookings", () => {

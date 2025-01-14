@@ -1,7 +1,7 @@
 import { screen, render, fireEvent, act } from "@testing-library/react";
 import EditVenue from ".";
-import { aVenueResponse } from "../../../mockData/aVenueResponse";
-import { accessToken, apiKey } from "../../../mockData/userData";
+import { aVenueResponse } from "../../../resources/mockData/aVenueResponse";
+import { accessToken, apiKey } from "../../../resources/mockData/userData";
 import createString from "../../../js/createString";
 
 describe("EditVenue()", () => {

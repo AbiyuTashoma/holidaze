@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Creates about us page elements
+ * @returns {HTMLElement} about us page elements
+ */
 function AboutUs() {
   return(
     <div className="form-size" data-testid="about">

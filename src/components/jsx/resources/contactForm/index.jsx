@@ -4,6 +4,10 @@ import { Button } from "react-bootstrap";
 import schema from "../../../js/contactValidation";
 import { useState } from "react";
 
+/**
+ * Creates contact us page elements
+ * @returns {HTMLElement} contact us page elements
+ */
 function ContactForm () {
   const [apiData, setApiData] = useState([null, null]);
   const [message, type] = apiData;

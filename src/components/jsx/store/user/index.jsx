@@ -2,8 +2,8 @@ import { createWithEqualityFn as create } from 'zustand/traditional'
 import { persist } from "zustand/middleware";
 
 /**
- * creates user store
- * It stores logged in user status: name, access token, avatar, and role
+ * creates a user data store
+ * It stores logged in user data/statuses: name, access token, avatar, role and apiKey
  */
 const useUser = create(persist((set) => ({
   name: null,

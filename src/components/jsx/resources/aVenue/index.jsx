@@ -7,6 +7,10 @@ import DisplayVenue from "../aVenueDisplay";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
 
+/**
+ * Fetches a venue data using query parameter
+ * @returns {HTMLElement} a venue page elements
+ */
 function AVenue() {
   let { id } = useParams();
 
