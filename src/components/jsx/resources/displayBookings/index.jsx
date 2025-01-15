@@ -1,36 +1,21 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import StarRating from "../starRating";
-import reRoute from "../../../js/reRoute/reRoute";
-import { bookingsUrl, timeout } from "../../../js/constants";
 import { Link } from "react-router-dom";
 import ImageCarousel from "../imageCarousel";
-import enableDisable from "../../../js/enableDisable";
+import EditBooking from "../editBooking";
 
 /**
- * Displays list of bookings registered by a profile
+ * Displays list of bookings made by a profile
  * @param {Array} bookingsList array of bookings
  * @param {String} accessToken user access token
  * @param {String} apiKey user api key
- * @returns {HTMLElement} 
+ * @returns {HTMLElement} list of bookings
  */
 function DisplayBookings (bookingsList, accessToken, apiKey) {
-  async function handleDelete(id) {
-    const deleteOption = {
-      method: "DELETE",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${accessToken}`,
-        "X-Noroff-API-Key": apiKey.data.key,
-      },
-    };
-
-    await fetch(bookingsUrl + "/" + id, deleteOption);
-    setTimeout(reRoute(window.location.pathname), timeout);
-  }
+  
   return (
     <Container className="mb-4">
-      <Row xs="1" sm="2" md="3" lg="4">
+      <Row xs="1" sm="2" lg="3" xl="4">
         {bookingsList.map((booking) => 
           <Col className="mb-3" key={booking.id}>
             <Col className="position-relative">
@@ -43,13 +28,9 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
                 <div data-testid="dateIn">Date in: {(new Date(booking["dateFrom"])).toDateString()}</div>
                 <div data-testid="dateOut">Date out: {(new Date(booking["dateTo"])).toDateString()}</div>
                 <div data-testid="guests">Guests: {booking["guests"]}</div>
-                <div className="my-2">
+                <div className="my-2 d-flex">
                   <Link to={"/" + booking["venue"].id} className="btn btn-primary btn-sm" data-testid="viewButton">View venue</Link>
-                  <Button 
-                    className="ms-2" variant="secondary"  size="sm" 
-                    onClick={() => handleDelete(booking.id)} 
-                    disabled={enableDisable(new Date(booking["dateFrom"]) > new Date())}
-                    data-testid="cancelButton">Cancel booking</Button>
+                  <EditBooking bookingsList={bookingsList} booking={booking} accessToken={accessToken} apiKey={apiKey}/>
                 </div>
               </div>
             </Col>

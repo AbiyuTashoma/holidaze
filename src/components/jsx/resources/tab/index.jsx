@@ -20,7 +20,7 @@ function UserTab() {
 
   return (
     <Tabs
-      defaultActiveKey={venueManager ? "venues" : "bookings"}
+      defaultActiveKey="bookings"
       id="user-tab"
       className="mb-3"
       fill

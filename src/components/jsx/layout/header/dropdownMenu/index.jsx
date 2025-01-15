@@ -40,7 +40,14 @@ function NavMenu() {
         <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">My profile</Dropdown.Item>
         <Dropdown.Item href="/contact">Contact us</Dropdown.Item>
         <Dropdown.Item href="/about">About us</Dropdown.Item>
-        <Dropdown.Item className={name? "d-block":"d-none"} href="/" onClick={resetUser}>Logout</Dropdown.Item>
+        <Dropdown.Item 
+          className={name? "d-block":"d-none"} 
+          href="/" 
+          onClick={() => {
+            resetUser(); 
+            resetPages();
+          }}>
+            Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )

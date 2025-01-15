@@ -23,7 +23,7 @@ describe("DisplayBookings()", () => {
     const dateOut = screen.getAllByTestId("dateOut");
     const guests = screen.getAllByTestId("guests");
     const viewButton = screen.getAllByTestId("viewButton");
-    const cancelButton = screen.getAllByTestId("cancelButton");
+    const manageButton = screen.getAllByTestId("manageButton");
 
     let imageIndex = 0;
     bookingsResponse.map((booking) => {
@@ -67,8 +67,8 @@ describe("DisplayBookings()", () => {
       expect(view).toHaveTextContent("View venue");
     });
 
-    cancelButton.map((cancel) =>{
-      expect(cancel).toHaveTextContent("Cancel booking");
+    manageButton.map((manage) =>{
+      expect(manage).toHaveTextContent("Manage booking");
     });
   });
 })
