@@ -8,7 +8,7 @@ function getBooking(bookingArray) {
   let booking = [];
 
   arrayCopy.map((item) =>
-    booking.push({ start: item["dateFrom"], end: item["dateTo"] })
+    booking.push({ start: item["dateFrom"], end: item["dateTo"], id: item.id })
   );
 
   return booking;
