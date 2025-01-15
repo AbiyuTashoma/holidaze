@@ -34,7 +34,7 @@ function EditBooking({bookingsList, booking, accessToken, apiKey}) {
     setApiData([null, null]);
   }
 
-  const previousList = bookingsList.filter((item) => item !== booking);
+  const previousList = bookingsList.filter((item) => item.id !== booking.id);
   const excludeDates = getBooking(previousList);
 
   const {
