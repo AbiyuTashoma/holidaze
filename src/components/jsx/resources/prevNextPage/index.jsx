@@ -9,15 +9,15 @@ import enableDisable from "../../../js/enableDisable";
  * @returns {HTMLElement} previous next navigation
  */
 function PrevNextPage() {
-    const { url, nextPage, prevPage, updateUrl } = usePage(
-      (state) => ({
-        url: state.url,
-        nextPage: state.nextPage,
-        prevPage: state.prevPage,
-        updateUrl: state.updateUrl,
-      }),
-      shallow
-    );
+  const { url, nextPage, prevPage, updateUrl } = usePage(
+    (state) => ({
+      url: state.url,
+      nextPage: state.nextPage,
+      prevPage: state.prevPage,
+      updateUrl: state.updateUrl,
+    }),
+    shallow
+  );
   
   return (
     <div className="d-flex justify-content-evenly m-2">
