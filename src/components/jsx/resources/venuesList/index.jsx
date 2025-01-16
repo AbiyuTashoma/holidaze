@@ -7,7 +7,6 @@ import EditVenue from "../editVenue";
 import ImageCarousel from "../imageCarousel";
 
 function VenuesList(venues, name, accessToken, apiKey, profile = false) {
-
   return (
     <Container>
       <Row xs="1" md="2" xl="3" xxl="4">        
