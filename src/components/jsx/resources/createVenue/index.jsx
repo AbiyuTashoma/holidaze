@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { timeout, url } from "../../../js/constants";
+import { timeout, venuesUrl } from "../../../js/constants";
 import schema from "../../../js/createValidation";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
@@ -58,7 +58,7 @@ function CreateVenue() {
       },
     };
 
-    const resp = await basicApi(url, venueOption);
+    const resp = await basicApi(venuesUrl, venueOption);
 
     if (resp["data"]) {
       setApiData(["Venue successfully created", "text-success"]);
