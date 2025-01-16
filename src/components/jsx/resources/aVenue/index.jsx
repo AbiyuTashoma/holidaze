@@ -2,7 +2,7 @@ import VenueApi from "../../../js/venueApi";
 import Loading from "../loading";
 import Error from "../error";
 import { useParams } from "react-router-dom";
-import { url } from "../../../js/constants";
+import { venuesUrl } from "../../../js/constants";
 import DisplayVenue from "../aVenueDisplay";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
@@ -23,7 +23,7 @@ function AVenue() {
     shallow
   );
 
-  const { apiData, isLoading, isError } = VenueApi(url + "/" + id + "?_bookings=true&_owner=true");
+  const { apiData, isLoading, isError } = VenueApi(venuesUrl + "/" + id + "?_bookings=true&_owner=true");
 
   if (isLoading || !apiData) {
     return <Loading />;
