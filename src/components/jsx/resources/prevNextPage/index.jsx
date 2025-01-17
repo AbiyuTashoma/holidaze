@@ -8,22 +8,24 @@ import enableDisable from "../../../js/enableDisable";
  * Creates previous next navigation elements
  * @returns {HTMLElement} previous next navigation
  */
-function PrevNextPage() {
-  const { url, nextPage, prevPage, updateUrl } = usePage(
+function PrevNextPage({prevPage, nextPage}) {
+  const { url, updateUrl } = usePage(
     (state) => ({
       url: state.url,
-      nextPage: state.nextPage,
-      prevPage: state.prevPage,
       updateUrl: state.updateUrl,
     }),
     shallow
   );
+
+  function handlePrevNextClick(urlAdr, page) {
+    updateUrl(urlUpdater(urlAdr, page));
+  }
   
   return (
     <div className="d-flex justify-content-evenly m-2">
       <Button 
         className="btn-secondary" 
-        onClick={() => updateUrl(urlUpdater(url, prevPage))}
+        onClick={() => handlePrevNextClick(url, prevPage)}
         href={"/venues/page=" + prevPage}
         disabled={enableDisable(prevPage)} 
         aria-label="previous page">
@@ -31,7 +33,7 @@ function PrevNextPage() {
       </Button>
       <Button 
         className="btn-secondary" 
-        onClick={() => updateUrl(urlUpdater(url, nextPage))} 
+        onClick={() => handlePrevNextClick(url, nextPage)} 
         href={"/venues/page=" + nextPage}
         disabled={enableDisable(nextPage)} 
         aria-label="next page">

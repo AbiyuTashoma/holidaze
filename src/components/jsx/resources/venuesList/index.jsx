@@ -5,12 +5,13 @@ import Facility from "../facility";
 import StarRating from "../starRating";
 import EditVenue from "../editVenue";
 import ImageCarousel from "../imageCarousel";
+import PrevNextPage from "../prevNextPage";
 
-function VenuesList(venues, name, accessToken, apiKey, profile = false) {
+function VenuesList({venues, name, accessToken, apiKey, profile = false}) {
   return (
     <Container>
       <Row xs="1" md="2" xl="3" xxl="4">        
-        {venues.map((venue) => 
+        {venues["data"].map((venue) => 
           <Col key={venue.id} className="position-relative my-2">
             {ImageCarousel(venue["media"], venue.id, true)}
             {StarRating(venue["rating"])}
@@ -28,6 +29,7 @@ function VenuesList(venues, name, accessToken, apiKey, profile = false) {
           </Col>
         )}
       </Row>
+      {profile ? <div></div> : <PrevNextPage prevPage={venues["meta"]["previousPage"]} nextPage={venues["meta"]["nextPage"]} />}
     </Container>
   );
 }
