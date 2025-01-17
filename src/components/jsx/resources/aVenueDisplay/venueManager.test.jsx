@@ -3,6 +3,7 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import DisplayVenue from ".";
 import { aVenueResponse } from "../../../resources/mockData/aVenueResponse";
 import { accessToken, apiKey, managerName } from "../../../resources/mockData/userData";
+import { addDays } from "date-fns";
 
 describe("DisplayVenue()", () => {
   test("it displays a venue", async () => {
@@ -18,8 +19,8 @@ describe("DisplayVenue()", () => {
       );
     });
 
-    const unAvailableDate = "16/01/2025 - 31/01/2025";
-    const availableDate = "03/02/2025 - 05/02/2025";
+    const unAvailableDate = `${addDays(new Date(), 4)} - ${addDays(new Date(), 11)}`;
+    const availableDate = `${addDays(new Date(), 11)} - ${addDays(new Date(), 14)}`;
     const image = screen.getAllByRole("img");
     const editButton = screen.getByTestId("editButton");
     const venueName = screen.getByText("Vineyard");
@@ -70,6 +71,7 @@ describe("DisplayVenue()", () => {
     expect(guestsError).toHaveTextContent("Maximum number of guests is " + aVenueResponse["maxGuests"]);
     expect(priceSummary).toHaveTextContent("");
     expect(bookButton).toHaveAttribute("disabled");
+    console.log(date);
 
     await act(async() => {
       fireEvent.change(guests, {target: {value: `${aVenueResponse["maxGuests"]}`}});
@@ -79,7 +81,7 @@ describe("DisplayVenue()", () => {
     });
     expect(dateError).toHaveTextContent("");
     expect(guestsError).toHaveTextContent("");
-    expect(priceSummary).toHaveTextContent("5980 NOK for 2 days ✓");
+    expect(priceSummary).toHaveTextContent("8970 NOK for 3 days ✓");
     expect(bookButton).not.toHaveAttribute("disabled");
   });
 })

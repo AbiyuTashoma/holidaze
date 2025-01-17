@@ -39,7 +39,7 @@ function VenuesData() {
   if (isError) {
     return <Error />;
   }
-
+console.log(apiData);
   updateNextPage(apiData["meta"]["nextPage"]);
   updatePrevPage(apiData["meta"]["previousPage"]);
   updateTotalPages(apiData["meta"]["pageCount"]);

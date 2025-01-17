@@ -1,3 +1,5 @@
+import { addDays } from "date-fns";
+
 export const aVenueResponse = {
   id: "1802cf66-181d-41ff-aaaa-ba80ba2dee95",
   name: "Vineyard",
@@ -69,8 +71,8 @@ export const aVenueResponse = {
     },
     {
       id: "3b1066ed-1777-4337-849b-5bf60fc0de6b",
-      dateFrom: "2025-01-21T23:00:00.000Z",
-      dateTo: "2025-01-29T23:00:00.000Z",
+      dateFrom: addDays(new Date(), 5),
+      dateTo: addDays(new Date(), 10),
       guests: 8,
       created: "2024-12-30T13:08:16.756Z",
       updated: "2024-12-30T13:08:16.756Z",
@@ -90,8 +92,8 @@ export const aVenueResponse = {
     },
     {
       id: "408f0379-8f50-4fef-9629-d0965761a1e4",
-      dateFrom: "2025-03-10T23:00:00.000Z",
-      dateTo: "2025-03-27T23:00:00.000Z",
+      dateFrom: "2024-03-10T23:00:00.000Z",
+      dateTo: "2024-03-27T23:00:00.000Z",
       guests: 5,
       created: "2024-12-30T21:20:37.322Z",
       updated: "2024-12-30T21:20:37.322Z",

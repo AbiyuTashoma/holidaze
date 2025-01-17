@@ -4,7 +4,7 @@
  * @returns {HTMLElement} a venue rating in a star format
  */
 function StarRating (rating) {
-  switch(rating) {
+  switch(Math.round(rating)) {
     case 0:
       return (
         <div className="rating">
