@@ -27,11 +27,12 @@ function SearchSort() {
     updateUrl(sortUrl)
   }
   return (
-    <Row xs="1" sm="2">
+    <Row>
       <Col>
-        <form className="sort-form mt-3 mb-2 mb-md-3 mb-lg-4" onChange={(event) => handleOnSortChange(event.target.value)}>
+        <form className="input-group sort-form mt-3 mb-2 mb-md-3 mb-lg-4" onChange={(event) => handleOnSortChange(event.target.value)}>
+          <label className="input-group-text" htmlFor="sortVenue">Sort by</label>
           <select id="sortVenue" name="sortVenue" className="form-control">
-            <option value={createdUrl}>Date created</option>
+            <option value={createdUrl}>Date</option>
             <option value={nameUrl}>Name</option>
             <option value={ratingUrl}>Rating</option>
             <option value={priceUrl}>Price</option>
