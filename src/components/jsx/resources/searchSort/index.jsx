@@ -24,7 +24,8 @@ function SearchSort() {
   }
 
   function handleOnSortChange (sortUrl) {
-    updateUrl(sortUrl)
+    updateUrl(sortUrl);
+    updateSearchText("");
   }
   return (
     <Row>

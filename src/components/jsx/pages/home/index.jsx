@@ -1,5 +1,4 @@
 import CreateButton from "../../resources/createVenue/createButton";
-import PrevNextPage from "../../resources/prevNextPage";
 import SearchSort from "../../resources/searchSort";
 import ToTop from "../../resources/toTop";
 import VenuesData from "../../resources/venuesData";
@@ -14,7 +13,6 @@ function Home() {
       <CreateButton />
       <SearchSort />
       <VenuesData />
-      <PrevNextPage />
       <ToTop />
     </div>
   )

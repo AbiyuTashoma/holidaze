@@ -38,7 +38,9 @@ function MyVenues() {
     return <Error />;
   }
 
-  return (apiData["data"].length ? VenuesList(apiData["data"], name, accessToken, apiKey, true) : <div className="m-3">You have no venues yet</div>);
+  return (apiData["data"].length ? 
+    <VenuesList venues={apiData} name={name} accessToken={accessToken} apiKey={apiKey} profile={true}/>
+    : <div className="m-3">You have no venues yet</div>);
 }
 
 export default MyVenues;

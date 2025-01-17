@@ -20,12 +20,9 @@ function VenuesData() {
     shallow
   );
 
-  const { url, updateNextPage, updatePrevPage, updateTotalPages } = usePage(
+  const { url } = usePage(
     (state) => ({
       url: state.url,
-      updateNextPage: state.updateNextPage,
-      updatePrevPage: state.updatePrevPage,
-      updateTotalPages: state.updateTotalPages,
     }),
     shallow
   );
@@ -39,11 +36,8 @@ function VenuesData() {
   if (isError) {
     return <Error />;
   }
-console.log(apiData);
-  updateNextPage(apiData["meta"]["nextPage"]);
-  updatePrevPage(apiData["meta"]["previousPage"]);
-  updateTotalPages(apiData["meta"]["pageCount"]);
-  return VenuesList(apiData["data"], name, accessToken, apiKey);
+
+  return <VenuesList venues={apiData} name={name} accessToken={accessToken} apiKey={apiKey} profile={false}/>;
 }
 
 export default VenuesData;
