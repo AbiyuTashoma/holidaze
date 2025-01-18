@@ -1,6 +1,6 @@
 import { shallow } from "zustand/shallow";
 import SearchLabel from "./label";
-import { createdUrl, defaultUrl, nameUrl, priceUrl, ratingUrl, searchUrl } from "../../../js/constants";
+import { createdUrl, defaultUrl, limit, nameUrl, priceUrl, ratingUrl, searchUrl } from "../../../js/constants";
 import usePage from "../../store/page";
 import { Col, Row } from "react-bootstrap";
 
@@ -20,7 +20,7 @@ function SearchSort() {
 
   function handleOnSearchChange (txt) {
     updateSearchText(txt);
-    txt? updateUrl(searchUrl + txt + "&_owner=true&page=1") : updateUrl(defaultUrl);
+    txt? updateUrl(`${searchUrl}${txt}&_owner=true&limit=${limit}&page=1`) : updateUrl(defaultUrl);
   }
 
   function handleOnSortChange (sortUrl) {

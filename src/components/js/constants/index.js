@@ -1,21 +1,17 @@
 const v2 = "https://v2.api.noroff.dev/";
 const holidaze = v2 + "holidaze";
+export const limit = 24;
 
 export const venuesUrl = holidaze + "/venues";
 export const profilesUrl = holidaze + "/profiles";
 export const bookingsUrl = holidaze + "/bookings";
 export const searchUrl = venuesUrl + "/search?q=";
 
-export const defaultUrl =
-  "https://v2.api.noroff.dev/holidaze/venues?sort=created&sortOrder=desc&_owner=true&page=1";
-export const createdUrl =
-  venuesUrl + "?sort=created&sortOrder=desc&_owner=true&page=1";
-export const ratingUrl =
-  venuesUrl + "?sort=rating&sortOrder=desc&_owner=true&page=1";
-export const priceUrl =
-  venuesUrl + "?sort=price&sortOrder=desc&_owner=true&page=1";
-export const nameUrl =
-  venuesUrl + "?sort=name&sortOrder=asc&_owner=true&page=1";
+export const defaultUrl = `${venuesUrl}?sort=created&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
+export const createdUrl = `${venuesUrl}?sort=created&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
+export const ratingUrl = `${venuesUrl}?sort=rating&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
+export const priceUrl = `${venuesUrl}?sort=price&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
+export const nameUrl = `${venuesUrl}?sort=name&sortOrder=asc&_owner=true&limit=${limit}&page=1`;
 
 export const registerUrl = v2 + "auth/register";
 export const loginUrl = v2 + "auth/login?_holidaze=true";
