@@ -28,9 +28,9 @@ function SearchSort() {
     updateSearchText("");
   }
   return (
-    <Row>
+    <Row className="justify-content-center mx-auto search-sort">
       <Col>
-        <form className="input-group sort-form mt-3 mb-2 mb-md-3 mb-lg-4" onChange={(event) => handleOnSortChange(event.target.value)}>
+        <form className="input-group mt-3 mb-2 mb-md-3 mb-lg-4" onChange={(event) => handleOnSortChange(event.target.value)}>
           <label className="input-group-text" htmlFor="sortVenue">Sort by</label>
           <select id="sortVenue" name="sortVenue" className="form-control">
             <option value={createdUrl}>Date</option>
@@ -41,7 +41,7 @@ function SearchSort() {
         </form>
       </Col>
       <Col>
-        <form className="input-group search-form mt-3 mb-2 mb-md-3 mb-lg-4" onSubmit={(event) => event.preventDefault()}>
+        <form className="input-group mt-3 mb-2 mb-md-3 mb-lg-4" onSubmit={(event) => event.preventDefault()}>
           <SearchLabel />
           <input type="search" onChange={(event) => handleOnSearchChange(event.target.value)} className="form-control" id="search" value={searchText} placeholder="search for venues here"/>
         </form>
