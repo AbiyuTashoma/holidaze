@@ -1,9 +1,8 @@
 import { shallow } from "zustand/shallow";
 import SearchLabel from "./label";
-import { defaultUrl, limit, searchUrl } from "../../../js/constants";
 import usePage from "../../store/page";
 import { Col, Row } from "react-bootstrap";
-import createSortUrl from "../../../js/createSortUrl";
+import createSearchSortUrl from "../../../js/createSearchSortUrl";
 
 /**
  * Creates a search and sort form
@@ -21,15 +20,14 @@ function SearchSort() {
       shallow
     );
 
-  function handleOnSearchChange (txt) {
-    updateSearchText(txt);
-    txt? updateUrl(`${searchUrl}${txt}&_owner=true&limit=${limit}&page=1`) : updateUrl(defaultUrl);
+  function handleOnSearchChange (search) {
+    updateSearchText(search);
+    updateUrl(createSearchSortUrl(sortBy, search));
   }
 
   function handleOnSortChange (sortValue) {
-    updateUrl(createSortUrl(sortValue));
     updateSortBy(sortValue);
-    updateSearchText("");
+    updateUrl(createSearchSortUrl(sortValue, searchText));
   }
   return (
     <Row className="justify-content-center mx-auto search-sort">
