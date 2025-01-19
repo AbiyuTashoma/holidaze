@@ -1,19 +1,22 @@
 import { shallow } from "zustand/shallow";
 import SearchLabel from "./label";
-import { createdUrl, defaultUrl, limit, nameUrl, priceUrl, ratingUrl, searchUrl } from "../../../js/constants";
+import { defaultUrl, limit, searchUrl } from "../../../js/constants";
 import usePage from "../../store/page";
 import { Col, Row } from "react-bootstrap";
+import createSortUrl from "../../../js/createSortUrl";
 
 /**
  * Creates a search and sort form
  * @returns {HTMLElement} a search and sort form
  */
 function SearchSort() {
-  const { searchText, updateUrl, updateSearchText } = usePage(
+  const { searchText, sortBy, updateUrl, updateSearchText, updateSortBy } = usePage(
       (state) => ({
         searchText: state.searchText,
+        sortBy: state.sortBy,
         updateUrl: state.updateUrl,
         updateSearchText: state.updateSearchText,
+        updateSortBy: state.updateSortBy,
       }),
       shallow
     );
@@ -23,8 +26,9 @@ function SearchSort() {
     txt? updateUrl(`${searchUrl}${txt}&_owner=true&limit=${limit}&page=1`) : updateUrl(defaultUrl);
   }
 
-  function handleOnSortChange (sortUrl) {
-    updateUrl(sortUrl);
+  function handleOnSortChange (sortValue) {
+    updateUrl(createSortUrl(sortValue));
+    updateSortBy(sortValue);
     updateSearchText("");
   }
   return (
@@ -32,11 +36,11 @@ function SearchSort() {
       <Col>
         <form className="input-group mt-3 mb-2 mb-md-3 mb-lg-4" onChange={(event) => handleOnSortChange(event.target.value)}>
           <label className="input-group-text" htmlFor="sortVenue">Sort by</label>
-          <select id="sortVenue" name="sortVenue" className="form-control">
-            <option value={createdUrl}>Date</option>
-            <option value={nameUrl}>Name</option>
-            <option value={ratingUrl}>Rating</option>
-            <option value={priceUrl}>Price</option>
+          <select id="sortVenue" name="sortVenue" defaultValue={sortBy} className="form-control">
+            <option value="created">Date</option>
+            <option value="name">Name</option>
+            <option value="rating">Rating</option>
+            <option value="price">Price</option>
           </select>
         </form>
       </Col>

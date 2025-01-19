@@ -8,10 +8,6 @@ export const bookingsUrl = holidaze + "/bookings";
 export const searchUrl = venuesUrl + "/search?q=";
 
 export const defaultUrl = `${venuesUrl}?sort=created&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
-export const createdUrl = `${venuesUrl}?sort=created&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
-export const ratingUrl = `${venuesUrl}?sort=rating&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
-export const priceUrl = `${venuesUrl}?sort=price&sortOrder=desc&_owner=true&limit=${limit}&page=1`;
-export const nameUrl = `${venuesUrl}?sort=name&sortOrder=asc&_owner=true&limit=${limit}&page=1`;
 
 export const registerUrl = v2 + "auth/register";
 export const loginUrl = v2 + "auth/login?_holidaze=true";
