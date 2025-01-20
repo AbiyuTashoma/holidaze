@@ -7,7 +7,7 @@ import EditVenue from "../editVenue";
 import ImageCarousel from "../imageCarousel";
 import PrevNextPage from "../prevNextPage";
 
-function VenuesList({venues, name, accessToken, apiKey, profile = false}) {
+function VenuesList({venues, name, accessToken, apiKey, edit = false, prevNext = false}) {
   return (
     <Container>
       <Row xs="1" md="2" xl="3" xxl="4">        
@@ -15,7 +15,7 @@ function VenuesList({venues, name, accessToken, apiKey, profile = false}) {
           <Col key={venue.id} className="position-relative my-2">
             {ImageCarousel(venue["media"], venue.id, true)}
             {StarRating(venue["rating"])}
-            {(profile || (venue["owner"]["name"] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
+            {(edit || (venue["owner"]["name"] === name)) ? <EditVenue venue={venue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}            
             <Row className="my-2">
               <Col>
                 <div className="fw-semibold" data-testid="venueName">{venue["name"]}</div>
@@ -29,7 +29,7 @@ function VenuesList({venues, name, accessToken, apiKey, profile = false}) {
           </Col>
         )}
       </Row>
-      {profile ? <div></div> : <PrevNextPage prevPage={venues["meta"]["previousPage"]} nextPage={venues["meta"]["nextPage"]} currentPage={venues["meta"]["currentPage"]}/>}
+      {prevNext ? <PrevNextPage prevPage={venues["meta"]["previousPage"]} nextPage={venues["meta"]["nextPage"]} currentPage={venues["meta"]["currentPage"]} /> : <div></div>}
     </Container>
   );
 }

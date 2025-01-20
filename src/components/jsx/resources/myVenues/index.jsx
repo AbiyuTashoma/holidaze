@@ -39,7 +39,7 @@ function MyVenues() {
   }
 
   return (apiData["data"].length ? 
-    <VenuesList venues={apiData} name={name} accessToken={accessToken} apiKey={apiKey} profile={true}/>
+    <VenuesList venues={apiData} name={name} accessToken={accessToken} apiKey={apiKey} edit={true} prevNext={false}/>
     : <div className="m-3">You have no venues yet</div>);
 }
 

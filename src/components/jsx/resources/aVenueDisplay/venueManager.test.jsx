@@ -71,7 +71,6 @@ describe("DisplayVenue()", () => {
     expect(guestsError).toHaveTextContent("Maximum number of guests is " + aVenueResponse["maxGuests"]);
     expect(priceSummary).toHaveTextContent("");
     expect(bookButton).toHaveAttribute("disabled");
-    console.log(date);
 
     await act(async() => {
       fireEvent.change(guests, {target: {value: `${aVenueResponse["maxGuests"]}`}});

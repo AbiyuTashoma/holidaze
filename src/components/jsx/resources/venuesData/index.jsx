@@ -37,7 +37,7 @@ function VenuesData() {
     return <Error />;
   }
 
-  return <VenuesList venues={apiData} name={name} accessToken={accessToken} apiKey={apiKey} profile={false}/>;
+  return <VenuesList venues={apiData} name={name} accessToken={accessToken} apiKey={apiKey} edit={false} prevNext={true}/>;
 }
 
 export default VenuesData;

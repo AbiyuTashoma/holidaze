@@ -12,7 +12,7 @@ describe("VenuesList()", () => {
         <Routes>
           <Route 
             path="/" 
-            element={<VenuesList venues={venuesResponse} name={managerName} accessToken={accessToken} apiKey={apiKey} profile={false}/>} />
+            element={<VenuesList venues={venuesResponse} name={managerName} accessToken={accessToken} apiKey={apiKey} edit={false} prevNext={false}/>} />
         </Routes>
       </MemoryRouter>
     );
