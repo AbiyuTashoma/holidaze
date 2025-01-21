@@ -12,8 +12,8 @@ import basicApi from "../../../js/basicApi";
  * @returns {HTMLElement} a register form
  */
 function RegisterForm () {
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
 
   async function OnSubmit(data, event) {
     const registerData = {
@@ -35,21 +35,21 @@ function RegisterForm () {
     const resp = await basicApi(registerUrl, registerOption);
 
     if (resp["data"]) {
-      setApiData(["Registration successful", "text-success"]);
+      setStatus(["Registration successful", "text-success"]);
       event.target.reset();
       setTimeout(reRoute("/login"), timeout);
       return;
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }
   }
 
   function clearMessage() {
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   const {

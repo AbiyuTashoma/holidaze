@@ -19,8 +19,8 @@ import basicApi from "../../../js/basicApi";
  * @returns {HTMLElement} a venue booking form
  */
 function BookForm({venue, accessToken, apiKey}) {
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
   const [dateStatus, setDateStatus] = useState([true, ""]);
   const [invalid, feedback] = dateStatus;
   const [dateRange, setDateRange] = useState([new Date(), addDays(new Date(), 3)]);
@@ -58,15 +58,15 @@ function BookForm({venue, accessToken, apiKey}) {
     const resp = await basicApi(bookingsUrl, bookOption);
 
     if (resp["data"]) {
-      setApiData(["Venue successfully booked", "text-success"]);
+      setStatus(["Venue successfully booked", "text-success"]);
       event.target.reset();
       setTimeout(reRoute("/success"), timeout);
       return;
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }    
   }

@@ -9,8 +9,8 @@ import { useState } from "react";
  * @returns {HTMLElement} contact us page elements
  */
 function ContactForm () {
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
   const {
     register,
     handleSubmit,
@@ -20,12 +20,12 @@ function ContactForm () {
   });
 
   function onSubmit(data, event) {
-    setApiData(["Sending successful", "text-success"]);
+    setStatus(["Sending successful", "text-success"]);
     event.target.reset();
   }
 
   function clearMessage() {
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   return (

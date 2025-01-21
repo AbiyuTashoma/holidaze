@@ -18,13 +18,13 @@ import basicApi from "../../../js/basicApi";
 function EditVenue({venue, accessToken, apiKey}) {
 
   const [show, setShow] = useState(false);
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   async function OnSubmit(data) {
@@ -62,14 +62,14 @@ function EditVenue({venue, accessToken, apiKey}) {
     const resp = await basicApi(venuesUrl + "/" + venue.id, updateOption);
 
     if (resp["data"]) {
-      setApiData(["Changed successfully", "text-success"]);
+      setStatus(["Changed successfully", "text-success"]);
       setTimeout(reRoute(window.location.pathname), timeout);
       return;
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }
   }
@@ -90,7 +90,7 @@ function EditVenue({venue, accessToken, apiKey}) {
   }
 
   function clearMessage() {
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   const {

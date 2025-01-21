@@ -26,8 +26,8 @@ function LoginForm () {
     shallow
   );
 
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
 
   async function OnSubmit(data, event) {
     const loginData = {
@@ -50,7 +50,7 @@ function LoginForm () {
       updateAccessToken(resp["data"]["accessToken"]);
       updateAvatar(resp["data"]["avatar"] ? resp["data"]["avatar"]["url"] : "");
       updateVenueManager(resp["data"]["venueManager"]);
-      setApiData(["Login successful", "text-success"]);
+      setStatus(["Login successful", "text-success"]);
       updateKey(await basicApi(apiKeyUrl, {
         method: "POST",
         body: JSON.stringify({}),
@@ -66,14 +66,14 @@ function LoginForm () {
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }
   }
 
   function clearMessage() {
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   const {
