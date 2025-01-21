@@ -15,8 +15,8 @@ import basicApi from "../../../js/basicApi";
  * @returns {HTMLElement} create venue form
  */
 function CreateVenue() {
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
 
   const { accessToken, apiKey } = useUser(
     (state) => ({
@@ -61,21 +61,21 @@ function CreateVenue() {
     const resp = await basicApi(venuesUrl, venueOption);
 
     if (resp["data"]) {
-      setApiData(["Venue successfully created", "text-success"]);
+      setStatus(["Venue successfully created", "text-success"]);
       event.target.reset();
       setTimeout(reRoute(window.location.pathname), timeout);
       return;
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }
   }
 
   function clearMessage() {
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   const {

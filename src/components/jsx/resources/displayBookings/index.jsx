@@ -30,7 +30,7 @@ function DisplayBookings (bookingsList, accessToken, apiKey) {
                 <div data-testid="guests">Guests: {booking["guests"]}</div>
                 <div className="my-2 d-flex">
                   <Link to={"/" + booking["venue"].id} className="btn btn-primary btn-sm" data-testid="viewButton">View venue</Link>
-                  <EditBooking bookingsList={bookingsList} booking={booking} accessToken={accessToken} apiKey={apiKey}/>
+                  <EditBooking booking={booking} accessToken={accessToken} apiKey={apiKey}/>
                 </div>
               </div>
             </Col>

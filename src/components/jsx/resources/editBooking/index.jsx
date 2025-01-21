@@ -4,7 +4,7 @@ import schema from "../../../js/bookingValidation";
 import { Button, Modal, Row } from "react-bootstrap";
 import reRoute from "../../../js/reRoute/reRoute";
 import { useState } from "react";
-import { bookingsUrl, timeout } from "../../../js/constants";
+import { bookingsUrl, timeout, venuesUrl } from "../../../js/constants";
 import { addDays } from "date-fns";
 import DatePicker from "react-datepicker";
 import getBooking from "../../../js/getBooking";
@@ -19,9 +19,10 @@ import basicApi from "../../../js/basicApi";
  * @returns {HTMLElement} an edit booking modal element
  */
 
-function EditBooking({bookingsList, booking, accessToken, apiKey}) {
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+function EditBooking({booking, accessToken, apiKey}) {
+  const [excludeDates, setExcludeDates] = useState([]);
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
   const [dateStatus, setDateStatus] = useState([false, ""]);
   const [invalid, feedback] = dateStatus;
   const [dateRange, setDateRange] = useState([new Date(booking["dateFrom"]), new Date(booking["dateTo"])]);
@@ -31,11 +32,20 @@ function EditBooking({bookingsList, booking, accessToken, apiKey}) {
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
-    setApiData([null, null]);
+    setStatus([null, null]);
+    getVenueBooking(booking["venue"]["id"]);
   }
 
-  const previousList = bookingsList.filter((item) => item.id !== booking.id);
-  const excludeDates = getBooking(previousList);
+  async function getVenueBooking(venueId) {
+    const data = await basicApi(venuesUrl + "/" + venueId + "?_bookings=true&_owner=true");
+    console.log(data["data"]["bookings"]);
+    if (data["data"]) {
+      const previousList = data["data"]["bookings"].filter((item) => item.id !== booking.id);
+      const exDates = getBooking(previousList);
+      setExcludeDates(exDates);
+      return;
+    }
+  }
 
   const {
     trigger,
@@ -66,15 +76,15 @@ function EditBooking({bookingsList, booking, accessToken, apiKey}) {
     const resp = await basicApi(bookingsUrl + "/" + booking.id, updateOption);
 
     if (resp["data"]) {
-      setApiData(["Booking successfully updated", "text-success"]);
+      setStatus(["Booking successfully updated", "text-success"]);
       event.target.reset();
       setTimeout(reRoute(window.location.pathname), timeout);
       return;
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }    
   }

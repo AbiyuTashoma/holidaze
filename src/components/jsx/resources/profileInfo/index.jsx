@@ -27,13 +27,13 @@ function ProfileInfo() {
   );
 
   const [show, setShow] = useState(false);
-  const [apiData, setApiData] = useState([null, null]);
-  const [message, type] = apiData;
+  const [status, setStatus] = useState([null, null]);
+  const [message, type] = status;
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   async function OnSubmit(data) {
@@ -55,7 +55,7 @@ function ProfileInfo() {
     const resp = await basicApi(profilesUrl + "/" + name, updateOption);
 
     if (resp["data"]) {
-      setApiData(["Change successful", "text-success"]);
+      setStatus(["Change successful", "text-success"]);
       updateAvatar(resp["data"]["avatar"]["url"]);
       updateVenueManager(resp["data"]["venueManager"]);
       setTimeout(handleClose, timeout);
@@ -63,14 +63,14 @@ function ProfileInfo() {
     }
     else {
       resp["errors"][0]["message"] ? 
-        setApiData([resp["errors"][0]["message"], "text-danger"]) :
-        setApiData(["Unknown error occurred", "text-danger"]);
+        setStatus([resp["errors"][0]["message"], "text-danger"]) :
+        setStatus(["Unknown error occurred", "text-danger"]);
       return;
     }
   }
 
   function clearMessage() {
-    setApiData([null, null]);
+    setStatus([null, null]);
   }
 
   const {
