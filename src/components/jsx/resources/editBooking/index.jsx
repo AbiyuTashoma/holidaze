@@ -19,8 +19,8 @@ import basicApi from "../../../js/basicApi";
  * @returns {HTMLElement} an edit booking modal element
  */
 
-function EditBooking({bookingsList, booking, accessToken, apiKey}) {
-  const [venueBookings, setVenueBookings] = useState([]);
+function EditBooking({booking, accessToken, apiKey}) {
+  const [excludeDates, setExcludeDates] = useState([]);
   const [status, setStatus] = useState([null, null]);
   const [message, type] = status;
   const [dateStatus, setDateStatus] = useState([false, ""]);
@@ -33,22 +33,19 @@ function EditBooking({bookingsList, booking, accessToken, apiKey}) {
   const handleShow = () => {
     setShow(true);
     setStatus([null, null]);
+    getVenueBooking(booking["venue"]["id"]);
   }
 
   async function getVenueBooking(venueId) {
-    const apiData = await basicApi(venuesUrl + "/" + venueId + "?_bookings=true&_owner=true");
-    if (apiData["data"]) {
-      setVenueBookings(apiData["data"]["bookings"]);
+    const data = await basicApi(venuesUrl + "/" + venueId + "?_bookings=true&_owner=true");
+    console.log(data["data"]["bookings"]);
+    if (data["data"]) {
+      const previousList = data["data"]["bookings"].filter((item) => item.id !== booking.id);
+      const exDates = getBooking(previousList);
+      setExcludeDates(exDates);
+      return;
     }
   }
-  // console.log(apiData["data"]["bookings"]);
-
-
-  getVenueBooking(booking["venue"]["id"]);
-
-  const previousList = venueBookings.filter((item) => item.id !== booking.id);
-  // const previousList = bookingsList.filter((item) => item.id !== booking.id);
-  const excludeDates = getBooking(previousList);
 
   const {
     trigger,
