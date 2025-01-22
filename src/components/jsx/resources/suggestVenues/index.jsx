@@ -1,8 +1,6 @@
-import { shallow } from "zustand/shallow";
 import VenuesList from "../venuesList";
 import Loading from "../loading";
 import Error from "../error";
-import useUser from "../../store/user";
 import VenueApi from "../../../js/venueApi";
 import { suggestUrl } from "../../../js/constants";
 

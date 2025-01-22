@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../../../js/bookingValidation";
-import { Button, Modal, Row } from "react-bootstrap";
+import { Button, Col, Modal, Row } from "react-bootstrap";
 import reRoute from "../../../js/reRoute/reRoute";
 import { useState } from "react";
-import { bookingsUrl, timeout, venuesUrl } from "../../../js/constants";
+import { bookingsUrl, currency, timeout, unit, venuesUrl } from "../../../js/constants";
 import { addDays } from "date-fns";
 import DatePicker from "react-datepicker";
 import getBooking from "../../../js/getBooking";
@@ -12,6 +12,9 @@ import enableDisable from "../../../js/enableDisable";
 import validateDates from "../../../js/validateDates";
 import Price from "../price";
 import basicApi from "../../../js/basicApi";
+import ImageCarousel from "../imageCarousel";
+import StarRating from "../starRating";
+import Facility from "../facility";
 
 /**
  * Creates an edit booking modal element
@@ -38,7 +41,6 @@ function EditBooking({booking, accessToken, apiKey}) {
 
   async function getVenueBooking(venueId) {
     const data = await basicApi(venuesUrl + "/" + venueId + "?_bookings=true&_owner=true");
-    console.log(data["data"]["bookings"]);
     if (data["data"]) {
       const previousList = data["data"]["bookings"].filter((item) => item.id !== booking.id);
       const exDates = getBooking(previousList);
@@ -115,6 +117,19 @@ function EditBooking({booking, accessToken, apiKey}) {
           <Modal.Title>Update booking</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Row className="mb-4">        
+            <Col className="position-relative">
+              {ImageCarousel(booking["venue"]["media"])}          
+              {StarRating(booking["venue"]["rating"])}
+            </Col>
+            <Col>
+              <div className="fw-semibold fs-5 my-2">{booking["venue"]["name"]}</div>
+              <div data-testid="venuePrice">{booking["venue"]["price"]} {currency}<span className="unit">{unit}</span></div>
+              <div className="my-2">{booking["venue"]["description"]}</div>
+              <div data-testid="maxGuests">Max guests: {booking["venue"]["maxGuests"]}</div>
+              <div>{Facility(booking["venue"]["meta"])}</div>
+            </Col>
+          </Row>
           <form onSubmit={handleSubmit(OnSubmit)}>
             <div className="fw-semibold my-2">Check availability</div>
             <div className="d-flex gap-3 align-items-top">
@@ -147,9 +162,7 @@ function EditBooking({booking, accessToken, apiKey}) {
                   endDate={endDate}
                   minDate={new Date()}
                   maxDate={addDays(new Date(), 730)}
-                  onChange={(update) => {
-                    setDateRange(update);
-                  }}
+                  onChange={(update) => { setDateRange(update); }}
                   required
                   showDisabledMonthNavigation
                   fixedHeight
