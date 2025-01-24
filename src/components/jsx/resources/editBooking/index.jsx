@@ -118,7 +118,7 @@ function EditBooking({booking, accessToken, apiKey}) {
         </Modal.Header>
         <Modal.Body>
           <Row className="mb-4">        
-            <Col className="position-relative">
+            <Col sm={6} className="position-relative">
               {ImageCarousel(booking["venue"]["media"])}          
               {StarRating(booking["venue"]["rating"])}
             </Col>

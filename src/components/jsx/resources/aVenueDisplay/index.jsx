@@ -37,7 +37,7 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
       </Row>
       <Row>
         {venueOwner ? 
-          <Accordion>
+          <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header bg="light">Bookings list</Accordion.Header>
               <Accordion.Body>
