@@ -3,33 +3,36 @@
 ## Description
 
 Holidaze accommodation booking website Project.
-Built for ease of access and simplicity, functional user experience.
+Built for ease of access, simplicity and functional user experience.
+
+### Test status badge
+![Automated Unit Test](https://github.com/AbiyuTashoma/holidaze/actions/workflows/unit_test.yml/badge.svg)
+
+### Deploy status badge
+[![Netlify Status](https://api.netlify.com/api/v1/badges/04031a8c-cef0-4b1d-8f4c-0306068f49b1/deploy-status)](https://app.netlify.com/sites/holidaze-me/deploys)
 
 ## Features
 ### Site visitor
-- Display accommodation venues
+- Browse accommodation venues
 - Dynamic search and sort feature
 - Dynamic Previous Next page
 - View a venue
-- Booking calendar
+- View booking calendar
 - Register as a user or venue manager
 ### Registered user
-- login
-- Update profile information
-- Book a venue, update and delete booking
+- Site visitor features
+- Login
+- Book at a venue
+- Update and delete bookings
 - View own bookings
+- Update profile information
 ### Venue manager
-- Create venues, update and delete venues
+- Site visitor features
+- Registered user features
+- Create venues
+- Update and delete venues it manages
 - View bookings made on venues it manages
 - View all own venues
-
-## Test status badge
-
-![Automated Unit Test](https://github.com/AbiyuTashoma/holidaze/actions/workflows/unit_test.yml/badge.svg)
-
-## Deploy status badge
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/04031a8c-cef0-4b1d-8f4c-0306068f49b1/deploy-status)](https://app.netlify.com/sites/holidaze-me/deploys)
 
 ## Built With
 
