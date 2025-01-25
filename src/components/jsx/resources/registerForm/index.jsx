@@ -98,7 +98,9 @@ function RegisterForm () {
         <input id="avatar" name="avatar" className="form-control" {...register("avatar")} />
         <p className="text-danger" data-testid="avatarError">{errors.avatar?.message}</p>
       </div>
-      <Button type="submit">Register</Button>
+      <div className="text-center">
+        <Button type="submit">Register</Button>
+      </div>
     </form>
   );
 }
