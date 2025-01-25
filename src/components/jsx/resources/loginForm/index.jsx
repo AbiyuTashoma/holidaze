@@ -98,9 +98,11 @@ function LoginForm () {
         <input type="password" id="password" name="password" className="form-control" {...register("password")} />
         <p className="text-danger" data-testid="passwordError">{errors.password?.message}</p>
       </div>
-      <Button type="submit" className="me-3" data-testid="loginButton">Login</Button>
-      <span>Are you a new user?</span>
-      <Link to={"/register"} className="ms-1" data-testid="registerLink">Register here</Link>
+      <div className="text-center">
+        <Button type="submit" className="me-3" data-testid="loginButton">Login</Button>
+        <span>Are you a new user?</span>
+        <Link to={"/register"} className="ms-1" data-testid="registerLink">Register here</Link>
+      </div>
     </form>
   );
 }
