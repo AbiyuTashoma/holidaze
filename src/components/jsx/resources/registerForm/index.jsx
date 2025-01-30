@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { defaultAvatar, registerUrl, timeout } from "../../../js/constants";
 import { useState } from "react";
 import schema from "../../../js/registerValidation";
-import reRoute from "../../../js/reRoute/reRoute";
+import reRoute from "../../../js/reRoute";
 import basicApi from "../../../js/basicApi";
 
 /**

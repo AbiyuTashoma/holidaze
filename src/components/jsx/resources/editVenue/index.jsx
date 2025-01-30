@@ -4,7 +4,7 @@ import schema from "../../../js/createValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { timeout, venuesUrl } from "../../../js/constants";
-import reRoute from "../../../js/reRoute/reRoute";
+import reRoute from "../../../js/reRoute";
 import createMedia from "../../../js/createMedia";
 import createArray from "../../../js/createArray";
 import createString from "../../../js/createString";

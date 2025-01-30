@@ -1,8 +1,8 @@
-import { Button } from "react-bootstrap";
 import usePage from "../../store/page";
 import { shallow } from "zustand/shallow";
 import urlUpdater from "../../../js/urlUpdater";
 import enableDisable from "../../../js/enableDisable";
+import { Link } from "react-router-dom";
 
 /**
  * Creates previous next navigation elements
@@ -22,23 +22,24 @@ function PrevNextPage({prevPage, nextPage, currentPage}) {
   }
   
   return (
-    <div className="d-flex justify-content-evenly m-2">
-      <Button 
-        className="btn-secondary" 
+    <div className="d-flex justify-content-evenly gap-3 align-items-center my-4">
+      <Link 
+        className={prevPage ? "btn btn-secondary" : "btn btn-secondary disabled"}
+        to={"/venues/page=" + prevPage}
         onClick={() => handlePrevNextClick(url, prevPage, currentPage)}
-        href={"/venues/page=" + prevPage}
         disabled={enableDisable(prevPage)} 
         aria-label="previous page">
           Prev page
-      </Button>
-      <Button 
-        className="btn-secondary" 
+      </Link>
+      <div className="text-decoration-underline">{currentPage}</div>
+      <Link 
+        className={nextPage ? "btn btn-secondary" : "btn btn-secondary disabled"}
+        to={"/venues/page=" + nextPage}
         onClick={() => handlePrevNextClick(url, nextPage, currentPage)} 
-        href={"/venues/page=" + nextPage}
         disabled={enableDisable(nextPage)} 
         aria-label="next page">
           Next page
-      </Button>
+      </Link>
     </div>
   );
 }

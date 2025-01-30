@@ -24,7 +24,7 @@ function MyBookings() {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       Authorization: `Bearer ${accessToken}`,
-      "X-Noroff-API-Key": apiKey.data.key,
+      "X-Noroff-API-Key": apiKey?.data.key,
     },
   };
 
