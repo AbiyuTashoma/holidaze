@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../../../js/bookingValidation";
 import { Button, Col, Modal, Row } from "react-bootstrap";
-import reRoute from "../../../js/reRoute/reRoute";
+import reRoute from "../../../js/reRoute";
 import { useState } from "react";
 import { bookingsUrl, currency, timeout, unit, venuesUrl } from "../../../js/constants";
 import { addDays } from "date-fns";

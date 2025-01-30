@@ -2,6 +2,7 @@ import { Dropdown } from "react-bootstrap";
 import { shallow } from "zustand/shallow";
 import useUser from "../../../store/user";
 import usePage from "../../../store/page";
+import reRoute from "../../../../js/reRoute";
 
 /**
  * Creates the dropdown menu
@@ -23,7 +24,18 @@ function NavMenu() {
     shallow
   );
 
-  return (
+  function home() {
+    resetPages();
+    reRoute("/");
+  }
+
+  function logout() {
+    resetUser(); 
+    resetPages();
+    reRoute("/");
+  }
+
+  return (    
     <Dropdown className="position-relative me-2 me-md-3 me-xxl-5">
       <span className={name? "user d-block" : "d-none"}>{name? name.slice(0,2).toUpperCase(): null}</span>
       <Dropdown.Toggle id="dropdown-basic" className="btn-sm">
@@ -34,7 +46,7 @@ function NavMenu() {
         </svg>
       </Dropdown.Toggle>
       <Dropdown.Menu align="end">
-        <Dropdown.Item href="/" onClick={resetPages}>Home</Dropdown.Item>
+        <Dropdown.Item onClick={home}>Home</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/login">Login</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/register">Register</Dropdown.Item>
         <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">My profile</Dropdown.Item>
@@ -42,11 +54,7 @@ function NavMenu() {
         <Dropdown.Item href="/about">About us</Dropdown.Item>
         <Dropdown.Item 
           className={name? "d-block":"d-none"} 
-          href="/" 
-          onClick={() => {
-            resetUser(); 
-            resetPages();
-          }}>
+          onClick={logout}>
             Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

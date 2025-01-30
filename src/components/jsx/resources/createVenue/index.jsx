@@ -5,7 +5,7 @@ import { timeout, venuesUrl } from "../../../js/constants";
 import schema from "../../../js/createValidation";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
-import reRoute from "../../../js/reRoute/reRoute";
+import reRoute from "../../../js/reRoute";
 import createMedia from "../../../js/createMedia";
 import createArray from "../../../js/createArray";
 import basicApi from "../../../js/basicApi";

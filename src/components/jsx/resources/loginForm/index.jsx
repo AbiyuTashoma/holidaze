@@ -6,7 +6,7 @@ import schema from "../../../js/loginValidation";
 import { apiKeyUrl, loginUrl } from "../../../js/constants";
 import useUser from "../../store/user";
 import { shallow } from "zustand/shallow";
-import reRoute from "../../../js/reRoute/reRoute";
+import reRoute from "../../../js/reRoute";
 import { Link } from "react-router-dom";
 import basicApi from "../../../js/basicApi";
 
