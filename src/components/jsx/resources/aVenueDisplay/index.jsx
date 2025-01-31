@@ -3,7 +3,6 @@ import { currency, unit } from "../../../js/constants";
 import Facility from "../facility";
 import StarRating from "../starRating";
 import BookForm from "./bookForm";
-import EditVenue from "../editVenue";
 import VenueBookings from "../venueBookings";
 import ImageCarousel from "../imageCarousel";
 
@@ -24,7 +23,6 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
         <Col className="position-relative mb-2">
           {ImageCarousel(aVenue["media"])}          
           {StarRating(aVenue["rating"])}
-          {venueOwner ? <EditVenue venue={aVenue} accessToken={accessToken} apiKey={apiKey} /> : <div></div>}
         </Col>
         <Col>
           <div className="fw-semibold fs-5 my-2">{aVenue["name"]}</div>

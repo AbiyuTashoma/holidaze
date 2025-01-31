@@ -22,7 +22,6 @@ describe("DisplayVenue()", () => {
     const unAvailableDate = `${addDays(new Date(), 4)} - ${addDays(new Date(), 11)}`;
     const availableDate = `${addDays(new Date(), 11)} - ${addDays(new Date(), 14)}`;
     const image = screen.getAllByRole("img");
-    const editButton = screen.getByTestId("editButton");
     const venueName = screen.getByText("Vineyard");
     const price = screen.getByTestId("venuePrice");
     const description = screen.getByText("Historic vineyard");
@@ -42,7 +41,6 @@ describe("DisplayVenue()", () => {
     image.map((img, index) => 
       expect(img).toHaveAttribute("src", aVenueResponse["media"][index]["url"])
     );
-    expect(editButton).toBeEnabled;
     expect(venueName).toBeInTheDocument;
     expect(price).toHaveTextContent(aVenueResponse["price"]);
     expect(description).toBeInTheDocument;
