@@ -29,7 +29,13 @@ function VenuesList({venues, name, accessToken, apiKey, edit = false, prevNext =
           </Col>
         )}
       </Row>
-      {prevNext ? <PrevNextPage prevPage={venues["meta"]["previousPage"]} nextPage={venues["meta"]["nextPage"]} currentPage={venues["meta"]["currentPage"]} /> : <div></div>}
+      {prevNext ? 
+        <PrevNextPage 
+          prevPage={venues["meta"]["previousPage"]} 
+          nextPage={venues["meta"]["nextPage"]} 
+          currentPage={venues["meta"]["currentPage"]}
+          lastPage={venues["meta"]["pageCount"]} /> 
+        : <div></div>}
     </Container>
   );
 }

@@ -1,7 +1,6 @@
 import { Dropdown } from "react-bootstrap";
 import { shallow } from "zustand/shallow";
 import useUser from "../../../store/user";
-import usePage from "../../../store/page";
 import reRoute from "../../../../js/reRoute";
 
 /**
@@ -17,21 +16,8 @@ function NavMenu() {
     shallow
   );
 
-  const { resetPages } = usePage(
-    (state) => ({
-      resetPages: state.resetPages,
-    }),
-    shallow
-  );
-
-  function home() {
-    resetPages();
-    reRoute("/");
-  }
-
   function logout() {
     resetUser(); 
-    resetPages();
     reRoute("/");
   }
 
@@ -46,7 +32,7 @@ function NavMenu() {
         </svg>
       </Dropdown.Toggle>
       <Dropdown.Menu align="end">
-        <Dropdown.Item onClick={home}>Home</Dropdown.Item>
+        <Dropdown.Item href="/">Home</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/login">Login</Dropdown.Item>
         <Dropdown.Item className={name? "d-none":"d-block"} href="/register">Register</Dropdown.Item>
         <Dropdown.Item className={name? "d-block":"d-none"} href="/profile">My profile</Dropdown.Item>
