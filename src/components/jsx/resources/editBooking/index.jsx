@@ -174,6 +174,7 @@ function EditBooking({booking, accessToken, apiKey}) {
                 {Price(startDate, endDate, Boolean(invalid || errors.guests), booking["venue"]["price"])}
               </div>
             </Row>
+            <div className={type}>{message}</div>
             <div className="text-center">
               <input type="submit" id="list-btn" className="btn btn-primary btn-sm mt-2" value="Update booking" disabled={enableDisable(!Boolean(invalid || errors.guests))} data-testid={"bookButton"}/>
               <Button 
@@ -182,7 +183,6 @@ function EditBooking({booking, accessToken, apiKey}) {
                 data-testid="cancelButton">Cancel booking</Button>
               <Button onClick={handleClose} className="btn-sm ms-2 mt-2" variant="secondary">Close</Button>
             </div>
-            <div className={type}>{message}</div>
           </form>
         </Modal.Body>
       </Modal>

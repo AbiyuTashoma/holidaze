@@ -88,7 +88,6 @@ function CreateVenue() {
 
   return (
     <form onSubmit={handleSubmit(OnSubmit)} onChange={clearMessage} className="form-size my-4">
-      <div className={type}>{message}</div>
       <div>
         <label htmlFor="name" className="form-label">Venue name</label>
         <input id="name" name="name" className="form-control" {...register("name")} />
@@ -158,6 +157,7 @@ function CreateVenue() {
           <p className="text-danger">{errors.country?.message}</p>
         </div>
       </div>
+      <div className={type}>{message}</div>
       <div className="text-center">
         <input type="submit" id="list-btn" className="btn btn-primary" value="Create venue" data-testid="createButton"/>
       </div>

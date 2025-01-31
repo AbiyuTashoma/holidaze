@@ -112,7 +112,6 @@ function EditVenue({venue, accessToken, apiKey}) {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(OnSubmit)} onChange={clearMessage} className="form-size my-2">
-            <div className={type}>{message}</div>
             <div>
               <label htmlFor="name" className="form-label mt-2">Venue name</label>
               <input id="name" name="name" className="form-control" defaultValue={venue["name"]} {...register("name")} />
@@ -182,6 +181,7 @@ function EditVenue({venue, accessToken, apiKey}) {
                 <p className="text-danger">{errors.country?.message}</p>
               </div>
             </div>
+            <div className={type}>{message}</div>
             <div className="text-center">
               <Button onClick={handleSubmit(OnSubmit)} className="mt-2" variant="primary" type="submit" size="sm" data-testid="saveButton">
                 Save Changes
