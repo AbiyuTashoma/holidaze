@@ -1,6 +1,6 @@
 {
   "name": "holidaze",
-  "version": "0.6.55",
+  "version": "0.6.56",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
