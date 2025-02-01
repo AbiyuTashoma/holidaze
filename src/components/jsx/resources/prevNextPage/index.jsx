@@ -21,10 +21,10 @@ function PrevNextPage({prevPage, nextPage, currentPage, lastPage}) {
   }
   
   return (
-    <div className="d-flex justify-content-center gap-1 gap-sm-4 align-items-center my-4">
+    <div className="d-flex justify-content-center gap-4 align-items-center my-4">
       <div>
         <Link 
-          className={prevPage ? "btn btn-secondary btn-sm me-2" : "btn btn-secondary btn-sm me-2 disabled"}
+          className={prevPage ? "btn btn-secondary btn-sm me-3" : "btn btn-secondary btn-sm me-3 disabled"}
           to={"/venues/page=" + 1}
           onClick={() => handlePrevNextClick(url, 1, currentPage)}
           aria-label="first page">
@@ -35,7 +35,7 @@ function PrevNextPage({prevPage, nextPage, currentPage, lastPage}) {
           to={"/venues/page=" + prevPage}
           onClick={() => handlePrevNextClick(url, prevPage, currentPage)}
           aria-label="previous page">
-            Prev page
+            <span>&#10094;&#10094;</span>
         </Link>
       </div>      
       <div className="text-decoration-underline fw-semibold">{currentPage}</div>
@@ -45,10 +45,10 @@ function PrevNextPage({prevPage, nextPage, currentPage, lastPage}) {
           to={"/venues/page=" + nextPage}
           onClick={() => handlePrevNextClick(url, nextPage, currentPage)} 
           aria-label="next page">
-            Next page
+            <span>&#10095;&#10095;</span>
         </Link>
         <Link 
-          className={nextPage ? "btn btn-secondary btn-sm ms-2" : "btn btn-secondary btn-sm ms-2 disabled"}
+          className={nextPage ? "btn btn-secondary btn-sm ms-3" : "btn btn-secondary btn-sm ms-3 disabled"}
           to={"/venues/page=" + lastPage}
           onClick={() => handlePrevNextClick(url, lastPage, currentPage)}
           aria-label="last page">

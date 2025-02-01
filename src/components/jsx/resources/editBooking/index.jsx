@@ -15,6 +15,8 @@ import basicApi from "../../../js/basicApi";
 import ImageCarousel from "../imageCarousel";
 import StarRating from "../starRating";
 import Facility from "../facility";
+import VenueName from "../venueName";
+import VenueDescription from "../venueDescription";
 
 /**
  * Creates an edit booking modal element
@@ -123,9 +125,9 @@ function EditBooking({booking, accessToken, apiKey}) {
               {StarRating(booking["venue"]["rating"])}
             </Col>
             <Col>
-              <div className="fw-semibold fs-5 my-2">{booking["venue"]["name"]}</div>
+              <div className="my-2">{VenueName(booking["venue"]["name"])}</div>
               <div data-testid="venuePrice">{booking["venue"]["price"]} {currency}<span className="unit">{unit}</span></div>
-              <div className="my-2">{booking["venue"]["description"]}</div>
+              {VenueDescription(booking["venue"]["description"])}
               <div data-testid="maxGuests">Max guests: {booking["venue"]["maxGuests"]}</div>
               <div>{Facility(booking["venue"]["meta"])}</div>
             </Col>

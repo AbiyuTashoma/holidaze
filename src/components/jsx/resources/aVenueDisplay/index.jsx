@@ -5,6 +5,8 @@ import StarRating from "../starRating";
 import BookForm from "./bookForm";
 import VenueBookings from "../venueBookings";
 import ImageCarousel from "../imageCarousel";
+import VenueName from "../venueName";
+import VenueDescription from "../venueDescription";
 
 /**
  * Creates a venue display elements
@@ -25,9 +27,9 @@ function DisplayVenue(aVenue, name, accessToken, apiKey) {
           {StarRating(aVenue["rating"])}
         </Col>
         <Col>
-          <div className="fw-semibold fs-5 my-2">{aVenue["name"]}</div>
+          <div className="my-2">{VenueName(aVenue["name"])}</div>
           <div data-testid="venuePrice">{aVenue["price"]} {currency}<span className="unit">{unit}</span></div>
-          <div className="my-2">{aVenue["description"]}</div>
+          {VenueDescription(aVenue["description"])}
           <div data-testid="maxGuests">Max guests: {aVenue["maxGuests"]}</div>
           <div>{Facility(aVenue["meta"])}</div>
           <div className="my-4"><BookForm venue = {aVenue} accessToken = {accessToken} apiKey = {apiKey} /></div>
