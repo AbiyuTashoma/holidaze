@@ -13,7 +13,7 @@ function VenueBookings ({venue}) {
         {venue["bookings"].map((booking) => 
           <Col className="mb-3" key={booking.id}>
               <div className="pt-2" data-testid="bookings">
-                <div>Name: {booking["customer"]["name"]}</div>
+                <div>Name: <span className="text-break">{booking["customer"]["name"]}</span></div>
                 <div>Date in: {(new Date(booking["dateFrom"])).toDateString()}</div>
                 <div>Date out: {(new Date(booking["dateTo"])).toDateString()}</div>
                 <div>Guests: {booking["guests"]}</div>
