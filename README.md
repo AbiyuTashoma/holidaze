@@ -1,4 +1,6 @@
 # Holidaze
+![bilde](https://github.com/user-attachments/assets/6ce94282-e537-4188-b128-290f4a307f8b)
+An accommodation booking website
 
 ## Description
 
@@ -34,29 +36,63 @@ Built for ease of access, simplicity and functional user experience.
 - View bookings made on venues it manages
 - View all own venues
 
+### Workflow
+
+- Automated unit test
+- Branch protection
+
 ## Built With
 
-- React app JS framework
-- Zustand state management
+- React application
 - React bootstrap
+- Zustand state management
 - Yup form validation
 - SCSS
 
-## Running
+## Getting Started
 
 To get started, follow one the following options
 
-1. visit https://holidaze-me.netlify.app/
+### Visit the hosted website
 
-2. clone the repo:
+https://holidaze-me.netlify.app/
+
+### Installing
+
+1. Clone the repo:
 
 ```
 https://github.com/AbiyuTashoma/holidaze
 ```
 
-and then
+2. Install the dependencies:
 
 ```
 - npm install
+```
+
+3. running:
+
+```
 - npm run start
 ```
+
+4. testing:
+
+```
+- npm run test
+```
+
+## Contributing
+
+1. Fork https://github.com/AbiyuTashoma/holidaze
+2. Create a branch from the master
+3. Commit changes
+4. Upgrade version
+5. Open a pull request (PR) for review
+6. The PR will be merged once reviewed
+
+## Contact
+
+Should you have any question or suggestion I can be reached through my email: AbiTas52474@stud.noroff.no
+
