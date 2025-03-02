@@ -205,8 +205,8 @@ function EditVenue({venue, accessToken, apiKey}) {
           </form>
         </Modal.Body>
       </Modal>
-      <Modal show={showModalTwo} onHide={handleCloseModalTwo} size="md" centered>
-        <Modal.Header>
+      <Modal show={showModalTwo} onHide={handleCloseModalTwo} centered>
+        <Modal.Header closeButton>
           <Modal.Title>Permanently delete the venue?</Modal.Title>
         </Modal.Header>
         <Modal.Body>

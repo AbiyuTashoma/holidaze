@@ -33,12 +33,21 @@ function EditBooking({booking, accessToken, apiKey}) {
   const [dateRange, setDateRange] = useState([new Date(booking["dateFrom"]), new Date(booking["dateTo"])]);
   const [startDate, endDate] = dateRange;
   const [show, setShow] = useState(false);
+  const [showModalTwo, setShowModalTwo] = useState(false);
 
   const handleClose = () => setShow(false);
+  const handleCloseModalTwo = () =>{
+    setShowModalTwo(false);
+    setShow(true);
+  }
   const handleShow = () => {
     setShow(true);
     setStatus([null, null]);
     getVenueBooking(booking["venue"]["id"]);
+  }
+  const handleShowModalTwo = () => {
+    setShowModalTwo(true);
+    setShow(false);
   }
 
   async function getVenueBooking(venueId) {
@@ -181,11 +190,28 @@ function EditBooking({booking, accessToken, apiKey}) {
               <input type="submit" id="list-btn" className="btn btn-primary btn-sm mt-2" value="Update booking" disabled={enableDisable(!Boolean(invalid || errors.guests))} data-testid={"bookButton"}/>
               <Button 
                 className="btn-sm ms-2 mt-2" variant="secondary" 
-                onClick={() => handleDelete(booking.id)} 
+                onClick={handleShowModalTwo} 
                 data-testid="cancelButton">Cancel booking</Button>
               <Button onClick={handleClose} className="btn-sm ms-2 mt-2" variant="secondary">Close</Button>
             </div>
           </form>
+        </Modal.Body>
+      </Modal>
+      <Modal show={showModalTwo} onHide={handleCloseModalTwo} size="md" centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Cancel the venue booking?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <Button 
+              className="btn-sm ms-2 mt-2" variant="primary" 
+              onClick={() => handleDelete(booking.id)} 
+              data-testid="cancelButton">
+                Yes, Cancel booking</Button>
+            <Button onClick={handleCloseModalTwo} className="ms-2 mt-2" variant="secondary" size="sm">
+              Close
+            </Button>
+          </div>
         </Modal.Body>
       </Modal>
     </div>
