@@ -212,10 +212,10 @@ function EditVenue({venue, accessToken, apiKey}) {
         <Modal.Body>
           <div className="text-center">
             <Button onClick={handleDelete} className="ms-2 mt-2" variant="primary" size="sm">
-              Delete venue
+              Yes, Delete venue
             </Button>
             <Button onClick={handleCloseModalTwo} className="ms-2 mt-2" variant="secondary" size="sm">
-              Close
+              No, Close
             </Button>
           </div>
         </Modal.Body>

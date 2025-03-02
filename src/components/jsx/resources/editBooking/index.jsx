@@ -203,13 +203,11 @@ function EditBooking({booking, accessToken, apiKey}) {
         </Modal.Header>
         <Modal.Body>
           <div className="text-center">
-            <Button 
-              className="btn-sm ms-2 mt-2" variant="primary" 
-              onClick={() => handleDelete(booking.id)} 
-              data-testid="cancelButton">
-                Yes, Cancel booking</Button>
+            <Button onClick={() => handleDelete(booking.id)} className="btn-sm ms-2 mt-2" variant="primary" data-testid="cancelButton">
+              Yes, Cancel booking
+            </Button>
             <Button onClick={handleCloseModalTwo} className="ms-2 mt-2" variant="secondary" size="sm">
-              Close
+              No, Close
             </Button>
           </div>
         </Modal.Body>
