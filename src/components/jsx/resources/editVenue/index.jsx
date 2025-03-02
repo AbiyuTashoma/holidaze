@@ -23,13 +23,17 @@ function EditVenue({venue, accessToken, apiKey}) {
   const [message, type] = status;
 
   const handleClose = () => setShow(false);
-  const handleCloseModalTwo = () => setShowModalTwo(false);
+  const handleCloseModalTwo = () =>{
+    setShowModalTwo(false);
+    setShow(true);
+  }
   const handleShow = () => {
     setShow(true);
     setStatus([null, null]);
   }
   const handleShowModalTwo = () => {
     setShowModalTwo(true);
+    setShow(false);
   }
 
   async function OnSubmit(data) {
@@ -193,27 +197,27 @@ function EditVenue({venue, accessToken, apiKey}) {
               </Button>
               <Button onClick={handleShowModalTwo} className="ms-2 mt-2" variant="secondary" size="sm">
                 Delete venue
-              </Button>
-                <Modal show={showModalTwo} onHide={handleCloseModalTwo} size="md" centered>
-                  <Modal.Header>
-                    <Modal.Title>Permanently delete the venue?</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <div className="text-center">
-                      <Button onClick={handleDelete} className="ms-2 mt-2" variant="primary" size="sm">
-                        Delete venue
-                      </Button>
-                      <Button onClick={handleCloseModalTwo} className="ms-2 mt-2" variant="secondary" size="sm">
-                        Close
-                      </Button>
-                    </div>
-                  </Modal.Body>
-                </Modal>
+              </Button>                
               <Button onClick={handleClose} className="ms-2 mt-2" variant="secondary" size="sm">
                 Close
               </Button>
             </div>
           </form>
+        </Modal.Body>
+      </Modal>
+      <Modal show={showModalTwo} onHide={handleCloseModalTwo} size="md" centered>
+        <Modal.Header>
+          <Modal.Title>Permanently delete the venue?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <Button onClick={handleDelete} className="ms-2 mt-2" variant="primary" size="sm">
+              Delete venue
+            </Button>
+            <Button onClick={handleCloseModalTwo} className="ms-2 mt-2" variant="secondary" size="sm">
+              Close
+            </Button>
+          </div>
         </Modal.Body>
       </Modal>
     </div>
